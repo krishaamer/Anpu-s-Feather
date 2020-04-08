@@ -88,12 +88,12 @@ class User {
   void draw_structure() {
     
     float xpos=skeleton_points.get(9).x;
-    float xposend=skeleton_points.get(0).x;
-    float distx=xpos - xposend;
-    float ypos=skeleton_points.get(9).y;
-    float yposend=skeleton_points.get(0).y;
-    float disty=ypos - yposend;
-    float step =0.1;  
+    float xposend = skeleton_points.get(0).x;
+    float distx = xpos - xposend;
+    float ypos = skeleton_points.get(9).y;
+    float yposend = skeleton_points.get(0).y;
+    float disty = ypos - yposend;
+    float step = 0.1;  
     float pct = 0.0; 
   
     background (0);

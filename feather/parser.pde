@@ -22,9 +22,12 @@ class Parser {
     
     String[] pieces = split(input_skeleton, ",");
     for (int i = 0; i < 17*3; i+=3) {
-      skeleton_points.add(new PVector(Float.parseFloat(pieces[i]), 
+      
+      skeleton_points.add(
+        new PVector(Float.parseFloat(pieces[i]), 
         Float.parseFloat(pieces[i+1]), 
-        Float.parseFloat(pieces[i+2])));
+        Float.parseFloat(pieces[i+2]))
+      );
     }
   }
   
@@ -34,11 +37,14 @@ class Parser {
       
       // read box rotation marix and skeleton position from file.
       String input_line;
-      if ((input_line = reader.readLine()) != null) {   
+      if ((input_line = reader.readLine()) != null) {  
+        
         input_skeleton = input_line.substring(0);
-        skeleton_points.clear();    //clear up arraylist 
+        skeleton_points.clear(); //clear up arraylist 
         read_skeleton();
+        
         if (init_time_in_millis == -1) {
+          
           init_time_in_millis = millis();
         }
   
@@ -46,11 +52,11 @@ class Parser {
         pushMatrix();
         resetMatrix(); 
         translate(0, 120, -300);
-        
         scale(0.4);
         user.draw_skeleton();
   
         double second = (millis() - init_time_in_millis) / 1000.0;
+        
         //Create sequence ***
         if (second < start_time_position) {
           
