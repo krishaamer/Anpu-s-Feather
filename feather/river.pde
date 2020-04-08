@@ -12,8 +12,10 @@
 class River {
   
   float gap, theta, theta2;
-  int cols = 15;
-  int rows = 15;
+  int cols, rows;
+  
+  float speed = .0223;
+  
   color[] colors = {
     #83A0FF, 
     #5173DF, 
@@ -23,6 +25,8 @@ class River {
   
   River () {
     
+    cols = 25;
+    rows = 35;
   }
 
   void update() {
@@ -30,13 +34,11 @@ class River {
     gap = width / cols;
   
     pushMatrix();
-    rotateX(PI / 3.0);
-    rotateY(PI / 19.0);
-    rotateZ(PI / 18.0);
-    translate(200, 200, -400);
-    fill(#83A0FF);
-    textSize(50);
-    text("River Nile", 10, 30);
+    rotateX(PI / 2);
+    rotateY(PI / 1);
+    rotateZ(PI / 1);
+    translate(0, -500, 800);
+    
     
     float theta2 = PI / 6;
     for (int j = 0; j < rows; j++) {
@@ -58,7 +60,7 @@ class River {
       
     }
     
-    theta -= .0523;
+    theta -= speed;
     popMatrix();
   }
   
