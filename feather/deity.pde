@@ -24,7 +24,7 @@ class Deity {
   Deity () {
     
     cols = 15;
-    rows = 15;
+    rows = 25;
   }
   
   void update() {
