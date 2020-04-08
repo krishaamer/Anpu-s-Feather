@@ -46,7 +46,9 @@ class Parser {
         // Draw skeleton.
         pushMatrix();
         resetMatrix(); 
-        translate(0, 0, -600);
+        translate(0, 120, -300);
+        
+        scale(0.4);
         user.draw_skeleton();
   
         double second = (millis() - init_time_in_millis) / 1000.0;

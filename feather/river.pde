@@ -26,7 +26,7 @@ class River {
   River () {
     
     cols = 25;
-    rows = 35;
+    rows = 45;
   }
 
   void update() {
@@ -37,7 +37,7 @@ class River {
     rotateX(PI / 2);
     rotateY(PI / 1);
     rotateZ(PI / 1);
-    translate(0, -500, 800);
+    translate(0, -500, 780);
     
     
     float theta2 = PI / 6;

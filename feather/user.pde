@@ -31,11 +31,13 @@ class User {
   
     // Draw circles for joints.
     for (int i = 0; i < 17; i++) {
+      
       stroke(255, 0, 0);
       pushMatrix();
       translate(skeleton_points.get(i).x, skeleton_points.get(i).y, skeleton_points.get(i).z);
       sphere(4);
       popMatrix();
+      
     }
   
     stroke(0, 255, 0);
@@ -216,7 +218,7 @@ class User {
     
     draw_structure();
     if (sphere_size > 0) {
-      sphere_size -= 0.2;
+      sphere_size -= 0.5;
     }
   }
   
