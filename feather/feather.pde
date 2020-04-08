@@ -2,10 +2,19 @@
   
   Anpu's Feather.
   An interactive experience inviting you to think about your life before death.
+ 
   
   Created by Lei Lin and Kris Haamer at NCKU ICID Digital Design class.
   Tainan, Taiwan 
   April, 2020
+  
+  FOR TESTING:
+  -- Use keys B and D for toggling the 3D Perspective Box and Sceleton Dummy
+  -- Use LEFT and RIGHT arrow keys to rotate between movements
+  
+  TODO:
+  -- Narrative fade-in and fade-out of different elements
+  -- User interaction
 */
 
 // Init
