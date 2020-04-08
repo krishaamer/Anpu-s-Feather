@@ -1,6 +1,12 @@
 /*
 
   The River Character
+  
+  Reference (Jerome Herr), for the entire loop:
+  https://www.openprocessing.org/sketch/150832
+  
+  By us:
+  Changed to 3D, created separate characters, speed, colors
 */
 
 class River {

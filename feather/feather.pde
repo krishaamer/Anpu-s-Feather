@@ -1,10 +1,11 @@
 /*
-
-  Reference (Jerome Herr), for the entire loop:
-  https://www.openprocessing.org/sketch/150832
   
-  By us:
-  Changed to 3D, created separate characters, speed, colors
+  Anpu's Feather.
+  An interactive experience inviting you to think about your life before death.
+  
+  Created by Lei Lin and Kris Haamer at NCKU ICID Digital Design class.
+  Tainan, Taiwan 
+  April, 2020
 */
 
 River nile = new River();
