@@ -7,7 +7,6 @@ class Parser {
   double end_time_position = 115; // Show structures in draw_end_structure after end_time_position seconds
   int init_time_in_millis = -1;
 
-  UI ui = new UI();
   User user = new User(skeleton_points);
   
   Parser () {
@@ -65,13 +64,6 @@ class Parser {
           
           user.draw_end_structure();
         }
-        popMatrix();
-  
-        // Draw box.
-        pushMatrix();
-        resetMatrix();
-        translate(0, 0, -600);
-        ui.draw_box();
         popMatrix();
          
       } else {

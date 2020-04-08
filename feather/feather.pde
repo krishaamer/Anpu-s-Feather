@@ -12,6 +12,7 @@ Parser parser = new Parser();
 Message message = new Message();
 River nile = new River();
 Deity anubis = new Deity();
+//UI ui = new UI();
 
 void setup() {
   
@@ -23,6 +24,7 @@ void setup() {
 }
 
 void draw() {
+  
 
   parser.read_data();
   
@@ -37,4 +39,13 @@ void draw() {
   
   nile.update();
   anubis.update();
+  
+  /*
+  // Draw box for reference
+  pushMatrix();
+  resetMatrix();
+  translate(0, 0, -600);
+  ui.draw_box();
+  popMatrix();
+  */
 }
