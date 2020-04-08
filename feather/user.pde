@@ -1,90 +1,19 @@
+/*
+
+  Draw the user
+*/
+
 class User {
 
   float sphere_size = 0;
   ArrayList<PVector> skeleton_points;
   
+  Helper dummy = new Helper();
   User (ArrayList<PVector> sp) {
     
     skeleton_points = sp;
   }
   
-  /* 
-    0: head
-    1: neck
-    2: left_shoulder
-    3: left_elbow
-    4: left_hand
-    5: right_shoulder
-    6: right_elbow
-    7: right_hand
-    8: torso
-    9: left_hip
-    10: left_knee
-    11: left_foot
-    12: right_hip
-    13: right_knee
-    14: right_foot
-    15: spine_mid
-    16: spine_shoulder
-  */
-  void draw_skeleton() {
-  
-    // Draw circles for joints.
-    for (int i = 0; i < 17; i++) {
-      
-      stroke(255, 0, 0);
-      pushMatrix();
-      translate(skeleton_points.get(i).x, skeleton_points.get(i).y, skeleton_points.get(i).z);
-      sphere(4);
-      popMatrix();
-      
-    }
-  
-    stroke(0, 255, 0);
-  
-    // Line 1: torso, spine_mid, spine_shoulder, neck, head
-    line(skeleton_points.get(8).x, skeleton_points.get(8).y, skeleton_points.get(8).z, 
-      skeleton_points.get(15).x, skeleton_points.get(15).y, skeleton_points.get(15).z);
-    line(skeleton_points.get(15).x, skeleton_points.get(15).y, skeleton_points.get(15).z, 
-      skeleton_points.get(16).x, skeleton_points.get(16).y, skeleton_points.get(16).z);
-    line(skeleton_points.get(16).x, skeleton_points.get(16).y, skeleton_points.get(16).z, 
-      skeleton_points.get(1).x, skeleton_points.get(1).y, skeleton_points.get(1).z);
-    line(skeleton_points.get(1).x, skeleton_points.get(1).y, skeleton_points.get(1).z, 
-      skeleton_points.get(0).x, skeleton_points.get(0).y, skeleton_points.get(0).z);
-  
-    // Line 2: spine_shoulder, right_shoulder, right_elbow, right_hand
-    line(skeleton_points.get(16).x, skeleton_points.get(16).y, skeleton_points.get(16).z, 
-      skeleton_points.get(5).x, skeleton_points.get(5).y, skeleton_points.get(5).z);
-    line(skeleton_points.get(5).x, skeleton_points.get(5).y, skeleton_points.get(5).z, 
-      skeleton_points.get(6).x, skeleton_points.get(6).y, skeleton_points.get(6).z);
-    line(skeleton_points.get(6).x, skeleton_points.get(6).y, skeleton_points.get(6).z, 
-      skeleton_points.get(7).x, skeleton_points.get(7).y, skeleton_points.get(7).z);
-  
-    // Line 3: torso, right_hip, right_knee, right_foot
-    line(skeleton_points.get(8).x, skeleton_points.get(8).y, skeleton_points.get(8).z, 
-      skeleton_points.get(12).x, skeleton_points.get(12).y, skeleton_points.get(12).z);
-    line(skeleton_points.get(12).x, skeleton_points.get(12).y, skeleton_points.get(12).z, 
-      skeleton_points.get(13).x, skeleton_points.get(13).y, skeleton_points.get(13).z);
-    line(skeleton_points.get(13).x, skeleton_points.get(13).y, skeleton_points.get(13).z, 
-      skeleton_points.get(14).x, skeleton_points.get(14).y, skeleton_points.get(14).z);
-  
-    // Line 4: spine_shoulder, left_shoulder, left_elbow, left_hand
-    line(skeleton_points.get(16).x, skeleton_points.get(16).y, skeleton_points.get(16).z, 
-      skeleton_points.get(2).x, skeleton_points.get(2).y, skeleton_points.get(2).z);
-    line(skeleton_points.get(2).x, skeleton_points.get(2).y, skeleton_points.get(2).z, 
-      skeleton_points.get(3).x, skeleton_points.get(3).y, skeleton_points.get(3).z);
-    line(skeleton_points.get(3).x, skeleton_points.get(3).y, skeleton_points.get(3).z, 
-      skeleton_points.get(4).x, skeleton_points.get(4).y, skeleton_points.get(4).z);
-  
-    // Line 5: torso, left_hip, left_knee, left_foot
-    line(skeleton_points.get(8).x, skeleton_points.get(8).y, skeleton_points.get(8).z, 
-      skeleton_points.get(9).x, skeleton_points.get(9).y, skeleton_points.get(9).z);
-    line(skeleton_points.get(9).x, skeleton_points.get(9).y, skeleton_points.get(9).z, 
-      skeleton_points.get(10).x, skeleton_points.get(10).y, skeleton_points.get(10).z);
-    line(skeleton_points.get(10).x, skeleton_points.get(10).y, skeleton_points.get(10).z, 
-      skeleton_points.get(11).x, skeleton_points.get(11).y, skeleton_points.get(11).z);
-  }
-
   void draw_structure() {
     
     float xpos=skeleton_points.get(9).x;
@@ -103,26 +32,26 @@ class User {
        Shift the values to the right
       Add the new values to the beginning of the array
     */
-    float x1=(skeleton_points.get(4).x+skeleton_points.get(3).x)/2;
-    float x2=(skeleton_points.get(3).x+skeleton_points.get(2).x)/2;
-    float x3=(skeleton_points.get(2).x+skeleton_points.get(0).x)/2;
-    float x4=(skeleton_points.get(6).x+skeleton_points.get(7).x)/2;
-    float x5=(skeleton_points.get(5).x+skeleton_points.get(6).x)/2;
-    float x6=(skeleton_points.get(0).x+skeleton_points.get(5).x)/2;
+    float x1 = (skeleton_points.get(4).x+skeleton_points.get(3).x)/2;
+    float x2 = (skeleton_points.get(3).x+skeleton_points.get(2).x)/2;
+    float x3 = (skeleton_points.get(2).x+skeleton_points.get(0).x)/2;
+    float x4 = (skeleton_points.get(6).x+skeleton_points.get(7).x)/2;
+    float x5 = (skeleton_points.get(5).x+skeleton_points.get(6).x)/2;
+    float x6 = (skeleton_points.get(0).x+skeleton_points.get(5).x)/2;
     float xleft;
     float xleft2;
     float xleft3;
     float xright;
     float xright2;
     float xright3;
-    float y7=skeleton_points.get(0).y-30;
-    float y8=y7+20;
-    float y9=(y7+y8)/2;
-    float y10=(skeleton_points.get(4).y+y8)/2;
-    float y11=(skeleton_points.get(7).y+y8)/2;
-    float y12=(skeleton_points.get(4).y+y10)/2;
-    float y13=(y7+y10)/2;
-    float y14=skeleton_points.get(15).y+(skeleton_points.get(15).y-(skeleton_points.get(16).y+20));
+    float y7 = skeleton_points.get(0).y-30;
+    float y8 = y7+20;
+    float y9 = (y7+y8)/2;
+    float y10 = (skeleton_points.get(4).y+y8)/2;
+    float y11 = (skeleton_points.get(7).y+y8)/2;
+    float y12 = (skeleton_points.get(4).y+y10)/2;
+    float y13 = (y7+y10)/2;
+    float y14 = skeleton_points.get(15).y+(skeleton_points.get(15).y-(skeleton_points.get(16).y+20));
 
     if (skeleton_points.get(10).x<=skeleton_points.get(9).x) {
 
@@ -211,12 +140,14 @@ class User {
   void draw_start_structure() {
     
     draw_structure();
+    
     sphere_size += 0.2;
   }
   
   void draw_end_structure() {
     
     draw_structure();
+    
     if (sphere_size > 0) {
       sphere_size -= 0.5;
     }

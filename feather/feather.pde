@@ -13,7 +13,7 @@ Parser parser = new Parser();
 Message message = new Message();
 River nile = new River();
 Deity anubis = new Deity();
-//UI ui = new UI();
+Helper helper = new Helper();
 
 void setup() {
   
@@ -31,11 +31,9 @@ void draw() {
   message.say("Welcome");
   message.fadeInOut();
   
-  /*
   message.fadeOut();
   message.say("You have reached the entrance");
   message.fadeIn();
-  */
   
   nile.update();
   nile.fadeOut();
@@ -43,17 +41,12 @@ void draw() {
   anubis.update();
   anubis.fadeOut();
   
-  /*
-  // Draw box for reference
-  pushMatrix();
-  resetMatrix();
-  translate(0, 0, -600);
-  ui.draw_box();
-  popMatrix();
-  */
+  helper.update();
 }
 
 void keyReleased () {
     
   parser.enableKeys();
+  helper.toggleBox();
+  helper.toggleDummy(parser);
 }

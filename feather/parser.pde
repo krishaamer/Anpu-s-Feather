@@ -17,6 +17,11 @@ class Parser {
     
   }
   
+  ArrayList<PVector> getPoints () {
+
+    return skeleton_points;
+  }
+  
   void getFiles () {
     
     String path = sketchPath() + "/data";
@@ -106,7 +111,6 @@ class Parser {
         resetMatrix(); 
         translate(0, 120, -300);
         scale(0.4);
-        user.draw_skeleton();
   
         double second = (millis() - init_time_in_millis) / 1000.0;
         
@@ -121,6 +125,7 @@ class Parser {
           
         } else if (second > end_time_position) {
           
+          read_skeleton();
           user.draw_end_structure();
         }
         popMatrix();
