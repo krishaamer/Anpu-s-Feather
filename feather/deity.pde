@@ -12,8 +12,8 @@
 class Deity {
 
   float gap, theta, theta2;
-  int cols = 15;
-  int rows = 15; 
+  int cols, rows;
+
   color[] colors = {
     #000000, 
     #333333, 
@@ -23,6 +23,8 @@ class Deity {
   
   Deity () {
     
+    cols = 15;
+    rows = 15;
   }
   
   void update() {
