@@ -6,6 +6,10 @@ class Parser {
   double start_time_position = 8.5; // Show structures in draw_start_structure for the first start_time_position seconds
   double end_time_position = 115; // Show structures in draw_end_structure after end_time_position seconds
   int init_time_in_millis = -1;
+  
+  boolean is_file_loaded = false;
+  int fileIndex;
+  String[] filenames;
 
   User user = new User(skeleton_points);
   
@@ -13,9 +17,58 @@ class Parser {
     
   }
   
-  void load_file (String input_file) {
+  void getFiles () {
     
-    reader = createReader(input_file);
+    String path = sketchPath() + "/data";
+    filenames = listSceletons(path);
+  }
+  
+  // Switch between sceletons
+  void enableKeys () {
+    
+    // Right arrow key
+    if (keyCode == RIGHT) {
+      
+      if (fileIndex < filenames.length-1) {
+        
+        fileIndex++;
+        
+      } else {
+        
+        fileIndex = 0;
+      }
+      
+      println("right", fileIndex, filenames[fileIndex]);
+      is_file_loaded = false;
+      loadFile(filenames[fileIndex]);
+    }
+      
+    // Left arrow key
+    if (keyCode == LEFT) {
+      
+      if (fileIndex > 0) {
+        
+        fileIndex--;
+        
+      } else {
+        
+        fileIndex = filenames.length-1;
+      }
+      
+      println("left", fileIndex, filenames[fileIndex]);
+      is_file_loaded = false;
+      loadFile(filenames[fileIndex]);
+    }
+  }
+  
+  void loadFile (String input_file) {
+    
+    // Only load if flag false
+    if (!is_file_loaded) {
+      
+      reader = createReader(input_file);
+      is_file_loaded = true;
+    }
   }
   
   void read_skeleton() {
@@ -81,4 +134,35 @@ class Parser {
   
   }
   
+  /*
+    Returns all the files in a directory as an array of Strings  
+    Reference:
+    https://processing.org/examples/directorylist.html
+  */
+  String[] listSceletons(String dir) {
+    
+    String[] namesClean = {};
+      
+    File file = new File(dir);
+    if (file.isDirectory()) {
+      
+      String namesRaw[] = file.list();
+      
+      // Only accept txt files
+      for (String f : namesRaw) {
+        int len = f.length();
+        String ext = f.substring(len-4, len);
+        if (ext.equals(".txt")) {
+          namesClean = append(namesClean, f);
+        }
+      }
+      
+      return namesClean;
+      
+    } else {
+      
+      // Not a directory
+      return null;
+    }
+  }
 }

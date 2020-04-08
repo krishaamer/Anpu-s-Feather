@@ -8,6 +8,7 @@
   April, 2020
 */
 
+// Init
 Parser parser = new Parser();
 Message message = new Message();
 River nile = new River();
@@ -16,17 +17,17 @@ Deity anubis = new Deity();
 
 void setup() {
   
+  parser.getFiles();
+  
   size(800, 800, P3D);
   frameRate(30);
   strokeWeight(2);
-  
-  parser.load_file("wave.txt");
+  parser.loadFile("pray1.txt");
 }
 
 void draw() {
- 
+
   parser.read_data();
-  
   message.say("Welcome");
   message.fadeInOut();
   
@@ -50,4 +51,9 @@ void draw() {
   ui.draw_box();
   popMatrix();
   */
+}
+
+void keyReleased () {
+    
+  parser.enableKeys();
 }
