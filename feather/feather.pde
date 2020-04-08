@@ -24,8 +24,7 @@ void setup() {
 }
 
 void draw() {
-  
-
+ 
   parser.read_data();
   
   message.say("Welcome");
@@ -38,7 +37,10 @@ void draw() {
   */
   
   nile.update();
+  nile.fadeOut();
+  
   anubis.update();
+  anubis.fadeOut();
   
   /*
   // Draw box for reference

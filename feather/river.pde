@@ -11,11 +11,8 @@
 
 class River {
   
-  float gap, theta, theta2;
-  int cols, rows;
-  
-  float speed = .0223;
-  
+  float gap, theta, theta2, speed;
+  int cols, rows, strokeAlpha, fillAlpha;
   color[] colors = {
     #83A0FF, 
     #5173DF, 
@@ -27,6 +24,9 @@ class River {
     
     cols = 25;
     rows = 45;
+    speed = .0223;
+    strokeAlpha = 220;
+    fillAlpha = 170;
   }
 
   void update() {
@@ -39,12 +39,11 @@ class River {
     rotateZ(PI / 1);
     translate(0, -500, 780);
     
-    
     float theta2 = PI / 6;
     for (int j = 0; j < rows; j++) {
       
-      stroke(colors[j % colors.length], 220);
-      fill(colors[j % colors.length], 170);
+      stroke(colors[j % colors.length], strokeAlpha);
+      fill(colors[j % colors.length], fillAlpha);
       theta2 += (TWO_PI / 36);
       
       float offSetY = map(sin(theta2), -1, 1, 0, TWO_PI);
@@ -62,6 +61,28 @@ class River {
     
     theta -= speed;
     popMatrix();
+  }
+  
+  void fadeIn () {
+    
+    if (fillAlpha < 255) { 
+      fillAlpha++; 
+    }
+    
+    if (strokeAlpha < 255) { 
+      strokeAlpha++; 
+    }
+  }
+  
+  void fadeOut () {
+    
+    if (fillAlpha > 0) { 
+      fillAlpha--; 
+    }
+    
+    if (strokeAlpha > 0) { 
+      strokeAlpha--; 
+    }
   }
   
 }
