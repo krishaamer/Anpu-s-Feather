@@ -8,16 +8,16 @@
   April, 2020
 */
 
+Parser parser = new Parser();
+Message message = new Message();
 River nile = new River();
 Deity anubis = new Deity();
-Message alert = new Message();
-Parser parser = new Parser();
 
 void setup() {
   
   size(800, 800, P3D);
+  frameRate(30);
   strokeWeight(2);
-  frameRate(27);
   
   parser.load_file("wave.txt");
 }
@@ -25,8 +25,16 @@ void setup() {
 void draw() {
 
   parser.read_data();
-  alert.say("Welcome");
-  //alert.say("You have reached the entrance");
+  
+  message.say("Welcome");
+  message.fadeInOut();
+  
+  /*
+  message.fadeOut();
+  message.say("You have reached the entrance");
+  message.fadeIn();
+  */
+  
   nile.update();
   anubis.update();
 }
