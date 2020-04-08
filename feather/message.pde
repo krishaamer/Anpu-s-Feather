@@ -13,7 +13,7 @@ class Message {
   float timer = millis();
   float interval = 1000.0f;
   float alpha = 0;
-  float speed = 10;
+  float speed = 5;
   
   Message () {
     
@@ -37,13 +37,21 @@ class Message {
   
   void fadeInOut () {
     
+    /* 
+      Current time (millis) is larger than 
+      animation length (interval) + previous time (timer)
+      so should reset time and animation In/Out direction
+    */
     if (millis() > interval + timer) {
       
-      // Reset Timer
+      // Reset
       timer = millis();
+      
+      // Switch In/Out
       speed *= -1;
     }
     
+    // Fade output
     alpha -= speed;
   }
 
