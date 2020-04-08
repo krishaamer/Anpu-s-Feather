@@ -1,15 +1,22 @@
 class Parser {
 
-  String input_skeleton = "";
+  BufferedReader reader;
+  ArrayList<PVector> skeleton_points = new ArrayList<PVector>();
+  String input_skeleton;
   double start_time_position = 8.5; // Show structures in draw_start_structure for the first start_time_position seconds
-  double end_time_position = 115; // Show structures in draw_end_structure after end_time_position seconds.
+  double end_time_position = 115; // Show structures in draw_end_structure after end_time_position seconds
   int init_time_in_millis = -1;
 
   UI ui = new UI();
-  User user = new User();
+  User user = new User(skeleton_points);
   
   Parser () {
     
+  }
+  
+  void load_file (String input_file) {
+    
+    reader = createReader(input_file);
   }
   
   void read_skeleton() {
@@ -22,7 +29,7 @@ class Parser {
     }
   }
   
-  void read_data(BufferedReader reader) {
+  void read_data() {
     
     try {
       
