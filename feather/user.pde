@@ -13,6 +13,7 @@
 class User {
 
   ArrayList<PVector> skeleton_points;
+  Boolean runOnce = false;
   
   /* Light ? */
   float diameter = 10;
@@ -46,19 +47,24 @@ class User {
     
     if (type == "light") {
       
-      background(0);
-      //noStroke(); 
-      fill(100);
-      ellipseMode(500); 
-      //blendMode(ADD);
+      // Light
+      background(170);
+      strokeWeight(4);
       pushMatrix();
       resetMatrix(); 
       translate(0, 0, -600);
+      fill(255);
+      ellipseMode(500); 
+      //blendMode(ADD);
       draw_structure_light();
       popMatrix();
       
     } else { 
       
+      // Heavy
+      background(0);
+      strokeWeight(2);
+      fill(0);
       pushMatrix();
       resetMatrix(); 
       translate(0, 120, -300);
@@ -70,13 +76,18 @@ class User {
   
   void draw_structure_light () {
     
-    for (int i =0; i< num2; i++) {
-      xpos2[i] = random(-500, 500);
-      ypos2[i] = random(-500, 500);
-      vx[i] = 0;
-      vy[i] = 0;
-      ax[i] = 0;
-      ay[i] = 0;
+    if (!runOnce) {
+    
+      for (int i =0; i< num2; i++) {
+        xpos2[i] = random(-500, 500);
+        ypos2[i] = random(-500, 500);
+        vx[i] = 0;
+        vy[i] = 0;
+        ax[i] = 0;
+        ay[i] = 0;
+      }
+      
+      runOnce = true;
     }
     
     x2[0] = skeleton_points.get(7).x;
@@ -155,8 +166,6 @@ class User {
     float disty = ypos - yposend;
     float step = 0.1;  
     float pct = 0.0; 
-  
-    background (0);
     
     //for Students. Please only write your code there! ***
     /* Sphere example
