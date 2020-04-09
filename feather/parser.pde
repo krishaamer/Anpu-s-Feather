@@ -10,6 +10,7 @@ class Parser {
   boolean is_file_loaded = false;
   int fileIndex;
   String[] filenames;
+  String currentFileName;
   String userMode;
   
   User user = new User(skeleton_points);
@@ -50,8 +51,9 @@ class Parser {
       }
       
       is_file_loaded = false;
-      loadFile(filenames[fileIndex]);
-      println(fileIndex, filenames[fileIndex]);
+      currentFileName = filenames[fileIndex];
+      loadFile(currentFileName);
+      println(fileIndex, currentFileName);
     }
       
     // Left arrow key
@@ -67,8 +69,9 @@ class Parser {
       }
       
       is_file_loaded = false;
-      loadFile(filenames[fileIndex]);
-      println(fileIndex, filenames[fileIndex]);
+      currentFileName = filenames[fileIndex];
+      loadFile(currentFileName);
+      println(fileIndex, currentFileName);
     }
   }
   
@@ -79,6 +82,7 @@ class Parser {
       
       reader = createReader(input_file);
       is_file_loaded = true;
+      currentFileName = input_file;
     }
   }
   
@@ -99,12 +103,12 @@ class Parser {
     
     try {
       
-      // read box rotation marix and skeleton position from file.
+      // read box rotation matrix and sceleton position from file
       String input_line;
       if ((input_line = reader.readLine()) != null) {  
         
         input_skeleton = input_line.substring(0);
-        skeleton_points.clear(); //clear up arraylist 
+        skeleton_points.clear();
         read_skeleton();
         
         // Reset init time
@@ -116,7 +120,14 @@ class Parser {
          
       } else {
         
-        noLoop();
+
+        // Restart
+        is_file_loaded = false;
+        loadFile(currentFileName);
+        
+        println("EOF, load file again", currentFileName);
+        
+        //noLoop();
       }
       
     } catch(IOException e) { }
