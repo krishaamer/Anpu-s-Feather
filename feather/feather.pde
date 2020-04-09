@@ -13,6 +13,7 @@
   -- Use LEFT and RIGHT arrow keys to rotate between movements
   
   TODO:
+  -- Add scales (the feather) to weigh the heart
   -- Narrative fade-in and fade-out of different elements
   -- User interaction
 */
@@ -23,6 +24,7 @@ Message message = new Message();
 River nile = new River();
 Deity anubis = new Deity();
 Helper helper = new Helper();
+//Scales scales = new Scales();
 
 void setup() {
   
