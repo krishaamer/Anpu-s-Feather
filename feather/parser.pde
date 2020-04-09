@@ -10,9 +10,10 @@ class Parser {
   boolean is_file_loaded = false;
   int fileIndex;
   String[] filenames;
-
-  User user = new User(skeleton_points);
+  String userMode;
   
+  User user = new User(skeleton_points);
+    
   Parser () {
     
   }
@@ -20,6 +21,11 @@ class Parser {
   ArrayList<PVector> getPoints () {
 
     return skeleton_points;
+  }
+  
+  void setMode (String mode) {
+    
+    userMode = mode;
   }
   
   void getFiles () {
@@ -34,7 +40,7 @@ class Parser {
     // Right arrow key
     if (keyCode == RIGHT) {
       
-      if (fileIndex < filenames.length-1) {
+      if (fileIndex < filenames.length - 1) {
         
         fileIndex++;
         
@@ -43,9 +49,9 @@ class Parser {
         fileIndex = 0;
       }
       
-      println("right", fileIndex, filenames[fileIndex]);
       is_file_loaded = false;
       loadFile(filenames[fileIndex]);
+      println(fileIndex, filenames[fileIndex]);
     }
       
     // Left arrow key
@@ -60,9 +66,9 @@ class Parser {
         fileIndex = filenames.length-1;
       }
       
-      println("left", fileIndex, filenames[fileIndex]);
       is_file_loaded = false;
       loadFile(filenames[fileIndex]);
+      println(fileIndex, filenames[fileIndex]);
     }
   }
   
@@ -101,34 +107,12 @@ class Parser {
         skeleton_points.clear(); //clear up arraylist 
         read_skeleton();
         
+        // Reset init time
         if (init_time_in_millis == -1) {
-          
           init_time_in_millis = millis();
         }
   
-        // Draw skeleton.
-        pushMatrix();
-        resetMatrix(); 
-        translate(0, 120, -300);
-        scale(0.4);
-  
-        double second = (millis() - init_time_in_millis) / 1000.0;
-        
-        //Create sequence ***
-        if (second < start_time_position) {
-          
-          user.draw_start_structure();
-          
-        } else if (second >= start_time_position && second < end_time_position) {
-          
-          user.draw_structure();  //for Students
-          
-        } else if (second > end_time_position) {
-          
-          read_skeleton();
-          user.draw_end_structure();
-        }
-        popMatrix();
+        handleDrawing(init_time_in_millis);
          
       } else {
         
@@ -137,6 +121,26 @@ class Parser {
       
     } catch(IOException e) { }
   
+  }
+  
+  void handleDrawing (float init_time_in_millis) {
+    
+    double second = (millis() - init_time_in_millis) / 1000.0;
+    
+    //Create sequence ***
+    if (second < start_time_position) {
+      
+     user.draw_start_structure(userMode);
+      
+    } else if (second >= start_time_position && second < end_time_position) {
+      
+      user.draw_structure(userMode);
+      
+    } else if (second > end_time_position) {
+      
+      read_skeleton();
+      user.draw_end_structure(userMode);
+    }
   }
   
   /*
@@ -151,12 +155,14 @@ class Parser {
     File file = new File(dir);
     if (file.isDirectory()) {
       
+      // All files in the directory
       String namesRaw[] = file.list();
-      
+
       // Only accept txt files
       for (String f : namesRaw) {
+
         int len = f.length();
-        String ext = f.substring(len-4, len);
+        String ext = f.substring(len - 4, len);
         if (ext.equals(".txt")) {
           namesClean = append(namesClean, f);
         }
