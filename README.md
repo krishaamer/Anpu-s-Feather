@@ -1,6 +1,6 @@
 # Anpu’s Feather 阿努比斯的羽毛
 
-Story
+## Story
 
 You went on a trip on the Nile river before your death. You’re welcome by Anubis.
 
@@ -13,3 +13,6 @@ Anubis was commonly depicted in black color, symbolizing the black fertile soil 
 
 ## Mꜣꜥt, The Feather of Truth
 Anubis uses an ostrich feather to seek Truth, Balance, Order, Harmony, and Justice. Light hearts would ascend, heavy ones be devoured [[2](https://en.wikipedia.org/wiki/Maat)]
+
+## WIP
+Follow the development journey on our [GitHub project](https://github.com/krishaamer/Anpu-s-Feather).
