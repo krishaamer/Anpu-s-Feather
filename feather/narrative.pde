@@ -5,7 +5,7 @@
 
 class Narrative {
   
-  String mode = "heavy";
+  String mode = "light";
   
   Narrative () {
     
