@@ -39,7 +39,6 @@ void setup() {
   
   size(800, 800, P3D);
   frameRate(30);
-  strokeWeight(2);
   parser.loadFile("wave1.txt");
   
   // Set default mode on init
