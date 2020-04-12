@@ -31,12 +31,12 @@ KinectPV2 kinect;
 boolean is_live = false;
 
 // Init
-Parser parser = new Parser();
+Helper helper = new Helper();
+Parser parser = new Parser(helper);
 Narrative narrative = new Narrative();
 Message message = new Message();
 River nile = new River();
 Deity anubis = new Deity();
-Helper helper = new Helper();
 Scales scales = new Scales();
 User user = new User(parser.getPoints());
 Output output = new Output(parser.getPoints());
@@ -97,7 +97,6 @@ void draw() {
     message.say("How heavy is your heart?");
     message.fadeInOut();
   }
-  
   
   helper.update();
   narrative.update();

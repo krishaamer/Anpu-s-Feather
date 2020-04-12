@@ -27,18 +27,23 @@ class Parser {
   boolean live_initiated;
   
   // Tools
-  Helper helper = new Helper();
+  Helper helper;;
   
-  Parser () {
+  // Init
+  Parser (Helper h) {
     
+    helper = h;
   }
   
+  // Return Sceleton Points
   ArrayList<PVector> getPoints () {
 
     return skeleton_points;
   }
   
+  // Return Parse Status
   boolean isStreaming() {
+    
     return isStreaming;
   }
  
