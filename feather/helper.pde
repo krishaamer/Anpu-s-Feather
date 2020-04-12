@@ -1,6 +1,7 @@
 /*
 
   Useful helper functions
+  
 */
 
 class Helper {
@@ -165,6 +166,40 @@ class Helper {
     
     if (key == 'd' || key == 'D') {
       showDummy = !showDummy;
+    }
+  }
+  
+  /*
+    Returns all the files in a directory as an array of Strings  
+    Reference:
+    https://processing.org/examples/directorylist.html
+  */
+  String[] listTextFiles(String dir) {
+    
+    String[] namesClean = {};
+      
+    File file = new File(dir);
+    if (file.isDirectory()) {
+      
+      // All files in the directory
+      String namesRaw[] = file.list();
+
+      // Only accept txt files
+      for (String f : namesRaw) {
+
+        int len = f.length();
+        String ext = f.substring(len - 4, len);
+        if (ext.equals(".txt")) {
+          namesClean = append(namesClean, f);
+        }
+      }
+      
+      return namesClean;
+      
+    } else {
+      
+      // Not a directory
+      return null;
     }
   }
 }
