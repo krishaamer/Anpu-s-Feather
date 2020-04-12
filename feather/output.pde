@@ -59,4 +59,14 @@ class Output {
     output.close();
     exit();
   }
+  
+  // Keyboard Shortcuts
+  void enableKeys () {
+
+    // FileWriter - Flush Memory and Exit File
+    if (key == 'q' || key == 'Q') {
+      
+      exitFile();
+    }
+  }
 }

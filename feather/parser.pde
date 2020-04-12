@@ -11,8 +11,8 @@ class Parser {
   
   // Shared
   ArrayList<PVector> skeleton_points = new ArrayList<PVector>();
-  String userMode;
-
+  boolean isStreaming;
+  
   // File Source
   BufferedReader reader;
   String input_skeleton;
@@ -28,9 +28,6 @@ class Parser {
   
   // Tools
   Helper helper = new Helper();
-  Output output = new Output(skeleton_points);
-  User user = new User(skeleton_points);
-  Draw draw = new Draw();
   
   Parser () {
     
@@ -41,10 +38,10 @@ class Parser {
     return skeleton_points;
   }
   
-  void setUserMode (String mode) {
-    
-    userMode = mode;
+  boolean isStreaming() {
+    return isStreaming;
   }
+ 
   
   // Load Kinect
   void liveInit (KinectPV2 kinect) {
@@ -117,16 +114,12 @@ class Parser {
       loadFile(currentFileName);
       println(fileIndex, currentFileName);
     }
-    
-    // FileWriter - Flush Memory and Exit File
-    if (key == 'q' || key == 'Q') {
-      
-      output.exitFile();
-    }
   }
   
   // Switch
   void read_data () {
+    
+    isStreaming = false;
     
     if (is_live) {
       read_data_live();
@@ -147,10 +140,8 @@ class Parser {
         input_skeleton = input_line.substring(0);
         skeleton_points.clear();
         update_skeleton_file();
-        draw.reset_time();
-        draw.handleDrawing(user, userMode);
-        output.writeFile();
-         
+        isStreaming = true;
+
       } else {
 
         // Restart
@@ -165,9 +156,7 @@ class Parser {
   
   // Live Data (Kinect)
   void read_data_live () {
-    
-    draw.reset_time();
-          
+     
     // Translate the skeleton to the center 
     //pushMatrix();
     //translate(width / 2, height / 2, -200);
@@ -181,8 +170,7 @@ class Parser {
         
         KJoint[] joints = skeleton.getJoints();
         update_skeleton_live(joints); 
-        draw.handleDrawing(user, userMode);
-        output.writeFile();
+        isStreaming = true;
       }
     }
     //popMatrix();

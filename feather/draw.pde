@@ -8,11 +8,17 @@
 class Draw {
   
   int init_time_in_millis = -1;
-  double start_time_position = 8.5; // Show structures in draw_start_structure for the first start_time_position seconds
-  double end_time_position = 20; // Show structures in draw_end_structure after end_time_position seconds
+  double start_time_position = 8; // Show structures in draw_start_structure for the first start_time_position seconds
+  double end_time_position = 12; // Show structures in draw_end_structure after end_time_position seconds
+  String userMode;
   
   Draw () {
     
+  }
+  
+  void setUserMode (String mode) {
+    
+    userMode = mode;
   }
   
   void reset_time () {
@@ -23,22 +29,25 @@ class Draw {
     }
   }
   
-  void handleDrawing (User user, String mode) {
+  void handleDrawing (User user) {
     
     double second = (millis() - init_time_in_millis) / 1000.0;
     
     // Sequence
     if (second < start_time_position) {
      
-     user.draw_start_structure(mode);
+     //println("sequence start");
+     user.draw_start_structure(userMode);
       
     } else if (second >= start_time_position && second < end_time_position) {
       
-      user.draw_structure(mode);
+      //println("sequence middle");
+      user.draw_structure(userMode);
       
     } else if (second > end_time_position) {
       
-      user.draw_end_structure(mode);
+      //println("sequence end");
+      user.draw_end_structure(userMode);
     }
     
     //showFrameRate();

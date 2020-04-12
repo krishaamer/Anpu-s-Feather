@@ -38,6 +38,9 @@ River nile = new River();
 Deity anubis = new Deity();
 Helper helper = new Helper();
 Scales scales = new Scales();
+User user = new User(parser.getPoints());
+Output output = new Output(parser.getPoints());
+Draw draw = new Draw();
 
 void setup() {
   
@@ -56,18 +59,28 @@ void setup() {
     parser.loadFile("wave1.txt"); // Default file to be loaded
   }
   
-  parser.setUserMode(narrative.getMode()); // Set default mode on init
+  draw.setUserMode(narrative.getMode()); // Set default mode on init
 }
 
 void draw() {
 
   parser.read_data();
+  if (parser.isStreaming()) {
+    
+    draw.reset_time();
+    draw.handleDrawing(user);
+    
+    if (is_live) {
+      output.writeFile();
+    }
+  }
+  
   //message.say("Welcome");
   //message.fadeInOut();
   
   if (narrative.getMode() == "heavy") {
     
-    message.say("You have reached the entrance");
+    message.say("Welcome! \n You have reached the entrance");
     message.fadeInOut();
   
     nile.update();
@@ -75,6 +88,8 @@ void draw() {
     
     anubis.update();
     anubis.fadeOut();
+    
+    scales.display();
   }
   
   if (narrative.getMode() == "light") {
@@ -83,17 +98,18 @@ void draw() {
     message.fadeInOut();
   }
   
-  scales.display();
+  
   helper.update();
   narrative.update();
   
   // Update mode
-  parser.setUserMode(narrative.getMode());
+  draw.setUserMode(narrative.getMode());
 }
 
 void keyReleased () {
     
   parser.enableKeys();
+  output.enableKeys();
   helper.toggleBox();
   helper.toggleDummy(parser);
   narrative.toggleMode();
