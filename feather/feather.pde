@@ -24,6 +24,12 @@
   
 *****/
 
+// Live
+import KinectPV2.KJoint;
+import KinectPV2.*;
+KinectPV2 kinect;
+boolean is_live = false;
+
 // Init
 Parser parser = new Parser();
 Narrative narrative = new Narrative();
@@ -31,18 +37,26 @@ Message message = new Message();
 River nile = new River();
 Deity anubis = new Deity();
 Helper helper = new Helper();
-//Scales scales = new Scales();
+Scales scales = new Scales();
 
 void setup() {
   
-  parser.getFiles();
-  
   size(800, 800, P3D);
   frameRate(30);
-  parser.loadFile("wave1.txt");
   
-  // Set default mode on init
-  parser.setMode(narrative.getMode());
+  if (is_live) {
+    
+    // Live Source
+    kinect = new KinectPV2(this);
+    parser.liveInit(kinect);
+    
+  } else {
+    
+    // File Source
+    parser.loadFile("wave1.txt"); // Default file to be loaded
+  }
+  
+  parser.setUserMode(narrative.getMode()); // Set default mode on init
 }
 
 void draw() {
@@ -69,11 +83,12 @@ void draw() {
     message.fadeInOut();
   }
   
+  scales.display();
   helper.update();
   narrative.update();
   
   // Update mode
-  parser.setMode(narrative.getMode());
+  parser.setUserMode(narrative.getMode());
 }
 
 void keyReleased () {
