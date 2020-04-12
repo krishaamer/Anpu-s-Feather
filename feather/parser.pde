@@ -49,6 +49,9 @@ class Parser {
   // Load Kinect
   void liveInit (KinectPV2 kinect) {
     
+    // Set Mode
+    is_live = true;
+    
     if (!live_initiated) {
       
       // Init Kinect
@@ -59,6 +62,9 @@ class Parser {
   
   // Load File
   void loadFile (String input_file) {
+    
+    // Set Mode
+    is_live = false;
     
     // Get All Files List
     String path = sketchPath() + "/data";
