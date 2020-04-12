@@ -15,8 +15,7 @@ class User {
   ArrayList<PVector> skeleton_points;
   Boolean runOnce = false;
   
-  /* Light ? */
-  float diameter = 10;
+  /* Light */
   int num = 15;
   float[] x = new float[num];
   float[] y = new float[num];
@@ -35,27 +34,27 @@ class User {
   float[]ypos2 = new float[num2];
   float[]ax = new float[num2];
   float[]ay = new float[num2];
-  /* // Light */
+  /* END Light */
   
   Helper dummy = new Helper();
   User (ArrayList<PVector> sp) {
-    
     skeleton_points = sp;
   }
-  
+
   void draw_structure(String type) {
     
     if (type == "light") {
       
       // Light
-      background(170);
-      strokeWeight(4);
+      fill(0, 0, 0);
+      rect(0, 0, width, height);
+      fill(255);
+      ellipseMode(500);
       pushMatrix();
       resetMatrix(); 
       translate(0, 0, -600);
-      fill(255);
       ellipseMode(500); 
-      //blendMode(ADD);
+      blendMode(ADD);
       draw_structure_light();
       popMatrix();
       
@@ -75,9 +74,9 @@ class User {
   }
   
   void draw_structure_light () {
-    
+
     if (!runOnce) {
-    
+      background(0);
       for (int i =0; i< num2; i++) {
         xpos2[i] = random(-500, 500);
         ypos2[i] = random(-500, 500);
@@ -86,10 +85,10 @@ class User {
         ax[i] = 0;
         ay[i] = 0;
       }
-      
+
       runOnce = true;
     }
-    
+
     x2[0] = skeleton_points.get(7).x;
     y2[0] = skeleton_points.get(7).y;
     z2[0] = skeleton_points.get(7).z;
@@ -98,12 +97,12 @@ class User {
       y2[i] = y2[i-1];
       z2[i] = z2[i-1];
     }
-    
+
     float magnetism = 40.0; // Made the pull from the mouse key and automatic lines connect faster by adding 10 
     float radius = 1 ;
     float principle = 0.95; // assigned to a different variable
     for (int i=0; i<num2; i++) {
-      
+
       float distance = dist(skeleton_points.get(4).x, skeleton_points.get(4).y, xpos2[i], ypos2[i]);
       float distance2= dist(skeleton_points.get(7).x, skeleton_points.get(7).y, xpos2[i], ypos2[i]);
       float distance3= dist(skeleton_points.get(14).x, skeleton_points.get(14).y, xpos2[i], ypos2[i]);
@@ -130,25 +129,26 @@ class User {
       }
       vx[i] += ax[i];
       vy[i] += ay[i];
-  
+
       vx[i] = vx[i]*principle; //changed to principle in order to show the variables assigned to it remains the same as long as it's represented to something
       vy[i] = vy[i]*principle;
-  
+
       xpos2[i] += vx[i];
       ypos2[i] += vy[i];
-  
+
       float sokudo = dist(0, 0, vx[i], vy[i]);
       float r = map(sokudo, 0, 5, 0, 255);
       float g = map(sokudo, 0, 5, 64, 255);
       float b = map(sokudo, 0, 5, 128, 255);
+      noStroke(); 
       fill(r, g, b, 32);
       ellipse(xpos2[i], ypos2[i], 1, radius); //Added a numeral in place of radius to make a highlighted circle start as soon as it starts if the person chooses to not move their mouse
       fill(r, g, b, 10);
     }
-    
+
     // Draw circles for joints.
     for (int i = 0; i < 17; i++) {
-  
+
       pushMatrix();
       translate(skeleton_points.get(i).x, skeleton_points.get(i).y, skeleton_points.get(i).z);
       sphere(4);
@@ -158,7 +158,7 @@ class User {
   
   void draw_structure_heavy () {
   
-    float xpos=skeleton_points.get(9).x;
+    float xpos = skeleton_points.get(9).x;
     float xposend = skeleton_points.get(0).x;
     float distx = xpos - xposend;
     float ypos = skeleton_points.get(9).y;
@@ -166,12 +166,7 @@ class User {
     float disty = ypos - yposend;
     float step = 0.1;  
     float pct = 0.0; 
-    
-    //for Students. Please only write your code there! ***
-    /* Sphere example
-       Shift the values to the right
-      Add the new values to the beginning of the array
-    */
+   
     float x1 = (skeleton_points.get(4).x+skeleton_points.get(3).x)/2;
     float x2 = (skeleton_points.get(3).x+skeleton_points.get(2).x)/2;
     float x3 = (skeleton_points.get(2).x+skeleton_points.get(0).x)/2;
@@ -195,29 +190,29 @@ class User {
 
     if (skeleton_points.get(10).x<=skeleton_points.get(9).x) {
 
-      xleft=skeleton_points.get(10).x-400;
-      xleft2=skeleton_points.get(10).x-300;
-      xleft3=skeleton_points.get(10).x-200;
+      xleft = skeleton_points.get(10).x-400;
+      xleft2 = skeleton_points.get(10).x-300;
+      xleft3 = skeleton_points.get(10).x-200;
 
     } else {
 
-      xleft=skeleton_points.get(10).x+400;
-      xleft2=skeleton_points.get(10).x+300;
-      xleft3=skeleton_points.get(10).x+200;
+      xleft = skeleton_points.get(10).x+400;
+      xleft2 = skeleton_points.get(10).x+300;
+      xleft3 = skeleton_points.get(10).x+200;
 
     }
     
     if (skeleton_points.get(13).x>=skeleton_points.get(12).x) {
 
-      xright=skeleton_points.get(13).x+400;
-      xright2=skeleton_points.get(13).x+300;
-      xright3=skeleton_points.get(13).x+200;
+      xright = skeleton_points.get(13).x+400;
+      xright2 = skeleton_points.get(13).x+300;
+      xright3 = skeleton_points.get(13).x+200;
 
     } else {
 
-      xright=skeleton_points.get(13).x-400;
-      xright2=skeleton_points.get(13).x-300;
-      xright3=skeleton_points.get(13).x-200;
+      xright = skeleton_points.get(13).x - 400;
+      xright2 = skeleton_points.get(13).x - 300;
+      xright3 = skeleton_points.get(13).x - 200;
     }
   
     noFill();
