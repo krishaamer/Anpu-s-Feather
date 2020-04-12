@@ -27,8 +27,8 @@ class Deity {
     rows = 25;
     alpha = 0;
     speed = .05;
-    strokeAlpha = 220;
-    fillAlpha = 255;
+    strokeAlpha = 0; // 220
+    fillAlpha = 0; // 255
   }
   
   void update() {
@@ -71,7 +71,8 @@ class Deity {
   
   void mouthAndEyes () {
     
-    fill (255);
+    stroke (255, 255, 255, strokeAlpha);
+    fill (255, 255, 255, fillAlpha);
     ellipse(500, 300, 55, 55);
     ellipse(300, 300, 55, 55);
     ellipse(400, 700, 200, 100);

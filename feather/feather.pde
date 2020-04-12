@@ -33,19 +33,19 @@ boolean is_live = false;
 // Init
 Helper helper = new Helper();
 Parser parser = new Parser(helper);
-Narrative narrative = new Narrative();
+Narrative story = new Narrative();
 Message message = new Message();
 River nile = new River();
 Deity anubis = new Deity();
 Scales scales = new Scales();
-User user = new User(parser.getPoints());
+User user = new User(parser.getPoints(), scales);
 Output output = new Output(parser.getPoints());
 Draw draw = new Draw();
 
 void setup() {
   
   size(800, 800, P3D);
-  frameRate(30);
+  frameRate(24);
   
   if (is_live) {
     
@@ -59,57 +59,98 @@ void setup() {
     parser.loadFile("wave1.txt"); // Default file to be loaded
   }
   
-  draw.setUserMode(narrative.getMode()); // Set default mode on init
+  user.setUserMode(story.mode()); // Set default mode on init
 }
 
 void draw() {
-
-  parser.read_data();
-  if (parser.isStreaming()) {
     
-    draw.reset_time();
-    draw.handleDrawing(user);
+  if (story.mode() == "heavy") {
     
-    if (is_live) {
-      output.writeFile();
+    if (story.time() > 0 && story.time() < 3.7) {
+      
+      background(0);
+      message.say("Welcome!");
+      message.fadeInOut();
+      nile.update();
     }
+    
+    if (story.time() > 3.7 && story.time() < 8) {
+      
+      background(0);
+      message.say("You have reached the entrance");
+      message.fadeInOut();
+      nile.update();
+    }
+    
+    if (story.time() > 8 && story.time() < 18) {
+      
+      background(0);
+      message.say("I have been waiting for You");
+      message.fadeInOut();
+      nile.update();
+      nile.fadeOut();
+      anubis.update();
+      anubis.fadeIn();
+    }
+    
+    if (story.time() > 18 && story.time() < 26) {
+      
+      background(0);
+      anubis.update();
+      anubis.fadeOut();
+      message.fadeIn();
+      message.say("The feather is a measure of your heart");
+      scales.update();
+      scales.fadeIn();
+    }
+    
+    if (story.time() > 26) {
+      
+      parser.read_data();
+      if (parser.isStreaming()) {
+        draw.handleDrawing(user);
+        // if (is_live) { output.writeFile(); }
+      }
+      
+      nile.update();
+      nile.fadeIn();
+      
+      anubis.update();
+      anubis.fadeIn();
+    }
+    
   }
   
-  //message.say("Welcome");
-  //message.fadeInOut();
-  
-  if (narrative.getMode() == "heavy") {
-    
-    message.say("Welcome! \n You have reached the entrance");
-    message.fadeInOut();
-  
-    nile.update();
-    nile.fadeOut();
-    
-    anubis.update();
-    anubis.fadeOut();
-    
-    scales.display();
-  }
-  
-  if (narrative.getMode() == "light") {
+  if (story.mode() == "light") {
     
     message.say("How heavy is your heart?");
     message.fadeInOut();
+    
+    parser.read_data();
+    if (parser.isStreaming()) {
+      
+      draw.handleDrawing(user);
+      
+      /*
+      if (is_live) {
+        output.writeFile();
+      }
+      */
+    }
   }
   
   helper.update();
-  narrative.update();
+  story.update();
   
   // Update mode
-  draw.setUserMode(narrative.getMode());
+  user.setUserMode(story.mode());
 }
 
 void keyReleased () {
     
   parser.enableKeys();
-  output.enableKeys();
   helper.toggleBox();
   helper.toggleDummy(parser);
-  narrative.toggleMode();
+  story.toggleMode();
+  output.enableKeys();
 }

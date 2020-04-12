@@ -17,6 +17,7 @@ class Helper {
   void update() {
     
     if (showBox) {
+      
       pushMatrix();
       resetMatrix();
       translate(0, 0, -600);
@@ -150,7 +151,6 @@ class Helper {
      vertex(b5.x, b5.y, b5.z);  
      vertex(b8.x, b8.y, b8.z);
      endShape();
-
   }
   
   void toggleBox () {

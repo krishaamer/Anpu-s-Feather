@@ -14,6 +14,10 @@ class User {
 
   ArrayList<PVector> skeleton_points;
   Boolean runOnce = false;
+  String userMode;
+  int strokeAlpha, fillAlpha;
+  
+  Scales scales;
   
   /* Light */
   int num = 15;
@@ -37,18 +41,26 @@ class User {
   /* END Light */
   
   Helper dummy = new Helper();
-  User (ArrayList<PVector> sp) {
+  User (ArrayList<PVector> sp, Scales sc) {
+    
     skeleton_points = sp;
+    scales = sc;
+  }
+  
+  void setUserMode (String mode) {
+    
+    userMode = mode;
   }
 
-  void draw_structure(String type) {
+  void draw_structure() {
     
-    if (type == "light") {
+    if (userMode == "light") {
       
       // Light
-      fill(0, 0, 0);
+      //background(0, 0, 0, 255);
+      fill(0, 0, 0, fillAlpha);
       rect(0, 0, width, height);
-      fill(255);
+      fill(255, fillAlpha);
       ellipseMode(500);
       pushMatrix();
       resetMatrix(); 
@@ -63,7 +75,7 @@ class User {
       // Heavy
       background(0);
       strokeWeight(2);
-      fill(0);
+      fill(0, 0, 0, fillAlpha);
       pushMatrix();
       resetMatrix(); 
       translate(0, 120, -300);
@@ -71,6 +83,19 @@ class User {
       draw_structure_heavy();
       popMatrix();
     }
+  }
+  
+  void fadeOut () {
+    
+    if (fillAlpha > 0) { 
+      fillAlpha--; 
+    }
+    
+    if (strokeAlpha > 0) { 
+      strokeAlpha--; 
+    }
+    
+    println(fillAlpha);
   }
   
   void draw_structure_light () {
@@ -101,32 +126,39 @@ class User {
     float magnetism = 40.0; // Made the pull from the mouse key and automatic lines connect faster by adding 10 
     float radius = 1 ;
     float principle = 0.95; // assigned to a different variable
+    
     for (int i=0; i<num2; i++) {
 
       float distance = dist(skeleton_points.get(4).x, skeleton_points.get(4).y, xpos2[i], ypos2[i]);
-      float distance2= dist(skeleton_points.get(7).x, skeleton_points.get(7).y, xpos2[i], ypos2[i]);
-      float distance3= dist(skeleton_points.get(14).x, skeleton_points.get(14).y, xpos2[i], ypos2[i]);
-      float distance4= dist(skeleton_points.get(11).x, skeleton_points.get(11).y, xpos2[i], ypos2[i]);
-      if (distance >50) { 
+      float distance2 = dist(skeleton_points.get(7).x, skeleton_points.get(7).y, xpos2[i], ypos2[i]);
+      float distance3 = dist(skeleton_points.get(14).x, skeleton_points.get(14).y, xpos2[i], ypos2[i]);
+      float distance4 = dist(skeleton_points.get(11).x, skeleton_points.get(11).y, xpos2[i], ypos2[i]);
+      
+      if (distance > 50) { 
         ax[i] = magnetism * (skeleton_points.get(4).x - xpos2[i]) / (distance * distance); 
         ay[i] = magnetism * (skeleton_points.get(4).y - ypos2[i]) / (distance * distance);
       }
-      if (distance <50||distance<distance2&distance<distance3&distance<distance4) {  
+      
+      if (distance < 50 || distance < distance2 & distance < distance3 & distance < distance4) {  
         ax[i] = magnetism * (skeleton_points.get(7).x - xpos2[i]) / (distance * distance); 
         ay[i] = magnetism * (skeleton_points.get(7).y - ypos2[i]) / (distance * distance);
       }
-      if (distance2<50||distance2<distance&distance2<distance3&distance2<distance4) {  
+      
+      if (distance2 < 50 || distance2 < distance & distance2 < distance3 & distance2 < distance4) {  
         ax[i] = magnetism * (skeleton_points.get(14).x - xpos2[i]) / (distance * distance); 
         ay[i] = magnetism * (skeleton_points.get(14).y - ypos2[i]) / (distance * distance);
       }
-      if (distance3 <50||distance3<distance&distance3<distance4&distance3<distance2) {  
+      
+      if (distance3 < 50 || distance3 < distance & distance3 < distance4 & distance3 < distance2) {  
         ax[i] = magnetism * (skeleton_points.get(11).x - xpos2[i]) / (distance * distance); 
         ay[i] = magnetism * (skeleton_points.get(11).y - ypos2[i]) / (distance * distance);
       }
-      if (distance4 <50||distance4<distance&distance4<distance2&distance4<distance3) {  
+      
+      if (distance4 < 50 || distance4 < distance & distance4 < distance2 & distance4 < distance3) {  
         ax[i] = magnetism * (skeleton_points.get(4).x - xpos2[i]) / (distance * distance); 
         ay[i] = magnetism * (skeleton_points.get(4).y - ypos2[i]) / (distance * distance);
       }
+      
       vx[i] += ax[i];
       vy[i] += ay[i];
 
@@ -140,6 +172,7 @@ class User {
       float r = map(sokudo, 0, 5, 0, 255);
       float g = map(sokudo, 0, 5, 64, 255);
       float b = map(sokudo, 0, 5, 128, 255);
+      
       noStroke(); 
       fill(r, g, b, 32);
       ellipse(xpos2[i], ypos2[i], 1, radius); //Added a numeral in place of radius to make a highlighted circle start as soon as it starts if the person chooses to not move their mouse
@@ -179,34 +212,34 @@ class User {
     float xright;
     float xright2;
     float xright3;
-    float y7 = skeleton_points.get(0).y-30;
-    float y8 = y7+20;
-    float y9 = (y7+y8)/2;
-    float y10 = (skeleton_points.get(4).y+y8)/2;
-    float y11 = (skeleton_points.get(7).y+y8)/2;
-    float y12 = (skeleton_points.get(4).y+y10)/2;
-    float y13 = (y7+y10)/2;
-    float y14 = skeleton_points.get(15).y+(skeleton_points.get(15).y-(skeleton_points.get(16).y+20));
+    float y7 = skeleton_points.get(0).y - 30;
+    float y8 = y7 + 20;
+    float y9 = (y7 + y8) / 2;
+    float y10 = (skeleton_points.get(4).y + y8) / 2;
+    float y11 = (skeleton_points.get(7).y + y8) / 2;
+    float y12 = (skeleton_points.get(4).y + y10) / 2;
+    float y13 = (y7 + y10) / 2;
+    float y14 = skeleton_points.get(15).y + (skeleton_points.get(15).y - (skeleton_points.get(16).y + 20));
 
-    if (skeleton_points.get(10).x<=skeleton_points.get(9).x) {
+    if (skeleton_points.get(10).x <= skeleton_points.get(9).x) {
 
-      xleft = skeleton_points.get(10).x-400;
-      xleft2 = skeleton_points.get(10).x-300;
-      xleft3 = skeleton_points.get(10).x-200;
+      xleft = skeleton_points.get(10).x - 400;
+      xleft2 = skeleton_points.get(10).x - 300;
+      xleft3 = skeleton_points.get(10).x - 200;
 
     } else {
 
-      xleft = skeleton_points.get(10).x+400;
-      xleft2 = skeleton_points.get(10).x+300;
-      xleft3 = skeleton_points.get(10).x+200;
+      xleft = skeleton_points.get(10).x + 400;
+      xleft2 = skeleton_points.get(10).x + 300;
+      xleft3 = skeleton_points.get(10).x + 200;
 
     }
     
-    if (skeleton_points.get(13).x>=skeleton_points.get(12).x) {
+    if (skeleton_points.get(13).x >= skeleton_points.get(12).x) {
 
-      xright = skeleton_points.get(13).x+400;
-      xright2 = skeleton_points.get(13).x+300;
-      xright3 = skeleton_points.get(13).x+200;
+      xright = skeleton_points.get(13).x + 400;
+      xright2 = skeleton_points.get(13).x + 300;
+      xright3 = skeleton_points.get(13).x + 200;
 
     } else {
 
@@ -273,14 +306,14 @@ class User {
     
   }
   
-  void draw_start_structure(String mode) {
+  void draw_start_structure() {
     
-    draw_structure(mode);
+    draw_structure();
   }
   
-  void draw_end_structure(String mode) {
+  void draw_end_structure() {
     
-    draw_structure(mode);
+    draw_structure();
   }
   
 }

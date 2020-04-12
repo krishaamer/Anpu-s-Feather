@@ -84,5 +84,4 @@ class River {
       strokeAlpha--; 
     }
   }
-  
 }
