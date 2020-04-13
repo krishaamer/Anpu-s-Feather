@@ -21,6 +21,11 @@ class Scales {
 
   }
   
+  void calculate_heaviness () {
+    
+    
+  }
+  
   void update() {
     
     pushMatrix();

@@ -41,6 +41,7 @@ Scales scales = new Scales();
 User user = new User(parser.getPoints(), scales);
 Output output = new Output(parser.getPoints());
 Draw draw = new Draw();
+QA qa = new QA();
 
 void setup() {
   
@@ -65,7 +66,7 @@ void setup() {
 void draw() {
     
   if (story.mode() == "heavy") {
-    
+   
     if (story.time() > 0 && story.time() < 3.7) {
       
       background(0);
@@ -93,18 +94,30 @@ void draw() {
       anubis.fadeIn();
     }
     
-    if (story.time() > 18 && story.time() < 26) {
+    if (story.time() > 18 && story.time() < 23) {
       
       background(0);
       anubis.update();
       anubis.fadeOut();
+      
+    }
+    
+    if (story.time() > 23 && story.time() < 30) {
+      
+      message.fadeInOut();
+      message.say("How have you lived your life?");
+    }
+    
+    if (story.time() > 30 && story.time() < 39) {
+      
+      background(0);
       message.fadeIn();
       message.say("The feather is a measure of your heart");
       scales.update();
       scales.fadeIn();
     }
     
-    if (story.time() > 26) {
+    if (story.time() > 39) {
       
       parser.read_data();
       if (parser.isStreaming()) {
@@ -147,10 +160,15 @@ void draw() {
 }
 
 void keyReleased () {
-    
+  
   parser.enableKeys();
   helper.toggleBox();
   helper.toggleDummy(parser);
   story.toggleMode();
   output.enableKeys();
+}
+
+void mousePressed() {
+  
+  qa.enableButtons();
 }
