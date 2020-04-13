@@ -162,10 +162,6 @@ class Parser {
   // Live Data (Kinect)
   void read_data_live () {
      
-    // Translate the skeleton to the center 
-    //pushMatrix();
-    //translate(width / 2, height / 2, -200);
-    
     // Data from Kinect
     ArrayList<KSkeleton> skeletonArray =  kinect.getSkeleton3d();
     for (int i = 0; i < skeletonArray.size(); i++) {
@@ -178,7 +174,6 @@ class Parser {
         isStreaming = true;
       }
     }
-    //popMatrix();
   }
   
   // Update Skeleton Joint Vectors from File
