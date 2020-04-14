@@ -303,9 +303,47 @@ class User {
     ellipse(skeleton_points.get(16).x-40, skeleton_points.get(15).y, 120, 120);
     ellipse(skeleton_points.get(15).x+40, y14, 120, 120);
     ellipse(skeleton_points.get(15).x-40, y14, 120, 120);
-    
+    setfeather();
   }
   
+  void setfeather(){
+  fill(0);
+  noStroke();
+  rect(-500,-500,200,1000);
+  PImage img;
+  float xdist1=abs(skeleton_points.get(4).x-xn1);
+  xn1=skeleton_points.get(4).x;
+  float xdist2=abs(skeleton_points.get(7).x-xn2);
+  xn2=skeleton_points.get(7).x;
+  float ydist1=abs(skeleton_points.get(4).y-yn1);
+  yn1=skeleton_points.get(4).y;
+  float ydist2=abs(skeleton_points.get(7).y-yn2);
+  yn2=skeleton_points.get(7).y;
+  float avdist=(xdist1+xdist2+ydist1+ydist2)/4;
+  float val1=map(-avdist, -30, 0, -500, 100);
+  float val2=val1;
+
+  
+  if (val2==100) {
+   val2=random(100,300);
+  }
+  if (val2<0) {
+    val2=random(-480,-100);
+  }
+  println(val2);
+
+  if(abs(val2-feathery)>100){
+  feathery+=(val2- feathery) * easingy;
+  }
+  else{      
+      t = t+0.2; 
+      feathery=feathery+sin(t)*5;
+  }
+      img = loadImage("feathertiny.png");
+      tint(255, 255, 255);
+      image(img, -400, feathery);
+    
+  }
   void draw_start_structure() {
     
     draw_structure();
