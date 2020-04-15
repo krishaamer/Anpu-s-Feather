@@ -47,9 +47,6 @@ class Narrative {
   **/
   void toggleMode () {
     
-    // What keycode?
-    //println("keycode", keyCode);
-    
     // 1
     if (keyCode == 49) {
       
@@ -66,6 +63,12 @@ class Narrative {
     if (keyCode == 51) {
       
       setMode("heavy");
+    }
+    
+    // 4
+    if (keyCode == 52) {
+      
+      setMode("scales");
     }
   }
 }

@@ -37,14 +37,14 @@ Narrative story = new Narrative();
 Message message = new Message();
 River nile = new River();
 Deity anubis = new Deity();
-Scales scales = new Scales();
-User user = new User(parser.getPoints(), scales);
+User user = new User(parser.getPoints(), helper);
+Scales scales = new Scales(parser.getPoints(), helper);
 Output output = new Output(parser.getPoints());
 QA qa = new QA();
 
 void setup() {
   
-  size(1000, 1000, P3D);
+  size(800, 800, P3D);
   frameRate(24);
   smooth();
   
@@ -60,7 +60,7 @@ void setup() {
     parser.loadFile("wave1.txt"); // Default file to be loaded
   }
   
-  story.setMode("intro"); // Set default story mode on init
+  story.setMode("scales"); // Set default story mode on init
   user.setUserMode(story.mode()); // Set default mode on init
 }
 
@@ -73,6 +73,10 @@ void draw() {
   
   // What the mode?
   println(story.mode(), story.time());
+  
+  if (story.mode() == "scales") {
+    scales ();
+  }
     
   if (story.mode() == "intro") {
     intro ();
@@ -84,6 +88,25 @@ void draw() {
   
   if (story.mode() == "light") {
     light ();
+  }
+}
+
+void scales () {
+  
+  if (story.time() > 0) {
+    
+    background(0);
+ 
+    message.fadeIn();
+    message.say("The feather is a measure of your heart");
+    
+    parser.read_data();
+    if (parser.isStreaming()) {
+      
+      user.handleDrawing();
+      scales.update();
+      scales.fadeIn();
+    }
   }
 }
 

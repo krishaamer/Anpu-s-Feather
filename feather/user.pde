@@ -14,14 +14,14 @@
 class User {
 
   ArrayList<PVector> skeleton_points;
+  Helper helper;
+  
   Boolean runOnce = false;
   String userMode;
   int strokeAlpha, fillAlpha;
   int init_time_in_millis = -1;
   double start_time_position = 8; // Show structures in draw_start_structure for the first start_time_position seconds
   double end_time_position = 12; // Show structures in draw_end_structure after end_time_position seconds
-
-  Scales scales;
 
   /* Light */
   int num = 15;
@@ -44,22 +44,10 @@ class User {
   float[]ay = new float[num2];
   /* END Light */
   
-  /* Heavy */
-  float t = 0;
-  float v = 3;
-  float xn1 = 0;
-  float xn2 = 0;
-  float yn1 = 0;
-  float yn2 = 0;
-  float feathery = -300;
-  float easingy = 0.01; 
-  /* END Heavy */
+  User (ArrayList<PVector> sp, Helper hp) {
 
-  Helper dummy = new Helper();
-  User (ArrayList<PVector> sp, Scales sc) {
-
+    helper = hp;
     skeleton_points = sp;
-    scales = sc;
   }
 
   void setUserMode (String mode) {
@@ -86,7 +74,7 @@ class User {
       draw_end_structure();
     }
 
-    dummy.showFrameRate();
+    helper.showFrameRate();
   }
 
   void draw_structure() {
@@ -264,6 +252,7 @@ class User {
       xleft = skeleton_points.get(10).x - 400;
       xleft2 = skeleton_points.get(10).x - 300;
       xleft3 = skeleton_points.get(10).x - 200;
+      
     } else {
 
       xleft = skeleton_points.get(10).x + 400;
@@ -276,6 +265,7 @@ class User {
       xright = skeleton_points.get(13).x + 400;
       xright2 = skeleton_points.get(13).x + 300;
       xright3 = skeleton_points.get(13).x + 200;
+      
     } else {
 
       xright = skeleton_points.get(13).x - 400;
@@ -339,55 +329,6 @@ class User {
     ellipse(skeleton_points.get(15).x+40, y14, 120, 120);
     ellipse(skeleton_points.get(15).x-40, y14, 120, 120);
     
-    setfeather();
-  }
-
-  void setfeather() {
-
-    fill(0);
-    noStroke();
-    rect(-500, -500, 200, 1000);
-
-    PImage img;
-    float xdist1 = abs(skeleton_points.get(4).x - xn1);
-    xn1 = skeleton_points.get(4).x;
-
-    float xdist2 = abs(skeleton_points.get(7).x - xn2);
-    xn2 = skeleton_points.get(7).x;
-
-    float ydist1 = abs(skeleton_points.get(4).y - yn1);
-    yn1 = skeleton_points.get(4).y;
-
-    float ydist2 = abs(skeleton_points.get(7).y - yn2);
-    yn2 = skeleton_points.get(7).y;
-
-    float avdist = (xdist1 + xdist2 + ydist1 + ydist2) / 4;
-    float val1 = map(-avdist, -30, 0, -500, 100);
-    float val2 = val1;
-
-    if (val2 == 100) {
-      val2 = random(100, 300);
-    }
-    
-    if (val2 < 0) {
-      val2 = random(-480, -100);
-    }
-    
-    println(val2);
-
-    if (abs(val2 - feathery) > 100) {
-
-      feathery += (val2 - feathery) * easingy;
-      
-    } else {   
-      
-      t = t+0.2; 
-      feathery=feathery+sin(t)*5;
-    }
-    
-    img = loadImage("feathertiny.png");
-    tint(255, 255, 255);
-    image(img, -400, feathery);
   }
 
   void draw_start_structure() {
