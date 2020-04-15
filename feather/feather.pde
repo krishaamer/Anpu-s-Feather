@@ -60,7 +60,7 @@ void setup() {
     parser.loadFile("wave1.txt"); // Default file to be loaded
   }
   
-  story.setMode("light"); // Set default story mode on init
+  story.setMode("scales"); // Set default story mode on init
   user.setUserMode(story.mode()); // Set default mode on init
 }
 
@@ -72,7 +72,7 @@ void draw() {
   user.setUserMode(story.mode()); // Update mode
   
   // What the mode?
-  println(story.mode(), story.time());
+  //println(story.mode(), story.time());
   
   if (story.mode() == "scales") {
     scales ();
@@ -107,6 +107,10 @@ void scales () {
       message.addBackground();
       message.fadeIn();
       message.say("The feather is a measure of your heart");  
+      if (message.isFinished()) {
+        println("message finished");
+        message.reset();
+      }
     }
   }
 }

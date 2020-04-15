@@ -12,9 +12,11 @@ class Message {
   
   float timer = millis();
   float interval = 1000.0f;
+  boolean hasRun = false;
   float alpha = 0;
   float speed = 5;
   int x, y;
+  boolean finished;
   
   Message () {
     
@@ -22,10 +24,22 @@ class Message {
   
   void fadeIn () {
     
-    if (alpha < 255) {
-      
+    if (alpha < 255) {  
       alpha++;
+    } else {
+      if (!hasRun) {
+        finished = true;
+        hasRun = true;
+      }
     }
+  }
+  
+  boolean isFinished() {
+    return finished;
+  }
+  
+  void reset () {
+    finished = false;
   }
   
   void fadeOut () {
