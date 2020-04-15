@@ -40,13 +40,13 @@ Deity anubis = new Deity();
 Scales scales = new Scales();
 User user = new User(parser.getPoints(), scales);
 Output output = new Output(parser.getPoints());
-Draw draw = new Draw();
 QA qa = new QA();
 
 void setup() {
   
   size(800, 800, P3D);
   frameRate(24);
+  smooth();
   
   if (is_live) {
     
@@ -60,14 +60,36 @@ void setup() {
     parser.loadFile("wave1.txt"); // Default file to be loaded
   }
   
+  story.setMode("intro"); // Set default story mode on init
   user.setUserMode(story.mode()); // Set default mode on init
 }
 
 void draw() {
+  
+  // Shared
+  helper.update();
+  story.update();
+  user.setUserMode(story.mode()); // Update mode
+  
+  // What the mode?
+  println(story.mode(), story.time());
     
-  if (story.mode() == "heavy") {
+  if (story.mode() == "intro") {
+    intro ();
+  }
    
-    if (story.time() > 0 && story.time() < 3.7) {
+  if (story.mode() == "heavy") {
+     heavy ();
+  }
+  
+  if (story.mode() == "light") {
+    light ();
+  }
+}
+
+void intro () {
+  
+  if (story.time() > 0 && story.time() < 3.7) {
       
       background(0);
       message.say("Welcome!");
@@ -121,7 +143,7 @@ void draw() {
       
       parser.read_data();
       if (parser.isStreaming()) {
-        draw.handleDrawing(user);
+        user.handleDrawing();
         // if (is_live) { output.writeFile(); }
       }
       
@@ -130,11 +152,12 @@ void draw() {
       
       anubis.update();
       anubis.fadeIn();
-    }
-    
-  }
+   }
+}
+
+void light () {
   
-  if (story.mode() == "light") {
+  if (story.time() > 0 && story.time() < 1000) {
     
     message.say("How heavy is your heart?");
     message.fadeInOut();
@@ -142,21 +165,31 @@ void draw() {
     parser.read_data();
     if (parser.isStreaming()) {
       
-      draw.handleDrawing(user);
-      
-      /*
-      if (is_live) {
-        output.writeFile();
-      }
-      */
+      user.handleDrawing();
+      /* if (is_live) { output.writeFile(); } */
+    }
+    
+  }
+}
+
+void heavy () {
+  
+  if (story.time() > 0 && story.time() < 1000) {
+ 
+    background(0);
+    message.fadeInOut();
+    message.say("Have you cried this week?");
+    
+    qa.ask();
+    
+    if (qa.answer() == "YES") {
+      story.setMode("light");
+    }
+    
+    if (qa.answer() == "NO") {
+      story.setMode("heavy");
     }
   }
-  
-  helper.update();
-  story.update();
-  
-  // Update mode
-  user.setUserMode(story.mode());
 }
 
 void keyReleased () {
