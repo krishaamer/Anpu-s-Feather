@@ -57,12 +57,16 @@ class Message {
 
   void say (String msg) {
     
+    int x = width / 2;
+    int y = height / 2;
+    
     textSize(40);
-    rectMode(CORNER);
+    rectMode(CENTER);
     textAlign(CENTER);
-    smooth(); 
- 
+    noStroke();
+    fill (0, 0, 0, alpha);
+    rect (x, y, width, 140);
     fill (255, 255, 255, alpha);
-    text(msg, width / 2, height / 2); 
+    text(msg, x, y); 
   }
 }
