@@ -16,6 +16,9 @@ class User {
   Boolean runOnce = false;
   String userMode;
   int strokeAlpha, fillAlpha;
+  int init_time_in_millis = -1;
+  double start_time_position = 8; // Show structures in draw_start_structure for the first start_time_position seconds
+  double end_time_position = 12; // Show structures in draw_end_structure after end_time_position seconds
   
   Scales scales;
   
@@ -50,6 +53,30 @@ class User {
   void setUserMode (String mode) {
     
     userMode = mode;
+  }
+  
+  void handleDrawing () {
+  
+    double second = (millis() - init_time_in_millis) / 1000.0;
+
+    // Sequence
+    if (second < start_time_position) {
+     
+     //println("sequence start");
+     draw_start_structure();
+      
+    } else if (second >= start_time_position && second < end_time_position) {
+      
+      //println("sequence middle");
+      draw_structure();
+      
+    } else if (second > end_time_position) {
+      
+      //println("sequence end");
+      draw_end_structure();
+    }
+    
+    dummy.showFrameRate();
   }
 
   void draw_structure() {
@@ -101,6 +128,7 @@ class User {
   void draw_structure_light () {
 
     if (!runOnce) {
+      
       background(0);
       for (int i =0; i< num2; i++) {
         xpos2[i] = random(-500, 500);
@@ -191,14 +219,14 @@ class User {
   
   void draw_structure_heavy () {
   
-    float xpos = skeleton_points.get(9).x;
-    float xposend = skeleton_points.get(0).x;
-    float distx = xpos - xposend;
-    float ypos = skeleton_points.get(9).y;
-    float yposend = skeleton_points.get(0).y;
-    float disty = ypos - yposend;
-    float step = 0.1;  
-    float pct = 0.0; 
+    //float xpos = skeleton_points.get(9).x;
+    //float xposend = skeleton_points.get(0).x;
+    //float distx = xpos - xposend;
+    //float ypos = skeleton_points.get(9).y;
+    //float yposend = skeleton_points.get(0).y;
+    //float disty = ypos - yposend;
+    //float step = 0.1;  
+    //float pct = 0.0; 
    
     float x1 = (skeleton_points.get(4).x+skeleton_points.get(3).x)/2;
     float x2 = (skeleton_points.get(3).x+skeleton_points.get(2).x)/2;
