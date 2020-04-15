@@ -41,14 +41,7 @@ Scales scales = new Scales();
 User user = new User(parser.getPoints(), scales);
 Output output = new Output(parser.getPoints());
 QA qa = new QA();
-float t=0;
-float v=3;
-float xn1=0;
-float xn2=0;
-float yn1=0;
-float yn2=0;
-float feathery=-300;
-float easingy = 0.01; 
+
 void setup() {
   
   size(1000, 1000, P3D);

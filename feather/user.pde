@@ -43,6 +43,17 @@ class User {
   float[]ax = new float[num2];
   float[]ay = new float[num2];
   /* END Light */
+  
+  /* Heavy */
+  float t = 0;
+  float v = 3;
+  float xn1 = 0;
+  float xn2 = 0;
+  float yn1 = 0;
+  float yn2 = 0;
+  float feathery = -300;
+  float easingy = 0.01; 
+  /* END Heavy */
 
   Helper dummy = new Helper();
   User (ArrayList<PVector> sp, Scales sc) {
