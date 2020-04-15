@@ -11,7 +11,7 @@
   
   HOW TO USE? ** FOR TESTING **:
   Keyboard shortcuts will be replaced by user interaction
-  -- Use keys 1 and 2 to switch between "Heavy Heart" and "Light Heart" modes
+  -- Use keys 1, 2, 3, 4 to switch between "Intro", "Scales", "Heavy Heart", and "Light Heart" modes
   -- Use keys B and D for toggling the 3D Perspective Box and Sceleton Dummy
   -- Use LEFT and RIGHT arrow keys to rotate between movements
   
@@ -60,7 +60,7 @@ void setup() {
     parser.loadFile("wave1.txt"); // Default file to be loaded
   }
   
-  story.setMode("scales"); // Set default story mode on init
+  story.setMode("light"); // Set default story mode on init
   user.setUserMode(story.mode()); // Set default mode on init
 }
 
@@ -96,16 +96,17 @@ void scales () {
   if (story.time() > 0) {
     
     background(0);
- 
-    message.fadeIn();
-    message.say("The feather is a measure of your heart");
-    
+   
     parser.read_data();
     if (parser.isStreaming()) {
       
-      user.handleDrawing();
+      user.update();
       scales.update();
       scales.fadeIn();
+      
+      message.addBackground();
+      message.fadeIn();
+      message.say("The feather is a measure of your heart");  
     }
   }
 }
@@ -166,7 +167,7 @@ void intro () {
       
       parser.read_data();
       if (parser.isStreaming()) {
-        user.handleDrawing();
+        user.update();
         // if (is_live) { output.writeFile(); }
       }
       
@@ -182,13 +183,16 @@ void light () {
   
   if (story.time() > 0 && story.time() < 1000) {
     
-    message.say("How heavy is your heart?");
-    message.fadeInOut();
-    
     parser.read_data();
     if (parser.isStreaming()) {
       
-      user.handleDrawing();
+      user.update();
+      
+      blendMode(BLEND);
+      message.addBackground();
+      message.fadeIn();  
+      message.say("How heavy is your heart?");
+      
       /* if (is_live) { output.writeFile(); } */
     }
     
@@ -200,7 +204,9 @@ void heavy () {
   if (story.time() > 0 && story.time() < 1000) {
  
     background(0);
-    message.fadeInOut();
+    blendMode(BLEND);
+    message.addBackground();
+    message.fadeIn();
     message.say("Have you cried this week?");
     
     qa.ask();
