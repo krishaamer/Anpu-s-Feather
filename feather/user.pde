@@ -19,9 +19,6 @@ class User {
   Boolean runOnce = false;
   String userMode;
   int strokeAlpha, fillAlpha;
-  int init_time_in_millis = -1;
-  double start_time_position = 8; // Show structures in draw_start_structure for the first start_time_position seconds
-  double end_time_position = 12; // Show structures in draw_end_structure after end_time_position seconds
 
   /* Light */
   int num = 15;
@@ -55,29 +52,9 @@ class User {
     userMode = mode;
   }
 
-  void handleDrawing () {
-
-    double second = (millis() - init_time_in_millis) / 1000.0;
-
-    // Sequence
-    if (second < start_time_position) {
-
-      //println("sequence start");
-      draw_start_structure();
-    } else if (second >= start_time_position && second < end_time_position) {
-
-      //println("sequence middle");
-      draw_structure();
-    } else if (second > end_time_position) {
-
-      //println("sequence end");
-      draw_end_structure();
-    }
-
+  void update() {
+    
     helper.showFrameRate();
-  }
-
-  void draw_structure() {
 
     if (userMode == "light") {
 
@@ -92,7 +69,7 @@ class User {
       translate(0, 0, -600);
       ellipseMode(500); 
       blendMode(ADD);
-      draw_structure_light();
+      draw_user_light();
       popMatrix();
       
     } else { 
@@ -105,7 +82,7 @@ class User {
       resetMatrix(); 
       translate(0, 120, -300);
       scale(0.4);
-      draw_structure_heavy();
+      draw_user_heavy();
       popMatrix();
     }
   }
@@ -119,11 +96,9 @@ class User {
     if (strokeAlpha > 0) { 
       strokeAlpha--;
     }
-
-    println(fillAlpha);
   }
 
-  void draw_structure_light () {
+  void draw_user_light () {
 
     if (!runOnce) {
 
@@ -215,7 +190,7 @@ class User {
     }
   }
 
-  void draw_structure_heavy () {
+  void draw_user_heavy () {
 
     //float xpos = skeleton_points.get(9).x;
     //float xposend = skeleton_points.get(0).x;
@@ -329,15 +304,5 @@ class User {
     ellipse(skeleton_points.get(15).x+40, y14, 120, 120);
     ellipse(skeleton_points.get(15).x-40, y14, 120, 120);
     
-  }
-
-  void draw_start_structure() {
-
-    draw_structure();
-  }
-
-  void draw_end_structure() {
-
-    draw_structure();
   }
 }
