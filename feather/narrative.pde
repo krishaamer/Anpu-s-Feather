@@ -6,8 +6,9 @@
 
 class Narrative {
   
-  String mode = "heavy";
-  int init_time_in_millis = -1;
+  String mode;
+  int init_time = -1;
+  double seconds;
   
   Narrative () {
     
@@ -15,17 +16,28 @@ class Narrative {
   
   void update () {
     
+    seconds = (millis() - init_time) / 1000.0;
   }
   
-  // Return seconds
+  void resetTime () {
+
+    seconds = init_time;
+  }
+
   double time () {
-    
-    return (millis() - init_time_in_millis) / 1000.0;
+
+    return seconds;
   }
   
   String mode () {
     
     return mode;
+  }
+  
+  void setMode(String m) {
+    
+    resetTime();
+    mode = m;
   }
   
   /**
@@ -35,17 +47,25 @@ class Narrative {
   **/
   void toggleMode () {
     
+    // What keycode?
+    //println("keycode", keyCode);
+    
     // 1
     if (keyCode == 49) {
       
-      mode = "heavy";
+      setMode("intro");
     }
       
     // 2
     if (keyCode == 50) {
       
-      mode = "light";
+      setMode("light");
+    }
+    
+    // 3
+    if (keyCode == 51) {
+      
+      setMode("heavy");
     }
   }
- 
 }
