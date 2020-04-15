@@ -27,7 +27,7 @@ class Parser {
   boolean live_initiated;
   
   // Tools
-  Helper helper;;
+  Helper helper;
   
   // Init
   Parser (Helper h) {
