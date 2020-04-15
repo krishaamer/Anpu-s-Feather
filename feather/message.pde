@@ -14,6 +14,7 @@ class Message {
   float interval = 1000.0f;
   float alpha = 0;
   float speed = 5;
+  int x, y;
   
   Message () {
     
@@ -57,16 +58,23 @@ class Message {
 
   void say (String msg) {
     
-    int x = width / 2;
-    int y = height / 2;
+    x = width / 2;
+    y = height / 2;
     
     textSize(40);
     rectMode(CENTER);
     textAlign(CENTER);
-    noStroke();
-    fill (0, 0, 0, alpha);
-    rect (x, y, width, 140);
     fill (255, 255, 255, alpha);
     text(msg, x, y); 
+  }
+  
+  void addBackground() {
+    
+    x = width / 2;
+    y = height / 2;
+    
+    noStroke();
+    fill (0, 0, 0, alpha);
+    rect (x, y, width, 80);
   }
 }
