@@ -60,7 +60,7 @@ void setup() {
     parser.loadFile("wave1.txt"); // Default file to be loaded
   }
   
-  story.setMode("intro"); // Set default story mode on init
+  story.setMode("scales"); // Set default story mode on init
   user.setUserMode(story.mode()); // Set default mode on init
 }
 
@@ -105,7 +105,7 @@ void scales () {
       scales.fadeIn();
       
       message.addBackground();
-      message.fadeIn();
+      message.fadeIn(1);
       message.say("The feather is a measure of your heart");  
       if (message.isFinished()) {
         println("message finished");
@@ -125,11 +125,11 @@ void intro () {
       
       background(0);
       message.say("Welcome!");
-      message.fadeIn();
+      message.fadeIn(1);
       if (message.isFinished()) {
         message.reset();
         message.say("You have reached the entrance");
-        message.fadeInOut();
+        message.fadeInOut(5);
         
       }
       
@@ -147,7 +147,7 @@ void intro () {
       
       background(0);
       message.say("I have been waiting for You");
-      message.fadeInOut();
+      message.fadeInOut(5);
       nile.update();
       nile.fadeOut();
       anubis.update();
@@ -164,14 +164,14 @@ void intro () {
     
     if (story.time() > 23 && story.time() < 30) {
       
-      message.fadeInOut();
+      message.fadeInOut(5);
       message.say("How have you lived your life?");
     }
     
     if (story.time() > 30 && story.time() < 39) {
       
       background(0);
-      message.fadeIn();
+      message.fadeIn(1);
       message.say("The feather is a measure of your heart");
       scales.update();
       scales.fadeIn();
@@ -204,7 +204,7 @@ void light () {
       
       blendMode(BLEND);
       message.addBackground();
-      message.fadeIn();  
+      message.fadeIn(1);  
       message.say("How heavy is your heart?");
       
       /* if (is_live) { output.writeFile(); } */
@@ -220,7 +220,7 @@ void heavy () {
     background(0);
     blendMode(BLEND);
     message.addBackground();
-    message.fadeIn();
+    message.fadeIn(1);
     message.say("Have you cried this week?");
     
     qa.ask();

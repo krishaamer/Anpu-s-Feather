@@ -10,51 +10,67 @@
 
 class Message {
   
+  /* Shared */
+  boolean hasRun = false;
+  boolean finished;
+  float alpha = 0;
+  
+  /* In-Out */
   float timer = millis();
   float interval = 1000.0f;
-  boolean hasRun = false;
-  float alpha = 0;
-  float speed = 5;
+  
+  /* In and Out */
   int x, y;
-  boolean finished;
   
   Message () {
     
   }
   
-  void fadeIn () {
+  void fadeIn (float speed) {
     
     if (alpha < 255) {  
-      alpha++;
+      
+      alpha += speed;
+      
     } else {
+      
       if (!hasRun) {
+        
         finished = true;
         hasRun = true;
       }
+      
     }
   }
   
   boolean isFinished() {
+    
     return finished;
   }
   
   void reset () {
+    
     finished = false;
   }
   
-  void fadeOut () {
+  void fadeOut (float s) {
     
     if (alpha > 0) {
-      alpha--;
+      
+      alpha -= s;
+      
     } else {
+      
       if (!hasRun) {
+        
         finished = true;
         hasRun = true;
       }
+      
     }
   }
   
-  void fadeInOut () {
+  void fadeInOut (int speed) {
     
     /* 
       Current time (millis) is larger than 
