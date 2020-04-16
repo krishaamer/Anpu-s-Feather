@@ -9,7 +9,7 @@ class Scales {
   ArrayList<PVector> skeleton_points;
   Helper helper;
 
-  //PImage img;
+  PImage img;
   int tintAlpha;
 
   float t=0;
@@ -29,7 +29,6 @@ class Scales {
 
   void calculateFeatherWeight () {
 
-    PImage img;
     float xdist1=abs(skeleton_points.get(4).x-xn1);
     xn1=skeleton_points.get(4).x;
     float xdist2=abs(skeleton_points.get(7).x-xn2);
@@ -49,7 +48,7 @@ class Scales {
     if (val2<0) {
       val2=random(-480, -100);
     }
-    println(val2);
+    //println(val2);
 
     if (abs(val2-feathery)>100) {
       feathery+=(val2- feathery) * easingy;
