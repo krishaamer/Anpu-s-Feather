@@ -45,8 +45,12 @@ class Message {
   void fadeOut () {
     
     if (alpha > 0) {
-      
       alpha--;
+    } else {
+      if (!hasRun) {
+        finished = true;
+        hasRun = true;
+      }
     }
   }
   
