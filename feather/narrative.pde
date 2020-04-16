@@ -7,26 +7,28 @@
 class Narrative {
   
   String mode;
-  int init_time = -1;
-  double seconds;
-  
+ 
+  int startTime = millis();
+  double sceneTime = -1;
+
   Narrative () {
     
   }
   
   void update () {
     
-    seconds = (millis() - init_time) / 1000.0;
+    sceneTime = (millis() - startTime) / 1000.0;
   }
   
   void resetTime () {
 
-    seconds = init_time;
+      sceneTime = -1;
+      startTime = millis();
   }
 
   double time () {
-
-    return seconds;
+    
+    return sceneTime;
   }
   
   String mode () {
@@ -69,6 +71,12 @@ class Narrative {
     if (keyCode == 52) {
       
       setMode("scales");
+    }
+    
+    // 5
+    if (keyCode == 53) {
+      
+      resetTime();
     }
   }
 }

@@ -60,7 +60,7 @@ void setup() {
     parser.loadFile("wave1.txt"); // Default file to be loaded
   }
   
-  story.setMode("scales"); // Set default story mode on init
+  story.setMode("intro"); // Set default story mode on init
   user.setUserMode(story.mode()); // Set default mode on init
 }
 
@@ -116,24 +116,34 @@ void scales () {
 }
 
 void intro () {
+
+  // Should reset time one, right?
+  //story.resetTime();
+  println(story.time());
   
   if (story.time() > 0 && story.time() < 3.7) {
       
       background(0);
       message.say("Welcome!");
-      message.fadeInOut();
+      message.fadeIn();
+      if (message.isFinished()) {
+        message.reset();
+        message.say("You have reached the entrance");
+        message.fadeInOut();
+        
+      }
+      
       nile.update();
     }
     
-    if (story.time() > 3.7 && story.time() < 8) {
+    if (story.time() > 8 && story.time() < 12) {
       
       background(0);
-      message.say("You have reached the entrance");
-      message.fadeInOut();
+      
       nile.update();
     }
     
-    if (story.time() > 8 && story.time() < 18) {
+    if (story.time() > 12 && story.time() < 18) {
       
       background(0);
       message.say("I have been waiting for You");
