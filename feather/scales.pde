@@ -6,6 +6,7 @@
 
 class Scales {
 
+  // Data
   ArrayList<PVector> skeleton_points;
   Helper helper;
 

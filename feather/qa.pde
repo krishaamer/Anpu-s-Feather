@@ -112,11 +112,13 @@ class QA {
   void decide (String d) {
     
     if (d == "YES") {
+      
       YES_button_inside = true;
       answer = "YES";
     }
     
     if (d == "NO") {
+      
       NO_button_inside = true;
       answer = "NO";
     }
