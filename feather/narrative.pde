@@ -6,26 +6,40 @@
 
 class Narrative {
   
-  String mode = "heavy";
-  int init_time_in_millis = -1;
-  
+  String mode;
+ 
+  int startTime = millis();
+  double sceneTime = -1;
+
   Narrative () {
     
   }
   
   void update () {
     
+    sceneTime = (millis() - startTime) / 1000.0;
   }
   
-  // Return seconds
+  void resetTime () {
+
+      sceneTime = -1;
+      startTime = millis();
+  }
+
   double time () {
     
-    return (millis() - init_time_in_millis) / 1000.0;
+    return sceneTime;
   }
   
   String mode () {
     
     return mode;
+  }
+  
+  void setMode(String m) {
+    
+    resetTime();
+    mode = m;
   }
   
   /**
@@ -38,14 +52,31 @@ class Narrative {
     // 1
     if (keyCode == 49) {
       
-      mode = "heavy";
+      setMode("intro");
     }
       
     // 2
     if (keyCode == 50) {
       
-      mode = "light";
+      setMode("light");
+    }
+    
+    // 3
+    if (keyCode == 51) {
+      
+      setMode("heavy");
+    }
+    
+    // 4
+    if (keyCode == 52) {
+      
+      setMode("scales");
+    }
+    
+    // 5
+    if (keyCode == 53) {
+      
+      resetTime();
     }
   }
- 
 }

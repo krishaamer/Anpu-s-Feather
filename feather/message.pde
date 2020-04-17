@@ -10,32 +10,67 @@
 
 class Message {
   
+  /* Shared */
+  boolean hasRun = false;
+  boolean finished;
+  float alpha = 0;
+  
+  /* In-Out */
   float timer = millis();
   float interval = 1000.0f;
-  float alpha = 0;
-  float speed = 5;
+  
+  /* In and Out */
+  int x, y;
   
   Message () {
     
   }
   
-  void fadeIn () {
+  void fadeIn (float speed) {
     
-    if (alpha < 255) {
+    if (alpha < 255) {  
       
-      alpha++;
+      alpha += speed;
+      
+    } else {
+      
+      if (!hasRun) {
+        
+        finished = true;
+        hasRun = true;
+      }
+      
     }
   }
   
-  void fadeOut () {
+  boolean isFinished() {
+    
+    return finished;
+  }
+  
+  void reset () {
+    
+    finished = false;
+  }
+  
+  void fadeOut (float s) {
     
     if (alpha > 0) {
       
-      alpha--;
+      alpha -= s;
+      
+    } else {
+      
+      if (!hasRun) {
+        
+        finished = true;
+        hasRun = true;
+      }
+      
     }
   }
   
-  void fadeInOut () {
+  void fadeInOut (int speed) {
     
     /* 
       Current time (millis) is larger than 
@@ -57,12 +92,23 @@ class Message {
 
   void say (String msg) {
     
+    x = width / 2;
+    y = height / 2;
+    
     textSize(40);
-    rectMode(CORNER);
+    rectMode(CENTER);
     textAlign(CENTER);
-    smooth(); 
- 
     fill (255, 255, 255, alpha);
-    text(msg, width / 2, height / 2); 
+    text(msg, x, y); 
+  }
+  
+  void addBackground() {
+    
+    x = width / 2;
+    y = height / 2;
+    
+    noStroke();
+    fill (0, 0, 0, alpha);
+    rect (x, y, width, 80);
   }
 }
