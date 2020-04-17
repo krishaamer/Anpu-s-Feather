@@ -97,6 +97,17 @@ class User {
     }
   }
   
+  void fadeIn () {
+    
+    if (fillAlpha < 255) { 
+      fillAlpha++; 
+    }
+    
+    if (strokeAlpha < 255) { 
+      strokeAlpha++; 
+    }
+  }
+  
   void fadeOut () {
 
     if (fillAlpha > 0) { 
@@ -202,12 +213,6 @@ class User {
 
   void draw_user_heavy () {
     
-    if (!runOnce) {
-
-      background(0);
-      runOnce = true;
-    }
-
     //float xpos = skeleton_points.get(9).x;
     //float xposend = skeleton_points.get(0).x;
     //float distx = xpos - xposend;
