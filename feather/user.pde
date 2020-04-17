@@ -18,7 +18,7 @@ class User {
   
   Boolean runOnce = false;
   Boolean alreadyReset = false;
-  String userMode;
+  String mode;
   int strokeAlpha, fillAlpha;
 
   /* Light */
@@ -48,9 +48,9 @@ class User {
     skeleton_points = sp;
   }
 
-  void setUserMode (String mode) {
+  void setMode (String m) {
 
-    userMode = mode;
+    mode = m;
   }
   
   void resetBG () {
@@ -67,7 +67,7 @@ class User {
     
     //helper.showFrameRate();
 
-    if (userMode == "light") {
+    if (mode == "light") {
 
       // Light
       //background(0, 0, 0, 255);
@@ -82,7 +82,7 @@ class User {
       draw_user_light();
       popMatrix();
       
-    } else { 
+    } else if (mode == "heavy") { 
 
       // Heavy
       background(0);
@@ -93,6 +93,19 @@ class User {
       translate(0, 120, -300);
       scale(0.4);
       draw_user_heavy();
+      popMatrix();
+      
+    } else if (mode == "questions") { 
+
+      // Hands
+      background(0);
+      strokeWeight(2);
+      fill(0, 0, 0, fillAlpha);
+      pushMatrix();
+      resetMatrix();
+      translate(0, 0, -300);
+      scale(0.4);
+      draw_user_hands();
       popMatrix();
     }
   }
@@ -325,5 +338,18 @@ class User {
     ellipse(skeleton_points.get(15).x+40, y14, 120, 120);
     ellipse(skeleton_points.get(15).x-40, y14, 120, 120);
     
+  }
+  
+  void draw_user_hands () {
+
+    noFill();
+    stroke(255);
+    strokeWeight(10);
+    
+    // Left Hand
+    ellipse(skeleton_points.get(4).x, skeleton_points.get(4).y, 20, 20);
+    
+    // Right Hand
+    ellipse(skeleton_points.get(7).x, skeleton_points.get(7).y, 20, 20);
   }
 }

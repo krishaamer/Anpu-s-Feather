@@ -114,7 +114,16 @@ void questions () {
     message.fadeIn(8);
   }
   
-  if (story.time() > 3) {
+  if (story.time() > 1) {
+    
+    parser.read_data();
+    if (parser.isStreaming()) {
+      
+      qa.enableGestures();
+      
+      user.update();
+      user.fadeIn();
+    }
     
     message.say("Have you cried this week?");
     message.fadeOut(8);
@@ -150,6 +159,7 @@ void scales () {
      
     parser.read_data();
     if (parser.isStreaming()) {
+
       scales.update();
       scales.fadeIn();
     }
@@ -159,6 +169,7 @@ void scales () {
      
     parser.read_data();
     if (parser.isStreaming()) {
+      
       scales.update();
       scales.fadeOut();
     }
@@ -171,6 +182,7 @@ void scales () {
     
     parser.read_data();
     if (parser.isStreaming()) {
+      
       scales.update();
       scales.fadeOut();
     }

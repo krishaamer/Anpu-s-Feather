@@ -10,6 +10,9 @@ class QA {
   String answer;
   int strokeAlpha, fillAlpha;
   
+  // Data
+  ArrayList<PVector> skeleton_points;
+  
   // No
   int NO_button_H = 200;
   int NO_button_W = 200;
@@ -24,8 +27,9 @@ class QA {
   int YES_button_Y;
   boolean YES_button_inside = false;
   
-  QA () {
+  QA (ArrayList<PVector> sp) {
     
+    skeleton_points = sp;
     strokeAlpha = 0;
     fillAlpha = 0;
   }
@@ -105,26 +109,49 @@ class QA {
       }
   }
   
+  void decide (String d) {
+    
+    if (d == "YES") {
+      YES_button_inside = true;
+      answer = "YES";
+    }
+    
+    if (d == "NO") {
+      NO_button_inside = true;
+      answer = "NO";
+    }
+    
+    println("Gesture: ", d);
+  }
+  
   void enableGestures () {
-   
-      // Yes Button
-      if (mouseX > YES_button_X && mouseX < YES_button_X + YES_button_W && mouseY > YES_button_Y && mouseY < YES_button_Y + YES_button_H) {
-        
-        YES_button_inside = true;
-        
-        // Update answer
-        answer = "YES";
-        println("Gesture: YES");
+    
+      // Translate Points - How to get this right???
+      float left_hand_x = skeleton_points.get(4).x * 2.4;
+      float left_hand_y = skeleton_points.get(4).y * -0.6;
+      float right_hand_x = skeleton_points.get(7).x * 2.4;
+      float right_hand_y = skeleton_points.get(7).y * -0.6;
+    
+      println("Right hand: ", YES_button_X, YES_button_X + YES_button_W, right_hand_x, YES_button_Y, YES_button_Y + YES_button_H, right_hand_y);
+      
+      // Yes Button - Right Hand
+      if (right_hand_x > YES_button_X && right_hand_x < YES_button_X + YES_button_W && right_hand_y > YES_button_Y && right_hand_y < YES_button_Y + YES_button_H) {
+        decide("YES");
       }
       
-      // No Button
-      if (mouseX > NO_button_X && mouseX < NO_button_X + NO_button_W && mouseY > NO_button_Y && mouseY < NO_button_Y + NO_button_H) {
-        
-        NO_button_inside = true;
-        
-        // Update answer
-        answer = "NO";
-        println("Gesture: NO");
+      // Yes Button - Left Hand
+      if (left_hand_x > YES_button_X && left_hand_x < YES_button_X + YES_button_W && left_hand_y > YES_button_Y && left_hand_y < YES_button_Y + YES_button_H) {
+        decide("YES");
+      }
+      
+      // No Button - Right Hand
+      if (right_hand_x > NO_button_X && right_hand_x < NO_button_X + NO_button_W && right_hand_y > NO_button_Y && right_hand_y < NO_button_Y + NO_button_H) {
+        decide("NO");
+      }
+      
+      // No Button - Left Hand
+      if (left_hand_x > NO_button_X && left_hand_x < NO_button_X + NO_button_W && left_hand_y > NO_button_Y && left_hand_y < NO_button_Y + NO_button_H) {
+        decide("NO");
       }
   }
   

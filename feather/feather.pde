@@ -44,7 +44,7 @@ Deity anubis = new Deity();
 User user = new User(parser.getPoints(), helper);
 Scales scales = new Scales(parser.getPoints(), helper);
 Output output = new Output(parser.getPoints());
-QA qa = new QA();
+QA qa = new QA(parser.getPoints());
 
 void setup() {
   
@@ -69,7 +69,7 @@ void setup() {
   }
   
   story.setMode("intro"); // Set default story mode on init
-  user.setUserMode(story.mode()); // Set default mode on init
+  user.setMode(story.mode()); // Set default mode on init
 }
 
 void draw() {
@@ -77,10 +77,9 @@ void draw() {
   // Shared
   helper.update();
   story.update();
-  user.setUserMode(story.mode()); // Update mode
-  println(story.time());
-  
-  // What's the mode?
+  user.setMode(story.mode());
+
+  // What's the story mode?
   //println(story.mode(), story.time());
   
   if (story.mode() == "scales") {
@@ -124,7 +123,6 @@ void keyReleased () {
 void mouseMoved() {
    
   if (story.mode() == "questions") {
-    qa.enableButtons();
-    qa.enableGestures();
+    //qa.enableButtons();
   }
 }
