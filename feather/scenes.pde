@@ -37,6 +37,10 @@ void intro () {
       anubis.fadeIn();
     }
     
+    if (story.time() > 4 && story.time() < 4.6) {
+      anubis.option("redEyes");
+    }
+    
     if (story.time() > 7 && story.time() < 8.9) {
       
       message.say("I have been waiting for You");
@@ -45,6 +49,7 @@ void intro () {
       nile.update();
       nile.fadeOut();
       
+      anubis.option("whiteEyes");
       anubis.update();
       anubis.fadeIn();
     }
@@ -162,6 +167,8 @@ void scales () {
 
       scales.update();
       scales.fadeIn();
+      
+      message.countdown(6, story.time());
     }
   }
   
@@ -172,6 +179,8 @@ void scales () {
       
       scales.update();
       scales.fadeOut();
+      
+      message.countdown(6, story.time());
     }
     
     message.say("You have passed the test");

@@ -63,6 +63,24 @@ class Message {
     }
   }
   
+  void countdown (int max, double s) {
+    
+    int x = width - 80;
+    int y = 30;
+    String msg = str(max - (int)s);
+    
+    textSize(40);
+    rectMode(CENTER);
+    textAlign(CENTER);
+    
+    noStroke();
+    fill (0, 0, 0, 255);
+    rect(x, y, 100, 50);
+    
+    fill (255, 0, 0, 255);
+    text(msg, x + 20, y + 20);
+  }
+  
   void alert (String msg, boolean red) {
 
     textSize(40);
