@@ -12,7 +12,7 @@
 class Deity {
 
   float gap, theta, theta2, alpha, speed;
-  int cols, rows, strokeAlpha, fillAlpha;
+  int cols, rows, strokeAlpha, fillAlpha, featureStrokeAlpha, featureFillAlpha;;
   String feature;
 
   color[] colors = {
@@ -30,6 +30,8 @@ class Deity {
     speed = .05;
     strokeAlpha = 0; // 220
     fillAlpha = 0; // 255
+    featureStrokeAlpha = 0;
+    featureFillAlpha = 0;
   }
   
   void option (String f) {
@@ -48,10 +50,10 @@ class Deity {
     rotateZ(PI / 48.0);
     translate(100, -800, -1500);
     
+    mouthAndEyes(false); 
+    
     if (feature == "redEyes") {
       mouthAndEyes(true); 
-    } else {
-      mouthAndEyes(false); 
     }
     
     for (int j = 0; j < rows; j++) {
@@ -81,15 +83,13 @@ class Deity {
   
   void mouthAndEyes (boolean redEyes) {
     
-    if (!redEyes) {
+    stroke (255, 255, 255, strokeAlpha);
+    fill (255, 255, 255, fillAlpha);
+    
+    if (redEyes) {
       
-      stroke (255, 255, 255, strokeAlpha);
-      fill (255, 255, 255, fillAlpha);
-      
-    } else {
-      
-      stroke (255, 0, 0, strokeAlpha);
-      fill (255, 0, 0, fillAlpha);
+      stroke (255, 0, 0, featureStrokeAlpha);
+      fill (255, 0, 0, featureFillAlpha);
     }
     
     // Eyes
@@ -131,4 +131,25 @@ class Deity {
     }
   }
   
+  void featureFadeIn () {
+    
+    if (featureFillAlpha < 255) { 
+      featureFillAlpha++; 
+    }
+    
+    if (featureStrokeAlpha < 255) { 
+      featureStrokeAlpha++; 
+    }
+  }
+  
+  void featureFadeOut () {
+    
+    if (featureFillAlpha > 0) { 
+      featureFillAlpha--; 
+    }
+    
+    if (featureStrokeAlpha > 0) { 
+      featureStrokeAlpha--; 
+    }
+  }
 }
