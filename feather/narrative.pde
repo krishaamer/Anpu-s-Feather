@@ -88,6 +88,13 @@ class Narrative {
       setMode("light");
     }
     
+    // 6
+    if (keyCode == 54) {
+      
+      resetTime();
+      setMode("wisdom");
+    }
+    
     // R
     if (key == 'r' || key == 'R') {
       
