@@ -91,7 +91,7 @@ class QA {
         
         // Update answer
         answer = "YES";
-        println("YES");
+        println("Mouse: YES");
       }
       
       // No Button
@@ -101,7 +101,30 @@ class QA {
         
         // Update answer
         answer = "NO";
-        println("NO");
+        println("Mouse: NO");
+      }
+  }
+  
+  void enableGestures () {
+   
+      // Yes Button
+      if (mouseX > YES_button_X && mouseX < YES_button_X + YES_button_W && mouseY > YES_button_Y && mouseY < YES_button_Y + YES_button_H) {
+        
+        YES_button_inside = true;
+        
+        // Update answer
+        answer = "YES";
+        println("Gesture: YES");
+      }
+      
+      // No Button
+      if (mouseX > NO_button_X && mouseX < NO_button_X + NO_button_W && mouseY > NO_button_Y && mouseY < NO_button_Y + NO_button_H) {
+        
+        NO_button_inside = true;
+        
+        // Update answer
+        answer = "NO";
+        println("Gesture: NO");
       }
   }
   
