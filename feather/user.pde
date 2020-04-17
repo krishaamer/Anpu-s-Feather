@@ -59,6 +59,7 @@ class User {
       // Light
       //background(0, 0, 0, 255);
       fill(0, 0, 0, fillAlpha);
+      rect(0, 0, width, height);
       fill(255, fillAlpha);
       ellipseMode(500);
       pushMatrix();
@@ -100,7 +101,7 @@ class User {
   void draw_structure_light () {
 
     if (!runOnce) {
-      
+      background(0);
       for (int i =0; i< num2; i++) {
         xpos2[i] = random(-500, 500);
         ypos2[i] = random(-500, 500);
@@ -171,7 +172,7 @@ class User {
       float r = map(sokudo, 0, 5, 0, 255);
       float g = map(sokudo, 0, 5, 64, 255);
       float b = map(sokudo, 0, 5, 128, 255);
-
+      
       noStroke(); 
       fill(r, g, b, 32);
       ellipse(xpos2[i], ypos2[i], 1, radius); //Added a numeral in place of radius to make a highlighted circle start as soon as it starts if the person chooses to not move their mouse
