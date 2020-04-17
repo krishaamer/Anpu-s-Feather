@@ -47,10 +47,12 @@ class Scales {
       
       val2=random(100, 300);
     }
+    
     if (val2<0) {
       
       val2=random(-480, -100);
     }
+    
     //println(val2);
 
     if (abs(val2-feathery)>100) {
@@ -62,6 +64,7 @@ class Scales {
       t = t+0.2; 
       feathery=feathery+sin(t)*5;
     }
+    
     img = loadImage("feather_small.png");
     image(img, 0, feathery);
   }
