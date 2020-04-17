@@ -188,38 +188,6 @@ void scales () {
   }
 }
 
-void wisdom () {
-  
-  // Reset
-  if (story.time() > 0 && story.time() < 0.1) {
-    
-     background(0);
-     message.setAlpha(0);
-  }
-  
-  // Begin scene
-  if (story.time() > 0.1 && story.time() < 3) {
-     
-    message.say("The Wisdom Card will guide you");
-    message.fadeIn(8);
-  }
-
-  if (story.time() > 3 && story.time() < 5) {
-     
-    message.say("The Wisdom Card will guide you");
-    message.fadeOut(8);
-  }
-  
-  // End
-  if (story.time() > 5) {
-   
-      println("The end");
-      message.setAlpha(0);
-      //story.resetTime();
-      //story.setMode("wisom");
-  }
-}
-
 void light () {
   
   // Reset
@@ -318,5 +286,67 @@ void heavy () {
       story.resetTime();
       story.setMode("scales");
   }
+}
+
+void wisdom () {
   
+  // Reset
+  if (story.time() > 0 && story.time() < 0.1) {
+    
+     background(0);
+     message.setAlpha(0);
+  }
+  
+  // Begin scene
+  if (story.time() > 0.1 && story.time() < 3) {
+     
+    message.say("The Wisdom Card will guide you");
+    message.fadeIn(8);
+  }
+
+  if (story.time() > 3 && story.time() < 5) {
+     
+    message.say("The Wisdom Card will guide you");
+    message.fadeOut(8);
+  }
+  
+  // End
+  if (story.time() > 5) {
+   
+      message.setAlpha(0);
+      story.resetTime();
+      story.setMode("outro");
+  }
+}
+
+void outro () {
+  
+  // Reset
+  if (story.time() > 0 && story.time() < 0.1) {
+    
+     background(0);
+     message.setAlpha(0);
+  }
+  
+  // Begin scene
+  if (story.time() > 0.1 && story.time() < 3) {
+    
+    message.say("Ankhek!");
+    message.subtitle("May you live");
+    message.fadeIn(4);
+  }
+
+  if (story.time() > 3 && story.time() < 5) {
+     
+    message.say("Ankhek!");
+    message.subtitle("May you live");
+    message.fadeOut(4);
+  }
+  
+  // The End
+  if (story.time() > 5) {
+   
+      println("The end");
+      message.setAlpha(0);
+  }
 }

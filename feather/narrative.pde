@@ -95,6 +95,13 @@ class Narrative {
       setMode("wisdom");
     }
     
+    // 7
+    if (keyCode == 55) {
+      
+      resetTime();
+      setMode("outro");
+    }
+    
     // R
     if (key == 'r' || key == 'R') {
       

@@ -106,6 +106,10 @@ void draw() {
   if (story.mode() == "wisdom") {
     wisdom ();
   }
+  
+  if (story.mode() == "outro") {
+    outro ();
+  }
 }
 
 void keyReleased () {
