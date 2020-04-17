@@ -123,6 +123,6 @@ void keyReleased () {
 void mouseMoved() {
    
   if (story.mode() == "questions") {
-    //qa.enableButtons();
+    qa.enableButtons();
   }
 }
