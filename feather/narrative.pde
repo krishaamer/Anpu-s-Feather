@@ -15,10 +15,6 @@ class Narrative {
     
   }
   
-  void resetTimeOnce () {
-    
-  }
-  
   void update () {
     
     sceneTime = (millis() - startTime) / 1000.0;
