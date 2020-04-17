@@ -13,6 +13,7 @@ class Deity {
 
   float gap, theta, theta2, alpha, speed;
   int cols, rows, strokeAlpha, fillAlpha;
+  String feature;
 
   color[] colors = {
     #000000, 
@@ -31,6 +32,11 @@ class Deity {
     fillAlpha = 0; // 255
   }
   
+  void option (String f) {
+    
+    feature = f;
+  }
+  
   void update() {
     
     gap = width / cols;
@@ -42,7 +48,11 @@ class Deity {
     rotateZ(PI / 48.0);
     translate(100, -800, -1500);
     
-    mouthAndEyes();
+    if (feature == "redEyes") {
+      mouthAndEyes(true); 
+    } else {
+      mouthAndEyes(false); 
+    }
     
     for (int j = 0; j < rows; j++) {
       
@@ -69,12 +79,25 @@ class Deity {
     popMatrix();
   }
   
-  void mouthAndEyes () {
+  void mouthAndEyes (boolean redEyes) {
     
-    stroke (255, 255, 255, strokeAlpha);
-    fill (255, 255, 255, fillAlpha);
+    if (!redEyes) {
+      
+      stroke (255, 255, 255, strokeAlpha);
+      fill (255, 255, 255, fillAlpha);
+      
+    } else {
+      
+      stroke (255, 0, 0, strokeAlpha);
+      fill (255, 0, 0, fillAlpha);
+    }
+    
+    // Eyes
     ellipse(500, 300, 55, 55);
     ellipse(300, 300, 55, 55);
+    
+    // Mouth
+    fill (255, 255, 255, fillAlpha);
     ellipse(400, 700, 200, 100);
   }
   
