@@ -12,7 +12,7 @@ class Message {
   
   /* Shared */
   boolean hasRun = false;
-  boolean finished;
+  boolean finished = false;
   float alpha = 0;
   
   /* In-Out */
@@ -26,43 +26,66 @@ class Message {
     
   }
   
-  void fadeIn (float speed) {
-    
-    if (alpha < 255) {  
-      
-      alpha += speed;
-      
-    } else {
-      
-      if (!hasRun) {
-        
-        finished = true;
-        hasRun = true;
-      }
-      
-    }
-  }
-  
   boolean isFinished() {
     
-    return finished;
+    boolean f = finished;
+    //finished = false;
+    
+    return f;
   }
   
-  void reset () {
+  void resetFinished () {
     
     finished = false;
   }
   
-  void fadeOut (float s) {
+  void resetRun () {
+    
+    hasRun = false;
+  }
+  
+  void setAlpha (int a) {
+    
+    alpha = a;
+  }
+  
+  void fadeIn (float speed) {
+    
+    if (alpha < 255) {  
+        
+        // Alpha is smaller than 255
+        alpha += speed;
+        println ("fadeIn", alpha);
+        
+      } else {
+        
+        // Alpha is 255 or larger (reset to 255 if larger)
+        if (alpha > 255) {
+          alpha = 255;
+        }
+        
+        // FadeIn Finished
+        finished = true;
+
+        // Run Once
+        if (!hasRun) {
+          hasRun = true;
+        }
+    }
+  }
+  
+  void fadeOut (float speed, int times) {
     
     if (alpha > 0) {
       
-      alpha -= s;
+      alpha -= speed;
+      println ("fadeOut", alpha);
       
     } else {
       
       if (!hasRun) {
         
+        alpha = 0;
         finished = true;
         hasRun = true;
       }
@@ -70,13 +93,16 @@ class Message {
     }
   }
   
-  void fadeInOut (int speed) {
+  void fadeInOut (int speed, int times) {
     
     /* 
       Current time (millis) is larger than 
       animation length (interval) + previous time (timer)
       so should reset time and animation In/Out direction
     */
+    
+    // int counter = 0;
+    
     if (millis() > interval + timer) {
       
       // Reset
