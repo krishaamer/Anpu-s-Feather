@@ -283,22 +283,54 @@ void heavy () {
      message.setAlpha(0);
   }
   
-  if (story.time() > 0.1 && story.time() < 3) {
+  if (story.time() > 0.1 && story.time() < 1.5) {
+   
+    background(0);
+    message.say("Your heart must be heavy");
+    message.fadeIn(10);
+  }
+  
+  if (story.time() > 1.5 && story.time() < 3) {
     
     background(0);
     message.say("Your heart must be heavy");
-    //message.say("How have you lived your life?");
-    message.fadeIn(8);
+    message.fadeOut(8);
   }
   
-  if (story.time() > 3) {
-    
-    background(0);
+  if (story.time() > 3 && story.time() < 8) {
+   
     parser.read_data();
     if (parser.isStreaming()) {
       user.update();
+      user.fadeIn();
     }
   }
+  
+  if (story.time() > 8) {
+   
+      message.setAlpha(0);
+      story.resetTime();
+      story.setMode("scales");
+  }
+  
+  // Messages on top of the Model
+  if (story.time() > 3 && story.time() < 3.1) {
+    
+     message.setAlpha(0);
+  }
+  
+  if (story.time() > 3.1 && story.time() < 5) {
+    
+    message.say("Show me");
+    message.fadeIn(8);
+  }
+  
+  if (story.time() > 5 && story.time() < 6) {
+    
+    message.say("Show me");
+    message.fadeOut(8);
+  }
+  
 }
 
 void keyReleased () {
