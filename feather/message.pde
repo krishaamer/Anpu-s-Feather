@@ -62,6 +62,20 @@ class Message {
       }
     }
   }
+  
+  void alert (String msg, boolean red) {
+
+    textSize(40);
+    rectMode(CENTER);
+    textAlign(CENTER);
+    
+    if (red) {
+      fill (255, 0, 0, 255);
+    } else {
+      fill (0, 0, 255, 255);
+    }
+    text(msg, width / 2, height / 2); 
+  }
 
   void say (String msg) {
     

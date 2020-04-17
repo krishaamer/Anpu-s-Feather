@@ -210,8 +210,14 @@ void light () {
   }
   
   // Begin scene
-  if (story.time() > 0.1 && story.time() < 2.9) {
+  if (story.time() > 0.1 && story.time() < 0.5) {
      
+    message.alert("YES", false);
+  }
+  
+  if (story.time() > 0.5 && story.time() < 2.9) {
+    
+    background(0);
     message.say("Your heart seems light");
     message.fadeIn(5);
   }
@@ -250,7 +256,12 @@ void heavy () {
   }
   
   // Begin scene
-  if (story.time() > 0.1 && story.time() < 1.5) {
+  if (story.time() > 0.1 && story.time() < 0.5) {
+     
+    message.alert("NO", true);
+  }
+  
+  if (story.time() > 0.5 && story.time() < 1.5) {
    
     background(0);
     message.say("Your heart must be heavy");
