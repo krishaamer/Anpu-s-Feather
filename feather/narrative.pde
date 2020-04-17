@@ -9,9 +9,13 @@ class Narrative {
   String mode;
  
   int startTime = millis();
-  double sceneTime = -1;
+  double sceneTime = 0;
 
   Narrative () {
+    
+  }
+  
+  void resetTimeOnce () {
     
   }
   
@@ -22,7 +26,7 @@ class Narrative {
   
   void resetTime () {
 
-      sceneTime = -1;
+      sceneTime = 0;
       startTime = millis();
   }
 
@@ -52,29 +56,40 @@ class Narrative {
     // 1
     if (keyCode == 49) {
       
+      resetTime();
       setMode("intro");
     }
       
     // 2
     if (keyCode == 50) {
       
-      setMode("light");
+      resetTime();
+      setMode("questions");
     }
     
     // 3
     if (keyCode == 51) {
       
-      setMode("heavy");
+      resetTime();
+      setMode("scales");
     }
     
     // 4
     if (keyCode == 52) {
       
-      setMode("scales");
+      resetTime();
+      setMode("heavy");
     }
     
     // 5
     if (keyCode == 53) {
+      
+      resetTime();
+      setMode("light");
+    }
+    
+    // R
+    if (key == 'r' || key == 'R') {
       
       resetTime();
     }

@@ -55,7 +55,7 @@ class Message {
         
         // Alpha is smaller than 255
         alpha += speed;
-        println ("fadeIn", alpha);
+        //println ("fadeIn", alpha);
         
       } else {
         
@@ -74,12 +74,12 @@ class Message {
     }
   }
   
-  void fadeOut (float speed, int times) {
+  void fadeOut (float speed) {
     
     if (alpha > 0) {
       
       alpha -= speed;
-      println ("fadeOut", alpha);
+      //println ("fadeOut", alpha);
       
     } else {
       

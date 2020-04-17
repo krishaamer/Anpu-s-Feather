@@ -17,6 +17,7 @@ class User {
   Helper helper;
   
   Boolean runOnce = false;
+  Boolean alreadyReset = false;
   String userMode;
   int strokeAlpha, fillAlpha;
 
@@ -51,10 +52,20 @@ class User {
 
     userMode = mode;
   }
+  
+  void resetBG () {
+  
+    if (!alreadyReset) {
+      
+      alreadyReset = true;
+      background(0);
+      println("reset bg");
+    }
+  }
 
   void update() {
     
-    helper.showFrameRate();
+    //helper.showFrameRate();
 
     if (userMode == "light") {
 
@@ -68,7 +79,6 @@ class User {
       resetMatrix(); 
       translate(0, 0, -600);
       ellipseMode(500); 
-      blendMode(ADD);
       draw_user_light();
       popMatrix();
       
@@ -86,7 +96,7 @@ class User {
       popMatrix();
     }
   }
-
+  
   void fadeOut () {
 
     if (fillAlpha > 0) { 
@@ -191,6 +201,12 @@ class User {
   }
 
   void draw_user_heavy () {
+    
+    if (!runOnce) {
+
+      background(0);
+      runOnce = true;
+    }
 
     //float xpos = skeleton_points.get(9).x;
     //float xposend = skeleton_points.get(0).x;
