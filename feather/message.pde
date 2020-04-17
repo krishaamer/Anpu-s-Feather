@@ -128,6 +128,18 @@ class Message {
     text(msg, x, y); 
   }
   
+  void subtitle (String msg) {
+    
+    x = width / 2;
+    y = height / 2 + 40;
+    
+    textSize(20);
+    rectMode(CENTER);
+    textAlign(CENTER);
+    fill (255, 255, 255, alpha);
+    text(msg, x, y); 
+  }
+  
   void addBackground() {
     
     x = width / 2;
