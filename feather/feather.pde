@@ -46,7 +46,7 @@ void setup() {
   
   size(800, 800, P3D);
   frameRate(24);
-  smooth();
+  smooth(8);
   
   if (is_live) {
     
@@ -60,7 +60,7 @@ void setup() {
     parser.loadFile("wave1.txt"); // Default file to be loaded
   }
   
-  story.setMode("scales"); // Set default story mode on init
+  story.setMode("intro"); // Set default story mode on init
   user.setUserMode(story.mode()); // Set default mode on init
 }
 
@@ -91,6 +91,113 @@ void draw() {
   }
 }
 
+void intro () {
+
+  // Should reset time one, right?
+  //story.resetTime();
+  
+  background(0);
+  println(story.time());
+  
+  if (story.time() > 0 && story.time() < 4) {
+      
+      message.say("Welcome!");
+      message.fadeIn(9);
+      
+      nile.update();
+    }
+    
+    if (story.time() > 4 && story.time() < 5) {
+      
+      message.setAlpha(0);
+      nile.update();
+    }
+    
+    if (story.time() > 5 && story.time() < 8) {
+      
+      message.say("You have found me");
+      message.fadeIn(10);
+ 
+      nile.update();
+    }
+    
+    if (story.time() > 8 && story.time() < 9) {
+  
+      message.setAlpha(0);
+      nile.update();
+    }
+    
+    if (story.time() > 9 && story.time() < 18) {
+      
+      message.say("I have been waiting for You");
+      message.fadeIn(8);
+      
+      nile.update();
+      nile.fadeOut();
+      
+      anubis.update();
+      anubis.fadeIn();
+    }
+    
+    if (story.time() > 18 && story.time() < 23) {
+      
+      message.setAlpha(0);
+      anubis.update();
+      anubis.fadeOut();
+    }
+    
+    if (story.time() > 23 && story.time() < 29) {
+      
+      message.say("How have you lived your life?");
+      message.fadeIn(8);
+    }
+    
+    if (story.time() > 29 && story.time() < 30) {
+      
+      message.setAlpha(0);
+    }
+    
+    if (story.time() > 30 && story.time() < 39) {
+      
+      message.fadeIn(8);
+      message.say("The feather is a measure of your heart");
+      
+      parser.read_data();
+      if (parser.isStreaming()) {
+        scales.update();
+        scales.fadeIn();
+      }
+    }
+    
+    if (story.time() > 39 && story.time() < 40) {
+      
+      message.setAlpha(0);
+      
+      parser.read_data();
+      if (parser.isStreaming()) {
+        scales.update();
+        scales.fadeIn();
+      }
+    }
+    
+    if (story.time() > 40) {
+      
+      parser.read_data();
+      if (parser.isStreaming()) {
+        
+        user.update();
+        scales.update();
+        // if (is_live) { output.writeFile(); }
+      }
+      
+      nile.update();
+      nile.fadeIn();
+      
+      anubis.update();
+      anubis.fadeIn();
+   }
+}
+
 void scales () {
   
   if (story.time() > 0) {
@@ -105,92 +212,23 @@ void scales () {
       scales.fadeIn();
       
       message.addBackground();
-      message.fadeIn(1);
+      message.fadeIn(10);
       message.say("The feather is a measure of your heart");  
+      
       if (message.isFinished()) {
-        println("message finished");
-        message.reset();
+        
+        println("message 1 finished");
+        
+        //message.reset();
+        //message.fadeOut(10);
+        
+        message.addBackground();
+        message.fadeIn(10);
+        message.say("Move your body");  
+        
       }
     }
   }
-}
-
-void intro () {
-
-  // Should reset time one, right?
-  //story.resetTime();
-  println(story.time());
-  
-  if (story.time() > 0 && story.time() < 3.7) {
-      
-      background(0);
-      message.say("Welcome!");
-      message.fadeIn(1);
-      if (message.isFinished()) {
-        message.reset();
-        message.say("You have reached the entrance");
-        message.fadeInOut(5);
-        
-      }
-      
-      nile.update();
-    }
-    
-    if (story.time() > 8 && story.time() < 12) {
-      
-      background(0);
-      
-      nile.update();
-    }
-    
-    if (story.time() > 12 && story.time() < 18) {
-      
-      background(0);
-      message.say("I have been waiting for You");
-      message.fadeInOut(5);
-      nile.update();
-      nile.fadeOut();
-      anubis.update();
-      anubis.fadeIn();
-    }
-    
-    if (story.time() > 18 && story.time() < 23) {
-      
-      background(0);
-      anubis.update();
-      anubis.fadeOut();
-      
-    }
-    
-    if (story.time() > 23 && story.time() < 30) {
-      
-      message.fadeInOut(5);
-      message.say("How have you lived your life?");
-    }
-    
-    if (story.time() > 30 && story.time() < 39) {
-      
-      background(0);
-      message.fadeIn(1);
-      message.say("The feather is a measure of your heart");
-      scales.update();
-      scales.fadeIn();
-    }
-    
-    if (story.time() > 39) {
-      
-      parser.read_data();
-      if (parser.isStreaming()) {
-        user.update();
-        // if (is_live) { output.writeFile(); }
-      }
-      
-      nile.update();
-      nile.fadeIn();
-      
-      anubis.update();
-      anubis.fadeIn();
-   }
 }
 
 void light () {
@@ -207,7 +245,6 @@ void light () {
       message.fadeIn(1);  
       message.say("How heavy is your heart?");
       
-      /* if (is_live) { output.writeFile(); } */
     }
     
   }
