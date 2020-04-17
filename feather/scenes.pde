@@ -37,8 +37,14 @@ void intro () {
       anubis.fadeIn();
     }
     
-    if (story.time() > 4 && story.time() < 4.6) {
+    if (story.time() > 4 && story.time() < 5.5) {
       anubis.option("redEyes");
+      anubis.featureFadeIn();
+    }
+    
+    if (story.time() > 5.5 && story.time() < 7) {
+      anubis.option("redEyes");
+      anubis.featureFadeOut();
     }
     
     if (story.time() > 7 && story.time() < 8.9) {
@@ -83,7 +89,7 @@ void intro () {
       }
     }
     
-    if (story.time() > 13 && story.time() < 15) {
+    if (story.time() > 13 && story.time() < 16) {
       
       message.say("How heavy is your heart?");
       message.fadeOut(8);
@@ -95,7 +101,7 @@ void intro () {
       }
     }
     
-    if (story.time() > 15) {
+    if (story.time() > 16) {
       
       message.setAlpha(0);
       story.setMode("questions");
@@ -237,7 +243,31 @@ void light () {
     message.fadeOut(8);
   }
   
-  if (story.time() > 4 && story.time() < 14) {
+  if (story.time() > 4 && story.time() < 4.1) {
+    
+     background(0);
+     message.setAlpha(0);
+  }
+  
+  if (story.time() > 4.1 && story.time() < 5) {
+    
+    message.say("Show me");
+    message.fadeIn(30);
+  }
+  
+  if (story.time() > 5 && story.time() < 5.9) {
+    
+    message.say("Show me");
+    message.fadeOut(30);
+  }
+  
+  if (story.time() > 5.9 && story.time() < 6) {
+    
+     background(0);
+     message.setAlpha(0);
+  }
+  
+  if (story.time() > 6 && story.time() < 16) {
     
     blendMode(ADD);
     parser.read_data();
@@ -247,7 +277,7 @@ void light () {
   }
   
   // Go to next mode
-  if (story.time() > 14) {
+  if (story.time() > 16) {
    
       message.setAlpha(0);
       story.resetTime();
