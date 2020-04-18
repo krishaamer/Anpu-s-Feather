@@ -11,28 +11,31 @@
   
   HOW TO USE? ** FOR TESTING **:
   Keyboard shortcuts will be replaced by user interaction
-  -- Use keys 1, 2, 3, 4 to switch between "Intro", "Scales", "Heavy Heart", and "Light Heart" modes
+  -- Use keys 1-7 to switch between "Intro", "Questions", "Scales", "Heavy Heart", "Light Heart", "Wisdom Cards", and "Outro" modes
   -- Use keys B and D for toggling the 3D Perspective Box and Sceleton Dummy
   -- Use LEFT and RIGHT arrow keys to rotate between movements
+  -- Use key R to reset scene time to 0
   
   --------------
   
   TODO:
-  -- Add scales (the feather) to weigh the heart
-  -- Narrative fade-in and fade-out of different elements
-  -- User interaction to control the sequence
+  -- Add wisdom cards
+  -- Improve user interaction to control the sequence
   
 *****/
 
-// Live
+// Libs
 import processing.sound.*;
 import KinectPV2.KJoint;
 import KinectPV2.*;
 
+// Flags
+boolean is_live = false;
+boolean play_music = true;
+
 // Init
 KinectPV2 kinect;
 SoundFile soundFile;
-boolean is_live = false;
 
 Helper helper = new Helper();
 Parser parser = new Parser(helper);
@@ -44,11 +47,14 @@ Deity anubis = new Deity();
 User user = new User(parser.getPoints(), helper);
 Scales scales = new Scales(parser.getPoints(), helper);
 Output output = new Output(parser.getPoints());
+Wisdom wisdom = new Wisdom();
 QA qa = new QA(parser.getPoints());
 
 void setup() {
   
-  size(800, 800, P3D);
+  //fullScreen(P3D);
+  size(1000, 800, P3D);
+  
   background(0);
   frameRate(25);
   smooth(8);
