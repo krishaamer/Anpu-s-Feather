@@ -156,25 +156,25 @@ class QA {
       // Yes Button - Right Hand
       if (right_x > YES_button_X && right_x < YES_button_X + YES_button_W && right_y > YES_button_Y && right_y < YES_button_Y + YES_button_H) {
         decide("YES");
-        println("Gesture Right Hand: YES");
+        println("Gesture Right Hand: YES", right_x, right_y);
       }
       
       // Yes Button - Left Hand
       if (left_x > YES_button_X && left_x < YES_button_X + YES_button_W && left_y > YES_button_Y && left_y < YES_button_Y + YES_button_H) {
         decide("YES");
-        println("Gesture Left Hand: YES");
+        println("Gesture Left Hand: YES", left_x, left_y);
       }
       
       // No Button - Right Hand
       if (right_x > NO_button_X && right_x < NO_button_X + NO_button_W && right_y > NO_button_Y && right_y < NO_button_Y + NO_button_H) {
         decide("NO");
-        println("Gesture Right Hand: NO");
+        println("Gesture Right Hand: NO", right_x, right_y);
       }
       
       // No Button - Left Hand
       if (left_x > NO_button_X && left_x < NO_button_X + NO_button_W && left_y > NO_button_Y && left_y < NO_button_Y + NO_button_H) {
         decide("NO");
-        println("Gesture Left Hand: NO");
+        println("Gesture Left Hand: NO", left_x, left_y);
       }
   }
   
