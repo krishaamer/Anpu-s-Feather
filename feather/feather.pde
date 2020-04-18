@@ -46,7 +46,7 @@ Message message = new Message();
 Music music = new Music();
 River nile = new River();
 Deity anubis = new Deity();
-User user = new User(parser.getPoints(), helper);
+User user = new User(parser.getPoints());
 Scales scales = new Scales(parser.getPoints(), helper);
 Output output = new Output(parser.getPoints());
 QA qa = new QA(parser.getPoints());
@@ -93,7 +93,7 @@ void draw() {
   user.setMode(story.mode());
 
   // What's the story mode?
-  //println(story.mode(), story.time());
+  println(story.mode(), story.time());
   
   if (story.mode() == "scales") {
     scales ();
