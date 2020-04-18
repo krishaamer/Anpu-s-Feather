@@ -12,6 +12,7 @@ class QA {
   
   // Data
   ArrayList<PVector> skeleton_points;
+  float skeletonRatio = 200.0 / 600.0;
   
   // No
   int NO_button_H = 200;
@@ -129,30 +130,56 @@ class QA {
   void enableGestures () {
     
       // Translate Points - How to get this right???
+      
+      int capture_w = 1080; // 1280; // 640;
+      int capture_h = 1024; // 1024; // 480;
+      
+      int screen_w = width;
+      int screen_h = height;
+      
+      float left_x = map(skeleton_points.get(4).x, 0, capture_w, 0, screen_w) / skeletonRatio * 0.5;
+      float left_y = map(skeleton_points.get(4).y, 0, capture_h, 0, screen_h) / -skeletonRatio * 0.5;
+      
+      float right_x = map(skeleton_points.get(7).x, 0, capture_w, 0, screen_w) / skeletonRatio * 0.5;
+      float right_y = map(skeleton_points.get(7).y, 0, capture_h, 0, screen_h) / -skeletonRatio * 0.5;
+      
+      /*
+      float l_x = map(skeleton_points.get(4).x, 0, skeleton_points.get(4).x * 1000 * skeletonRatio * 0.4, 0, width);
+      float l_y = map(skeleton_points.get(4).y, 0, -skeleton_points.get(4).y * 1000 * skeletonRatio * 0.4, 0, height);
+      float r_x = map(skeleton_points.get(7).x, 0, skeleton_points.get(7).x * 1000 * skeletonRatio * 0.4, 0, width);
+      float r_y = map(skeleton_points.get(7).y, 0, -skeleton_points.get(7).y * 1000 * skeletonRatio * 0.4, 0, height);
+      float left_hand_x = skeleton_points.get(4).x * l_x;
+      float left_hand_y = skeleton_points.get(4).y * l_y;
+      float right_hand_x = skeleton_points.get(7).x * r_x;
+      float right_hand_y = skeleton_points.get(7).y * r_y;
+      */
+      
+      /*
       float left_hand_x = skeleton_points.get(4).x * 2.4;
       float left_hand_y = skeleton_points.get(4).y * -0.6;
       float right_hand_x = skeleton_points.get(7).x * 2.4;
       float right_hand_y = skeleton_points.get(7).y * -0.6;
+      */
+     
+      println("Right hand: ", YES_button_X, YES_button_X + YES_button_W, right_x, YES_button_Y, YES_button_Y + YES_button_H, right_y);
     
-      println("Right hand: ", YES_button_X, YES_button_X + YES_button_W, right_hand_x, YES_button_Y, YES_button_Y + YES_button_H, right_hand_y);
-      
       // Yes Button - Right Hand
-      if (right_hand_x > YES_button_X && right_hand_x < YES_button_X + YES_button_W && right_hand_y > YES_button_Y && right_hand_y < YES_button_Y + YES_button_H) {
+      if (right_x > YES_button_X && right_x < YES_button_X + YES_button_W && right_y > YES_button_Y && right_y < YES_button_Y + YES_button_H) {
         decide("YES");
       }
       
       // Yes Button - Left Hand
-      if (left_hand_x > YES_button_X && left_hand_x < YES_button_X + YES_button_W && left_hand_y > YES_button_Y && left_hand_y < YES_button_Y + YES_button_H) {
+      if (left_x > YES_button_X && left_x < YES_button_X + YES_button_W && left_y > YES_button_Y && left_y < YES_button_Y + YES_button_H) {
         decide("YES");
       }
       
       // No Button - Right Hand
-      if (right_hand_x > NO_button_X && right_hand_x < NO_button_X + NO_button_W && right_hand_y > NO_button_Y && right_hand_y < NO_button_Y + NO_button_H) {
+      if (right_x > NO_button_X && right_x < NO_button_X + NO_button_W && right_y > NO_button_Y && right_y < NO_button_Y + NO_button_H) {
         decide("NO");
       }
       
       // No Button - Left Hand
-      if (left_hand_x > NO_button_X && left_hand_x < NO_button_X + NO_button_W && left_hand_y > NO_button_Y && left_hand_y < NO_button_Y + NO_button_H) {
+      if (left_x > NO_button_X && left_x < NO_button_X + NO_button_W && left_y > NO_button_Y && left_y < NO_button_Y + NO_button_H) {
         decide("NO");
       }
   }
