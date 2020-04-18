@@ -234,54 +234,56 @@ void light () {
     
      background(0);
      message.setAlpha(0);
+     wisdom.startCapture();
   }
   
   // Begin scene
   if (story.time() > 0.1 && story.time() < 0.5) {
      
+    background(0);
     message.alert("YES", false);
   }
   
-  if (story.time() > 0.5 && story.time() < 2.9) {
+  if (story.time() > 0.5 && story.time() < 2) {
     
     background(0);
     message.say("Your heart seems light");
-    message.fadeIn(5);
+    message.fadeIn(8);
   }
   
-  if (story.time() > 2.9 && story.time() < 4) {
+  if (story.time() > 2 && story.time() < 3) {
      
     background(0);
     message.say("Your heart seems light");
     message.fadeOut(8);
   }
   
-  if (story.time() > 4 && story.time() < 4.1) {
+  if (story.time() > 3 && story.time() < 3.1) {
     
      background(0);
      message.setAlpha(0);
   }
   
-  if (story.time() > 4.1 && story.time() < 5) {
+  if (story.time() > 3.2 && story.time() < 4) {
     
     background(0);
     message.say("Show me");
     message.fadeIn(30);
   }
   
-  if (story.time() > 5 && story.time() < 5.9) {
+  if (story.time() > 4 && story.time() < 4.9) {
     
     background(0);
     message.say("Show me");
     message.fadeOut(30);
   }
-  
-  if (story.time() > 5.9 && story.time() < 6) {
+    
+  if (story.time() > 4.9 && story.time() < 5) {
     
      message.setAlpha(0);
   }
   
-  if (story.time() > 6 && story.time() < 9) {
+  if (story.time() > 0.1 && story.time() < 9) {
     
     blendMode(ADD);
     parser.read_data();
@@ -292,9 +294,9 @@ void light () {
   }
   
   // Capture image at the end of scene
-  if (story.time() > 8.9 && story.time() < 9) {
+  if (story.time() > 5 && story.time() < 5.1) {
     
-    wisdom.startCapture();
+    //wisdom.startCapture();
   }
   
   // Go to next mode

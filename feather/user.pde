@@ -14,8 +14,6 @@
 class User {
 
   ArrayList<PVector> skeleton_points;
-  Helper helper;
-  
   Boolean runOnce = false;
   String mode;
   int strokeAlpha, fillAlpha;
@@ -41,9 +39,8 @@ class User {
   float[]ay = new float[num2];
   /* END Light */
   
-  User (ArrayList<PVector> sp, Helper hp) {
+  User (ArrayList<PVector> sp) {
 
-    helper = hp;
     skeleton_points = sp;
   }
 
@@ -53,20 +50,14 @@ class User {
   }
 
   void update() {
-    
-    //helper.showFrameRate();
 
     if (mode == "light") {
 
       // Light
-      fill(0, 0, 0, fillAlpha);
-      rect(0, 0, width, height);
-      fill(255, fillAlpha);
-      ellipseMode(500);
+      fill(255, 255, 255, fillAlpha);
       pushMatrix();
       resetMatrix(); 
-      translate(0, 0, -600);
-      ellipseMode(500); 
+      translate(0, 0, -300);
       draw_user_light();
       popMatrix();
       
@@ -124,7 +115,7 @@ class User {
 
     if (!runOnce) {
 
-      background(0);
+      //background(0);
       for (int i =0; i< num2; i++) {
         xpos2[i] = random(-500, 500);
         ypos2[i] = random(-500, 500);
@@ -148,7 +139,7 @@ class User {
 
     float magnetism = 40.0; // Made the pull from the mouse key and automatic lines connect faster by adding 10 
     float radius = 1 ;
-    float principle = 0.95; // assigned to a different variable
+    float principle = 0.95;
 
     for (int i=0; i < num2; i++) {
 
@@ -213,15 +204,6 @@ class User {
   }
 
   void draw_user_heavy () {
-    
-    //float xpos = skeleton_points.get(9).x;
-    //float xposend = skeleton_points.get(0).x;
-    //float distx = xpos - xposend;
-    //float ypos = skeleton_points.get(9).y;
-    //float yposend = skeleton_points.get(0).y;
-    //float disty = ypos - yposend;
-    //float step = 0.1;  
-    //float pct = 0.0; 
 
     float x1 = (skeleton_points.get(4).x+skeleton_points.get(3).x)/2;
     float x2 = (skeleton_points.get(3).x+skeleton_points.get(2).x)/2;

@@ -71,7 +71,7 @@ class Scales {
 
   void update() {
      
-     blendMode(BLEND);
+     //blendMode(BLEND);
      pushMatrix();
      translate(0, 0, -200);
      tint(255, 255, 255, tintAlpha);
