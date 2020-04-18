@@ -32,6 +32,7 @@ import KinectPV2.*;
 // Flags
 boolean is_live = false;
 boolean play_music = true;
+boolean save_output = false;
 
 // Init
 KinectPV2 kinect;
@@ -48,8 +49,8 @@ Deity anubis = new Deity();
 User user = new User(parser.getPoints(), helper);
 Scales scales = new Scales(parser.getPoints(), helper);
 Output output = new Output(parser.getPoints());
-Wisdom wisdom = new Wisdom();
 QA qa = new QA(parser.getPoints());
+Wisdom wisdom = new Wisdom();
 
 void setup() {
   
@@ -60,8 +61,10 @@ void setup() {
   frameRate(25);
   smooth(8);
   
-  soundFile = new SoundFile(this, "anpu.wav");
-  music.play(soundFile);
+  if (play_music) {
+    soundFile = new SoundFile(this, "anpu.wav");
+    music.play(soundFile);
+  }
   
   graphics = createGraphics(width, height, P3D);
   wisdom.addLib(graphics);
@@ -133,6 +136,6 @@ void keyReleased () {
 void mouseMoved() {
    
   if (story.mode() == "questions") {
-    qa.enableButtons();
+    //qa.enableButtons();
   }
 }
