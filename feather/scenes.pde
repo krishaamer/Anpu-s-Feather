@@ -185,9 +185,10 @@ void scales () {
       
       scales.update();
       scales.fadeOut();
-      
       message.countdown(6, story.time());
     }
+    
+    wisdom.capture("start");
     
     message.say("You have passed the test");
     message.fadeIn(8);
@@ -209,6 +210,7 @@ void scales () {
   // Go to next mode
   if (story.time() > 10) {
    
+      wisdom.capture("end");
       message.setAlpha(0);
       story.resetTime();
       story.setMode("wisdom");
@@ -239,6 +241,7 @@ void light () {
   
   if (story.time() > 2.9 && story.time() < 4) {
      
+    background(0);
     message.say("Your heart seems light");
     message.fadeOut(8);
   }
@@ -251,12 +254,14 @@ void light () {
   
   if (story.time() > 4.1 && story.time() < 5) {
     
+    background(0);
     message.say("Show me");
     message.fadeIn(30);
   }
   
   if (story.time() > 5 && story.time() < 5.9) {
     
+    background(0);
     message.say("Show me");
     message.fadeOut(30);
   }
@@ -267,7 +272,7 @@ void light () {
      message.setAlpha(0);
   }
   
-  if (story.time() > 6 && story.time() < 26) {
+  if (story.time() > 6 && story.time() < 12) {
     
     blendMode(ADD);
     parser.read_data();
@@ -276,9 +281,20 @@ void light () {
     }
   }
   
+  // Capture image at the end of scene
+  if (story.time() > 5 && story.time() < 12) {
+    
+    wisdom.capture("start");
+    fill(255, 0, 0, 255);
+    rect(100, 100, 200, 200);
+    fill(255, 255, 255, 255);
+    text("test capture", 100, 100);
+  }
+  
   // Go to next mode
-  if (story.time() > 26) {
+  if (story.time() > 12) {
    
+      wisdom.capture("end");
       message.setAlpha(0);
       story.resetTime();
       story.setMode("scales");
@@ -321,6 +337,7 @@ void heavy () {
       user.update();
       user.fadeIn();
     }
+    wisdom.capture("start");
   }
   
   // Messages on top of the Model
@@ -344,6 +361,7 @@ void heavy () {
   // Go to next mode
   if (story.time() > 8) {
    
+      wisdom.capture("end");
       message.setAlpha(0);
       story.resetTime();
       story.setMode("scales");
@@ -366,6 +384,7 @@ void wisdom () {
   if (story.time() > 0.1 && story.time() < 3) {
     
     background(0);
+    wisdom.showCard();
     message.say("Sebayt");
     message.subtitle("Wisdom will guide you");
     message.fadeIn(8);
@@ -388,8 +407,8 @@ void wisdom () {
   if (story.time() > 5.2 && story.time() < 13) {
      
     background(0);
-    wisdom.card();
-    wisdom.fadeIn(8);
+    wisdom.showCard();
+    //wisdom.fadeIn(8);
     message.paragraph(wisdomQuote);
     message.fadeIn(8);
   }
@@ -397,8 +416,8 @@ void wisdom () {
   if (story.time() > 13 && story.time() < 15) {
      
     background(0);
-    wisdom.card();
-    wisdom.fadeOut(8);
+    wisdom.showCard();
+    //wisdom.fadeOut(8);
     message.paragraph(wisdomQuote);
     message.fadeOut(8);
   }
@@ -424,22 +443,25 @@ void outro () {
   // Begin scene
   if (story.time() > 0.1 && story.time() < 3) {
     
+    background(0);
     message.say("Ankhek!");
     message.subtitle("May you live");
     message.fadeIn(4);
   }
 
-  if (story.time() > 3 && story.time() < 5) {
-     
+  if (story.time() > 3 && story.time() < 6) {
+    
+    background(0);
     message.say("Ankhek!");
     message.subtitle("May you live");
-    message.fadeOut(4);
+    message.fadeOut(6);
   }
   
   // The End
-  if (story.time() > 5) {
+  if (story.time() > 6) {
    
       println("The end");
+      background(0);
       message.setAlpha(0);
   }
 }

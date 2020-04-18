@@ -36,6 +36,7 @@ boolean play_music = true;
 // Init
 KinectPV2 kinect;
 SoundFile soundFile;
+PGraphics graphics;
 
 Helper helper = new Helper();
 Parser parser = new Parser(helper);
@@ -61,6 +62,9 @@ void setup() {
   
   soundFile = new SoundFile(this, "anpu.wav");
   music.play(soundFile);
+  
+  graphics = createGraphics(width, height, P3D);
+  wisdom.addLib(graphics);
   
   if (is_live) {
     

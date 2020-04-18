@@ -13,8 +13,10 @@ class Wisdom {
   /* State */
   float alpha = 0;
   Boolean hasRun = false;
+  Boolean hasCaptured = false;
   
   /* Data */
+  PGraphics graphics;
   String quote;
   String[] quotes = { 
     "If you would only accomplish this, becoming expert in writing: Those writers of knowledge from the time of events after the gods, those who foretold the future, their names have become fixed for eternity, though they are gone, they have completed their lifespan, and all their kin are forgotten.", 
@@ -31,9 +33,43 @@ class Wisdom {
     
   }
   
-  void card () {
+  void addLib (PGraphics pg) {
     
+    graphics = pg;
+  }
+  
+  void capture (String mode) {
     
+    if (mode == "start") {
+      
+      graphics.beginDraw();
+      saveFrame("test/frame-######.png");
+      println("beginDraw");
+    }
+    
+    if (mode == "end") {
+      
+      graphics.endDraw();
+      println("endDraw");
+      hasCaptured = true;
+    }
+  }
+  
+  void showCard () {
+    
+     pushMatrix();
+     scale(0.5);
+     image(graphics, width / 2, 50); 
+     popMatrix();
+    
+     if (hasCaptured) {
+       
+       println("has captured");
+       
+     } else {
+       
+       println("missing wisdom capture data");
+     }
   }
   
   String getQuote () {
