@@ -38,27 +38,26 @@ class Wisdom {
     graphics = pg;
   }
   
-  void capture (String mode) {
+  void startCapture () {
     
-    if (mode == "start") {
-      
-      graphics.beginDraw();
-      saveFrame("test/frame-######.png");
-      println("beginDraw");
-    }
+    graphics.beginDraw();
+    //saveFrame("test/frame-######.png");
+    println("beginDraw");
     
-    if (mode == "end") {
-      
-      graphics.endDraw();
-      println("endDraw");
-      hasCaptured = true;
-    }
+  }
+  
+  void endCapture () {
+    
+    graphics.endDraw();
+    println("endDraw");
+    hasCaptured = true;
   }
   
   void showCard () {
     
      pushMatrix();
      scale(0.5);
+     //tint(0, 0, 0, alpha);
      image(graphics, width / 2, 50); 
      popMatrix();
     

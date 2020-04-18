@@ -188,7 +188,7 @@ void scales () {
       message.countdown(6, story.time());
     }
     
-    wisdom.capture("start");
+    wisdom.startCapture();
     
     message.say("You have passed the test");
     message.fadeIn(8);
@@ -207,10 +207,20 @@ void scales () {
     message.fadeOut(8);
   }
   
+  // Capture image at the end of scene
+  if (story.time() > 9.9 && story.time() < 10) {
+    
+    //wisdom.startCapture();
+    fill(0, 0, 255, 255);
+    rect(100, 100, 200, 200);
+    fill(255, 255, 255, 255);
+    text("test capture", 100, 100);
+  }
+  
   // Go to next mode
   if (story.time() > 10) {
    
-      wisdom.capture("end");
+      //wisdom.endCapture();
       message.setAlpha(0);
       story.resetTime();
       story.setMode("wisdom");
@@ -268,36 +278,32 @@ void light () {
   
   if (story.time() > 5.9 && story.time() < 6) {
     
-     background(0);
      message.setAlpha(0);
   }
   
-  if (story.time() > 6 && story.time() < 12) {
+  if (story.time() > 6 && story.time() < 9) {
     
     blendMode(ADD);
     parser.read_data();
     if (parser.isStreaming()) {
       user.update();
+      user.fadeIn();
     }
   }
   
   // Capture image at the end of scene
-  if (story.time() > 5 && story.time() < 12) {
+  if (story.time() > 8.9 && story.time() < 9) {
     
-    wisdom.capture("start");
-    fill(255, 0, 0, 255);
-    rect(100, 100, 200, 200);
-    fill(255, 255, 255, 255);
-    text("test capture", 100, 100);
+    wisdom.startCapture();
   }
   
   // Go to next mode
-  if (story.time() > 12) {
+  if (story.time() > 9) {
    
-      wisdom.capture("end");
+      wisdom.endCapture();
       message.setAlpha(0);
       story.resetTime();
-      story.setMode("scales");
+      story.setMode("wisdom");
   }
 }
 
@@ -337,7 +343,6 @@ void heavy () {
       user.update();
       user.fadeIn();
     }
-    wisdom.capture("start");
   }
   
   // Messages on top of the Model
@@ -358,13 +363,19 @@ void heavy () {
     message.fadeOut(8);
   }
   
+  // Capture image at the end of scene
+  if (story.time() > 7.9 && story.time() < 8) {
+    
+    wisdom.startCapture();
+  }
+  
   // Go to next mode
   if (story.time() > 8) {
    
-      wisdom.capture("end");
+      wisdom.endCapture();
       message.setAlpha(0);
       story.resetTime();
-      story.setMode("scales");
+      story.setMode("wisdom");
   }
 }
 
@@ -408,7 +419,7 @@ void wisdom () {
      
     background(0);
     wisdom.showCard();
-    //wisdom.fadeIn(8);
+    wisdom.fadeIn(8);
     message.paragraph(wisdomQuote);
     message.fadeIn(8);
   }
@@ -417,7 +428,7 @@ void wisdom () {
      
     background(0);
     wisdom.showCard();
-    //wisdom.fadeOut(8);
+    wisdom.fadeOut(8);
     message.paragraph(wisdomQuote);
     message.fadeOut(8);
   }
