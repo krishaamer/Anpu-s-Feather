@@ -352,6 +352,9 @@ void heavy () {
 
 void wisdom () {
   
+  // Get Data
+  String wisdomQuote = wisdom.getQuote();
+  
   // Reset
   if (story.time() > 0 && story.time() < 0.1) {
     
@@ -361,19 +364,47 @@ void wisdom () {
   
   // Begin scene
   if (story.time() > 0.1 && story.time() < 3) {
-     
-    message.say("The Wisdom Card will guide you");
+    
+    background(0);
+    message.say("Sebayt");
+    message.subtitle("Wisdom will guide you");
     message.fadeIn(8);
   }
 
   if (story.time() > 3 && story.time() < 5) {
      
-    message.say("The Wisdom Card will guide you");
+    background(0);
+    message.say("Sebayt");
+    message.subtitle("Wisdom will guide you");
+    message.fadeOut(8);
+  }
+  
+  if (story.time() > 5 && story.time() < 5.1) {
+     
+    background(0);
+    message.setAlpha(0);
+  }
+  
+  if (story.time() > 5.2 && story.time() < 13) {
+     
+    background(0);
+    wisdom.card();
+    wisdom.fadeIn(8);
+    message.paragraph(wisdomQuote);
+    message.fadeIn(8);
+  }
+
+  if (story.time() > 13 && story.time() < 15) {
+     
+    background(0);
+    wisdom.card();
+    wisdom.fadeOut(8);
+    message.paragraph(wisdomQuote);
     message.fadeOut(8);
   }
   
   // End
-  if (story.time() > 5) {
+  if (story.time() > 15) {
    
       message.setAlpha(0);
       story.resetTime();

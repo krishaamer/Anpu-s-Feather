@@ -10,6 +10,12 @@
 
 class Wisdom {
   
+  /* State */
+  float alpha = 0;
+  Boolean hasRun = false;
+  
+  /* Data */
+  String quote;
   String[] quotes = { 
     "If you would only accomplish this, becoming expert in writing: Those writers of knowledge from the time of events after the gods, those who foretold the future, their names have become fixed for eternity, though they are gone, they have completed their lifespan, and all their kin are forgotten.", 
     "They did not make for themselves a chapel of copper, or a stela for it of iron from the sky. They did not manage to leave heirs, from their children, to pronounce their names, but they have achieved heirs out of writings, out of the teachings in those.", 
@@ -25,11 +31,57 @@ class Wisdom {
     
   }
   
-  void makeCard () {
+  void card () {
     
     
-
-    println();
   }
   
+  String getQuote () {
+    
+    if (!hasRun) {
+    
+      hasRun = true;
+      int i = int(random(quotes.length));
+      quote = quotes[i];
+    }
+    
+    return quote;
+  }
+  
+  void setAlpha (int a) {
+    
+    alpha = a;
+  }
+  
+  void fadeIn (float speed) {
+    
+    if (alpha < 255) {  
+        
+        // Alpha is smaller than 255
+        alpha += speed;
+        
+      } else {
+        
+        // Reset to 255 if larger
+        if (alpha > 255) {
+          alpha = 255;
+        }
+    }
+  }
+  
+  void fadeOut (float speed) {
+    
+    if (alpha > 0) {
+      
+      // Alpha is bigger than 0
+      alpha -= speed;
+      
+    } else {
+      
+      // Reset to 0 if smaller
+      if (alpha < 0) {
+        alpha = 0;
+      }
+    }
+  }
 }

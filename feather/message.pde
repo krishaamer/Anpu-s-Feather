@@ -119,4 +119,16 @@ class Message {
     text(msg, x, y); 
   }
   
+  void paragraph (String msg) {
+    
+    x = width / 2;
+    y = height;
+    
+    textSize(20);
+    rectMode(CENTER);
+    textAlign(CENTER);
+    fill (255, 255, 255, alpha);
+    text(msg, x, y, width - 100, height - 100); 
+  }
+  
 }
