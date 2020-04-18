@@ -17,7 +17,6 @@ class User {
   Helper helper;
   
   Boolean runOnce = false;
-  Boolean alreadyReset = false;
   String mode;
   int strokeAlpha, fillAlpha;
 
@@ -52,16 +51,6 @@ class User {
 
     mode = m;
   }
-  
-  void resetBG () {
-  
-    if (!alreadyReset) {
-      
-      alreadyReset = true;
-      background(0);
-      println("reset bg");
-    }
-  }
 
   void update() {
     
@@ -70,7 +59,6 @@ class User {
     if (mode == "light") {
 
       // Light
-      //background(0, 0, 0, 255);
       fill(0, 0, 0, fillAlpha);
       rect(0, 0, width, height);
       fill(255, fillAlpha);
@@ -104,7 +92,7 @@ class User {
       pushMatrix();
       resetMatrix();
       translate(0, 0, -300);
-      scale(0.4);
+      scale(0.5);
       draw_user_hands();
       popMatrix();
     }
