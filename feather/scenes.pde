@@ -267,7 +267,7 @@ void light () {
      message.setAlpha(0);
   }
   
-  if (story.time() > 6 && story.time() < 16) {
+  if (story.time() > 6 && story.time() < 26) {
     
     blendMode(ADD);
     parser.read_data();
@@ -277,7 +277,7 @@ void light () {
   }
   
   // Go to next mode
-  if (story.time() > 16) {
+  if (story.time() > 26) {
    
       message.setAlpha(0);
       story.resetTime();
