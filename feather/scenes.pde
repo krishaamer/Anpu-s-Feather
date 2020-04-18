@@ -166,61 +166,34 @@ void scales () {
      message.setAlpha(0);
   }
   
-  if (story.time() > 0.1 && story.time() < 5) {
+  if (story.time() > 0.1 && story.time() < 7) {
      
     parser.read_data();
     if (parser.isStreaming()) {
 
       scales.update();
       scales.fadeIn();
-      
-      message.countdown(6, story.time());
+      message.countdown(7, story.time());
     }
   }
   
-  if (story.time() > 5 && story.time() < 7) {
-     
-    parser.read_data();
-    if (parser.isStreaming()) {
-      
-      scales.update();
-      scales.fadeOut();
-      message.countdown(6, story.time());
-    }
+  // Messages on top of the Model  
+  if (story.time() > 7 && story.time() < 8) {
     
-    wisdom.startCapture();
-    
+    background(0);
     message.say("You have passed the test");
     message.fadeIn(8);
   }
-
-  if (story.time() > 7 && story.time() < 10) {
+  
+  if (story.time() > 8 && story.time() < 9) {
     
-    parser.read_data();
-    if (parser.isStreaming()) {
-      
-      scales.update();
-      scales.fadeOut();
-    }
-     
     message.say("You have passed the test");
     message.fadeOut(8);
   }
   
-  // Capture image at the end of scene
-  if (story.time() > 9.9 && story.time() < 10) {
-    
-    //wisdom.startCapture();
-    fill(0, 0, 255, 255);
-    rect(100, 100, 200, 200);
-    fill(255, 255, 255, 255);
-    text("test capture", 100, 100);
-  }
-  
   // Go to next mode
-  if (story.time() > 10) {
+  if (story.time() > 8) {
    
-      //wisdom.endCapture();
       message.setAlpha(0);
       story.resetTime();
       story.setMode("wisdom");
