@@ -389,14 +389,14 @@ void wisdom () {
     background(0);
     message.setAlpha(0);
   }
-  
+
   if (story.time() > 5.2 && story.time() < 13) {
      
     background(0);
     wisdom.showCard();
     wisdom.fadeIn(8);
-    message.paragraph(wisdomQuote);
-    message.fadeIn(8);
+    //message.paragraph(wisdomQuote);
+   // message.fadeIn(8);
   }
 
   if (story.time() > 13 && story.time() < 15) {
@@ -404,10 +404,10 @@ void wisdom () {
     background(0);
     wisdom.showCard();
     wisdom.fadeOut(8);
-    message.paragraph(wisdomQuote);
-    message.fadeOut(8);
+   // message.paragraph(wisdomQuote);
+   // message.fadeOut(8);
   }
-  
+
   // End
   if (story.time() > 15) {
    

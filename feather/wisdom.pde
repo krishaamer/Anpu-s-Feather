@@ -14,9 +14,11 @@ class Wisdom {
   float alpha = 0;
   Boolean hasRun = false;
   Boolean hasCaptured = false;
+  PFont mono;
   
   /* Data */
   PGraphics graphics;
+  PImage wisdomcard;
   String quote;
   String[] quotes = { 
     "If you would only accomplish this, becoming expert in writing: Those writers of knowledge from the time of events after the gods, those who foretold the future, their names have become fixed for eternity, though they are gone, they have completed their lifespan, and all their kin are forgotten.", 
@@ -54,12 +56,19 @@ class Wisdom {
   }
   
   void showCard () {
-    
+     
+     wisdomcard=loadImage("Wisdomcard2.jpg");
+     image(wisdomcard,0,0);
      pushMatrix();
      scale(0.5);
      //tint(0, 0, 0, alpha);
-     image(graphics, width / 2, 50); 
+     image(graphics, width / 2-450, 350); 
      popMatrix();
+     fill(255,150);
+     mono = loadFont("TimesNewRomanPSMT-20.vlw");
+     textFont(mono);
+     textSize(20);
+     text(quote, width / 2+220, 450, 300, 300); 
     
      if (hasCaptured) {
        
@@ -78,8 +87,10 @@ class Wisdom {
       hasRun = true;
       int i = int(random(quotes.length));
       quote = quotes[i];
-    }
+
+        
     
+    }
     return quote;
   }
   
