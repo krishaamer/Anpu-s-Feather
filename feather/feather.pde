@@ -2,8 +2,8 @@
   
   Anpu's Feather.
   An interactive experience inviting you to think about your life before death.
-
   Created by Lei Lin and Kris Haamer at NCKU ICID Digital Design class.
+  
   Tainan, Taiwan 
   April, 2020
   
@@ -21,6 +21,9 @@
   TODO:
   -- Add wisdom cards
   -- Improve user interaction to control the sequence
+  
+  DEV HISTORY:
+  -- https://github.com/krishaamer/Anpu-s-Feather
   
 *****/
 
