@@ -14,7 +14,7 @@ class Wisdom {
   float alpha = 0;
   Boolean hasRun = false;
   Boolean hasCaptured = false;
-  PFont mono;
+  //PFont mono;
   
   /* Data */
   PGraphics graphics;
@@ -64,12 +64,13 @@ class Wisdom {
      //tint(0, 0, 0, alpha);
      image(graphics, width / 2-450, 350); 
      popMatrix();
+     
      fill(255,150);
-     mono = loadFont("TimesNewRomanPSMT-20.vlw");
-     textFont(mono);
+     //mono = loadFont("TimesNewRomanPSMT-20.vlw");
+     //textFont(mono);
      textSize(20);
      text(quote, width / 2+220, 450, 300, 300); 
-    
+     
      if (hasCaptured) {
        
        println("has captured");

@@ -66,7 +66,7 @@ class Scales {
     }
     
     img = loadImage("feather_small.png");
-    image(img, 0, feathery);
+    image(img, 200, feathery);
   }
 
   void update() {
