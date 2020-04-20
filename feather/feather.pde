@@ -34,9 +34,9 @@ import KinectPV2.*;
 
 // Flags
 boolean is_live = false;
-boolean play_music = true;
+boolean play_music = false;
 boolean save_output = false;
-boolean enable_mouse_interaction = true;
+boolean enable_mouse_interaction = false;
 
 // Init
 KinectPV2 kinect;
@@ -98,7 +98,7 @@ void draw() {
   user.setMode(story.mode());
 
   // What's the story mode?
-  println(story.mode(), story.time());
+  //println(story.mode(), story.time());
   
   if (story.mode() == "scales") {
     scales ();
