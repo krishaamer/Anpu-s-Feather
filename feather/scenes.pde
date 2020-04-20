@@ -260,7 +260,7 @@ void light () {
      message.setAlpha(0);
   }
   
-  if (story.time() > 0.1 && story.time() < 19.9) {
+  if (story.time() > 4 && story.time() < 19.9) {
     
     blendMode(ADD);
     parser.read_data();
