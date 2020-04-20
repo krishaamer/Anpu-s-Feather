@@ -36,6 +36,7 @@ import KinectPV2.*;
 boolean is_live = false;
 boolean play_music = true;
 boolean save_output = false;
+boolean enable_mouse_interaction = true;
 
 // Init
 KinectPV2 kinect;
@@ -57,8 +58,8 @@ Wisdom wisdom = new Wisdom();
 
 void setup() {
   
-  //fullScreen(P3D);
-  size(1000, 800, P3D);
+  fullScreen(P3D);
+  //size(1000, 800, P3D);
   
   background(0);
   frameRate(25);
@@ -71,6 +72,7 @@ void setup() {
   
   graphics = createGraphics(width, height, P3D);
   wisdom.addLib(graphics);
+  user.addLib(graphics);
   
   if (is_live) {
     
@@ -138,7 +140,7 @@ void keyReleased () {
 
 void mouseMoved() {
    
-  if (story.mode() == "questions") {
-    //qa.enableButtons();
+  if (enable_mouse_interaction && story.mode() == "questions") {
+    qa.enableButtons();
   }
 }
