@@ -63,7 +63,7 @@ class Wisdom {
      //tint(0, 0, 0, alpha);
      pushMatrix();
      scale(0.5);
-     image(graphics, width / 2 + 50, height / 2 + 370); 
+     image(graphics, width / 2 + 250, height / 2 + 400); 
      popMatrix();
      
      //mono = loadFont("TimesNewRomanPSMT-20.vlw");
