@@ -128,7 +128,7 @@ class User {
   void endCapture () {
     
     shouldCapture = false;
-    println("uzer endDraw");
+    println("User endDraw");
   }
 
   void draw_user_light () {
