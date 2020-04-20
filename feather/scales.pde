@@ -21,11 +21,17 @@ class Scales {
   float yn2=0;
   float feathery=-300;
   float easingy = 0.01; 
+  String startFrom;
 
   Scales (ArrayList<PVector> sp, Helper h) {
 
     skeleton_points = sp;
     helper = h;
+  }
+  
+  void startFrom (String t) {
+    
+    startFrom = t;
   }
 
   void calculateFeatherWeight () {
@@ -43,41 +49,42 @@ class Scales {
     float val2=val1;
 
 
-    if (val2==100) {
+    if (val2 == 100) {
       
-      val2=random(100, 300);
+      val2 = random(100, 300);
     }
     
-    if (val2<0) {
+    if (val2 < 0) {
       
-      val2=random(-480, -100);
+      val2 = random(-480, -100);
     }
     
-    //println(val2);
-
-    if (abs(val2-feathery)>100) {
+    if (abs(val2 - feathery) > 100) {
       
-      feathery+=(val2- feathery) * easingy;
-      
+      feathery +=(val2 - feathery) * easingy;
+       
     } else {      
       
       t = t+0.2; 
-      feathery=feathery+sin(t)*5;
+      feathery = feathery + sin(t) * 5;
     }
     
     img = loadImage("feather_small.png");
-    image(img, 200, feathery);
+    imageMode(CENTER);
+    
+    if (startFrom == "top") {
+      image(img, width / 2, feathery);
+    } else {
+      image(img, width / 2, feathery + height / 2);
+    }
   }
 
   void update() {
      
-     //blendMode(BLEND);
      pushMatrix();
      translate(0, 0, -200);
      tint(255, 255, 255, tintAlpha);
      calculateFeatherWeight();
-     //img = loadImage("feather_small.png");
-     //image(img, 0, 0);
      popMatrix();
   }
 
