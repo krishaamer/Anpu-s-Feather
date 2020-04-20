@@ -12,18 +12,17 @@ class QA {
   
   // Data
   ArrayList<PVector> skeleton_points;
-  float skeletonRatio = 200.0 / 600.0;
   
   // No
-  int NO_button_H = 250;
-  int NO_button_W = 250;
+  int NO_button_H = 350;
+  int NO_button_W = 350;
   int NO_button_X;
   int NO_button_Y;
   boolean NO_button_inside = false;
   
   // Yes
-  int YES_button_W = 250;
-  int YES_button_H = 250;
+  int YES_button_W = 350;
+  int YES_button_H = 350;
   int YES_button_X;
   int YES_button_Y;
   boolean YES_button_inside = false;
