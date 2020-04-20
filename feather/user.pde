@@ -162,7 +162,7 @@ class User {
     }
 
     float magnetism = 40.0; // Made the pull from the mouse key and automatic lines connect faster by adding 10 
-    float radius = 1 ;
+    float radius = 3;
     float principle = 0.95;
 
     for (int i=0; i < num2; i++) {
