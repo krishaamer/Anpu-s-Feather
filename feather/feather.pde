@@ -92,7 +92,7 @@ void setup() {
 }
 
 void draw() {
-  
+
   // Shared
   helper.update();
   story.update();
