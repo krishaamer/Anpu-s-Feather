@@ -8,7 +8,13 @@
   April, 2020
   
   --------------
+  HOW TO USE? ** FOR END USER **:
+  -- 1) Answer Anpu's question (YES or NO)
+  -- 2) Show the heavyness of your heart by moving your body
+  -- 3) Show the business of your life by moving the feather
+  -- 4) Receive the wisdom card
   
+  --------------
   HOW TO USE? ** FOR TESTING **:
   Keyboard shortcuts will be replaced by user interaction
   -- Use keys 1-7 to switch between "Intro", "Questions", "Scales", "Heavy Heart", "Light Heart", "Wisdom Cards", and "Outro" modes
@@ -17,11 +23,6 @@
   -- Use key R to reset scene time to 0
   
   --------------
-  
-  TODO:
-  -- Add wisdom cards
-  -- Improve user interaction to control the sequence
-  
   DEV HISTORY:
   -- https://github.com/krishaamer/Anpu-s-Feather
   
@@ -51,7 +52,7 @@ Music music = new Music();
 River nile = new River();
 Deity anubis = new Deity();
 User user = new User(parser.getPoints());
-Scales scales = new Scales(parser.getPoints(), helper);
+Scales scales = new Scales(parser.getPoints());
 Output output = new Output(parser.getPoints());
 QA qa = new QA(parser.getPoints());
 Wisdom wisdom = new Wisdom(parser.getPoints());

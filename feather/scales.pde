@@ -8,8 +8,6 @@ class Scales {
 
   // Data
   ArrayList<PVector> skeleton_points;
-  Helper helper;
-
   PImage img;
   int tintAlpha;
 
@@ -23,10 +21,9 @@ class Scales {
   float easingy = 0.01; 
   String startFrom;
 
-  Scales (ArrayList<PVector> sp, Helper h) {
+  Scales (ArrayList<PVector> sp) {
 
     skeleton_points = sp;
-    helper = h;
   }
   
   void startFrom (String t) {
