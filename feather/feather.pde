@@ -60,7 +60,7 @@ Wisdom wisdom = new Wisdom(parser.getPoints());
 void setup() {
   
   //fullScreen(P3D);
-  size(1000, 800, P3D);
+  size(1280, 900, P3D);
   
   background(0);
   frameRate(25);
