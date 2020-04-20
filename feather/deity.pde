@@ -28,8 +28,8 @@ class Deity {
     rows = 25;
     alpha = 0;
     speed = .05;
-    strokeAlpha = 0; // 220
-    fillAlpha = 0; // 255
+    strokeAlpha = 0;
+    fillAlpha = 0;
     featureStrokeAlpha = 0;
     featureFillAlpha = 0;
   }
