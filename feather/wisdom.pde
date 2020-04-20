@@ -22,6 +22,7 @@ class Wisdom {
   PGraphics graphics;
   PImage card_bg;
   String quote;
+  
   String[] quotes = { 
     "If you would only accomplish this, becoming expert in writing: Those writers of knowledge from the time of events after the gods, those who foretold the future, their names have become fixed for eternity, though they are gone, they have completed their lifespan, and all their kin are forgotten.", 
     "They did not make for themselves a chapel of copper, or a stela for it of iron from the sky. They did not manage to leave heirs, from their children, to pronounce their names, but they have achieved heirs out of writings, out of the teachings in those.", 
@@ -57,7 +58,8 @@ class Wisdom {
   }
 
   void showCard () {
-     
+     float distm=(width / 2-skeleton_points.get(15).x );
+     float distn=skeleton_points.get(15).x+distm;
      card_bg = loadImage("wisdom_card_bg.jpg");
      imageMode(CENTER);
      image(card_bg, width / 2, height / 2);
@@ -65,7 +67,7 @@ class Wisdom {
      //tint(0, 0, 0, alpha);
      pushMatrix();
      scale(0.5);
-     image(graphics, width / 2 + 250, height / 2 + 400); 
+     image(graphics, distn+250, height / 2 + 400); 
      popMatrix();
      
      //mono = loadFont("TimesNewRomanPSMT-20.vlw");
