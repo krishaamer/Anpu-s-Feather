@@ -18,6 +18,8 @@ class QA {
   int NO_button_W = 350;
   int NO_button_X;
   int NO_button_Y;
+  int NO_button_Z_MIN = -900;
+  int NO_button_Z_MAX = 5900;
   boolean NO_button_inside = false;
   
   // Yes
@@ -25,6 +27,8 @@ class QA {
   int YES_button_H = 350;
   int YES_button_X;
   int YES_button_Y;
+  int YES_button_Z_MIN = -900;
+  int YES_button_Z_MAX = 900;
   boolean YES_button_inside = false;
   
   QA (ArrayList<PVector> sp) {
@@ -120,28 +124,60 @@ class QA {
     
       float left_x = skeleton_points.get(4).x + width / 2;
       float left_y = skeleton_points.get(4).y + height / 2;
+      float left_z = skeleton_points.get(4).z;
       
       float right_x = skeleton_points.get(7).x + width / 2;
       float right_y = skeleton_points.get(7).y + height / 2;
+      float right_z = skeleton_points.get(7).z;
+      
+      println(right_z, left_z);
          
       
       // Yes Button - Right Hand
-      if (right_x > YES_button_X && right_x < YES_button_X + YES_button_W && right_y > YES_button_Y && right_y < YES_button_Y + YES_button_H) {
+      if (
+          right_x > YES_button_X && 
+          right_x < YES_button_X + YES_button_W && 
+          right_y > YES_button_Y && 
+          right_y < YES_button_Y + YES_button_H &&
+          right_z > YES_button_Z_MIN &&
+          right_z < YES_button_Z_MAX
+      ) {
         decide("YES");
       } 
       
       // No Button - Right Hand
-      if (right_x > NO_button_X && right_x < NO_button_X + NO_button_W && right_y > NO_button_Y && right_y < NO_button_Y + NO_button_H) {
+      if (
+        right_x > NO_button_X && 
+        right_x < NO_button_X + NO_button_W && 
+        right_y > NO_button_Y && 
+        right_y < NO_button_Y + NO_button_H &&
+        right_z > NO_button_Z_MIN &&
+        right_z < NO_button_Z_MAX
+      ) {
         decide("NO");
       }
       
       // Yes Button - Left Hand
-      if (left_x > YES_button_X && left_x < YES_button_X + YES_button_W && left_y > YES_button_Y && left_y < YES_button_Y + YES_button_H) {
+      if (
+        left_x > YES_button_X && 
+        left_x < YES_button_X + YES_button_W && 
+        left_y > YES_button_Y && 
+        left_y < YES_button_Y + YES_button_H &&
+        left_z > YES_button_Z_MIN &&
+        left_z < YES_button_Z_MAX
+      ) {
         decide("YES");
       }
       
       // No Button - Left Hand
-      if (left_x > NO_button_X && left_x < NO_button_X + NO_button_W && left_y > NO_button_Y && left_y < NO_button_Y + NO_button_H) {
+      if (
+        left_x > NO_button_X && 
+        left_x < NO_button_X + NO_button_W && 
+        left_y > NO_button_Y && 
+        left_y < NO_button_Y + NO_button_H &&
+        left_z > NO_button_Z_MIN &&
+        left_z < NO_button_Z_MAX
+      ) {
         decide("NO");
       }
   }
