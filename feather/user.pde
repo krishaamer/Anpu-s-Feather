@@ -13,10 +13,13 @@
 
 class User {
 
+  // Data
   ArrayList<PVector> skeleton_points;
   Boolean runOnce = false;
   String mode;
   int strokeAlpha, fillAlpha;
+  PGraphics graphics;
+  Boolean shouldCapture = false;
 
   /* Light */
   int num = 15;
@@ -42,6 +45,11 @@ class User {
   User (ArrayList<PVector> sp) {
 
     skeleton_points = sp;
+  }
+  
+  void addLib (PGraphics pg) {
+    
+    graphics = pg;
   }
 
   void setMode (String m) {
@@ -110,11 +118,27 @@ class User {
       strokeAlpha--;
     }
   }
+  
+  void startCapture () {
+    
+    shouldCapture = true;
+    println("User beginDraw");
+  }
+  
+  void endCapture () {
+    
+    shouldCapture = false;
+    println("uzer endDraw");
+  }
 
   void draw_user_light () {
+    
+    if (shouldCapture) {
+      graphics.beginDraw();
+    }
 
     if (!runOnce) {
-
+      
       //background(0);
       for (int i =0; i< num2; i++) {
         xpos2[i] = random(-500, 500);
@@ -201,9 +225,17 @@ class User {
       sphere(4);
       popMatrix();
     }
+    
+    if (shouldCapture) {
+      graphics.endDraw();
+    }
   }
 
   void draw_user_heavy () {
+    
+    if (shouldCapture) {
+      graphics.beginDraw();
+    }
 
     float x1 = (skeleton_points.get(4).x+skeleton_points.get(3).x)/2;
     float x2 = (skeleton_points.get(3).x+skeleton_points.get(2).x)/2;
@@ -308,6 +340,9 @@ class User {
     ellipse(skeleton_points.get(15).x+40, y14, 120, 120);
     ellipse(skeleton_points.get(15).x-40, y14, 120, 120);
     
+     if (shouldCapture) {
+      graphics.endDraw();
+    }
   }
   
   void draw_user_hands () {
