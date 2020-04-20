@@ -12,13 +12,14 @@ class Wisdom {
   
   /* State */
   float alpha = 0;
+  //int tintAlpha;
   Boolean hasRun = false;
   Boolean hasCaptured = false;
   //PFont mono;
   
   /* Data */
   PGraphics graphics;
-  PImage wisdomcard;
+  PImage card_bg;
   String quote;
   String[] quotes = { 
     "If you would only accomplish this, becoming expert in writing: Those writers of knowledge from the time of events after the gods, those who foretold the future, their names have become fixed for eternity, though they are gone, they have completed their lifespan, and all their kin are forgotten.", 
@@ -43,9 +44,7 @@ class Wisdom {
   void startCapture () {
     
     graphics.beginDraw();
-    //saveFrame("test/frame-######.png");
     println("beginDraw");
-    
   }
   
   void endCapture () {
@@ -54,23 +53,26 @@ class Wisdom {
     println("endDraw");
     hasCaptured = true;
   }
-  
+
   void showCard () {
      
-     wisdomcard=loadImage("Wisdomcard2.jpg");
-     image(wisdomcard,0,0);
+     card_bg = loadImage("wisdom_card_bg.jpg");
+     imageMode(CENTER);
+     image(card_bg, width / 2, height / 2);
+     
+     //tint(0, 0, 0, alpha);
      pushMatrix();
      scale(0.5);
-     //tint(0, 0, 0, alpha);
-     image(graphics, width / 2-450, 350); 
+     image(graphics, width / 2 + 50, height / 2 + 370); 
      popMatrix();
      
-     fill(255,150);
      //mono = loadFont("TimesNewRomanPSMT-20.vlw");
      //textFont(mono);
+     fill(255);
      textSize(20);
-     text(quote, width / 2+220, 450, 300, 300); 
+     text(quote, width / 2 + 220, height / 2 + 140, 300, 500); 
      
+     /*
      if (hasCaptured) {
        
        println("has captured");
@@ -79,6 +81,7 @@ class Wisdom {
        
        println("missing wisdom capture data");
      }
+     */
   }
   
   String getQuote () {
@@ -88,9 +91,6 @@ class Wisdom {
       hasRun = true;
       int i = int(random(quotes.length));
       quote = quotes[i];
-
-        
-    
     }
     return quote;
   }
@@ -98,9 +98,16 @@ class Wisdom {
   void setAlpha (int a) {
     
     alpha = a;
+    //tintAlpha = a;
   }
   
   void fadeIn (float speed) {
+    
+    /*
+    if (tintAlpha < 255) { 
+      tintAlpha++;
+    }
+    */
     
     if (alpha < 255) {  
         
@@ -117,6 +124,12 @@ class Wisdom {
   }
   
   void fadeOut (float speed) {
+    
+    /*
+    if (tintAlpha > 0) { 
+      tintAlpha--;
+    }
+    */
     
     if (alpha > 0) {
       
