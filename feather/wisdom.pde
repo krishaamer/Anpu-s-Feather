@@ -18,6 +18,7 @@ class Wisdom {
   //PFont mono;
   
   /* Data */
+  ArrayList<PVector> skeleton_points;
   PGraphics graphics;
   PImage card_bg;
   String quote;
@@ -32,8 +33,9 @@ class Wisdom {
     "Those who knew how to foretell the future, What came from their mouths took place, and may be found in (their) phrasing. They are given the offspring of others as heirs as if their (own) children. They hid their powers from the whole land, to be read in (their) teachings. They are gone, their names might be forgotten, but writing lets them be remembered."
   };
   
-  Wisdom () {
+  Wisdom (ArrayList<PVector> sp) {
     
+    skeleton_points = sp;
   }
   
   void addLib (PGraphics pg) {

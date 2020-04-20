@@ -54,12 +54,12 @@ User user = new User(parser.getPoints());
 Scales scales = new Scales(parser.getPoints(), helper);
 Output output = new Output(parser.getPoints());
 QA qa = new QA(parser.getPoints());
-Wisdom wisdom = new Wisdom();
+Wisdom wisdom = new Wisdom(parser.getPoints());
 
 void setup() {
   
-  fullScreen(P3D);
-  //size(1000, 800, P3D);
+  //fullScreen(P3D);
+  size(1000, 800, P3D);
   
   background(0);
   frameRate(25);
