@@ -15,15 +15,15 @@ class QA {
   float skeletonRatio = 200.0 / 600.0;
   
   // No
-  int NO_button_H = 200;
-  int NO_button_W = 200;
+  int NO_button_H = 250;
+  int NO_button_W = 250;
   int NO_button_X;
   int NO_button_Y;
   boolean NO_button_inside = false;
   
   // Yes
-  int YES_button_W = 200;
-  int YES_button_H = 200;
+  int YES_button_W = 250;
+  int YES_button_H = 250;
   int YES_button_X;
   int YES_button_Y;
   boolean YES_button_inside = false;
@@ -65,8 +65,8 @@ class QA {
     rect(NO_button_X, NO_button_Y, NO_button_W, NO_button_H);
     
     fill(255, 255, 255, fillAlpha);
-    textSize(30);
-    text("NO", NO_button_X + 50, NO_button_Y + 40);
+    textSize(60);
+    text("NO", NO_button_X + NO_button_W / 2, NO_button_Y + NO_button_H / 2);
   }
   
   void createYesButton () {
@@ -83,15 +83,14 @@ class QA {
     rect(YES_button_X, YES_button_Y, YES_button_W, YES_button_H);
     
     fill(255, 255, 255, fillAlpha);
-    textSize(30);
-    text("YES", YES_button_X + 50, YES_button_Y + 40);
+    textSize(60);
+    text("YES", YES_button_X + YES_button_W / 2, YES_button_Y + YES_button_H / 2);
   }
   
   void decide (String d) {
     
     if (d == "YES") {
-      
-      YES_button_inside = true;
+     
       answer = "YES";
     }
     
@@ -124,56 +123,69 @@ class QA {
       int capture_w = 640; // 1280; // 640;
       int capture_h = 480; // 1024; // 480;
       
-      int screen_w = width;
-      int screen_h = height;
-      
-      float left_x = map(skeleton_points.get(4).x, 0, capture_w, 0, screen_w) / skeletonRatio * 0.5;
-      float left_y = map(skeleton_points.get(4).y, 0, capture_h, 0, screen_h) / -skeletonRatio * 0.5;
-      
-      float right_x = map(skeleton_points.get(7).x, 0, capture_w, 0, screen_w) / skeletonRatio * 0.5;
-      float right_y = map(skeleton_points.get(7).y, 0, capture_h, 0, screen_h) / -skeletonRatio * 0.5;
-      
       /*
-      float l_x = map(skeleton_points.get(4).x, 0, skeleton_points.get(4).x * 1000 * skeletonRatio * 0.4, 0, width);
-      float l_y = map(skeleton_points.get(4).y, 0, -skeleton_points.get(4).y * 1000 * skeletonRatio * 0.4, 0, height);
-      float r_x = map(skeleton_points.get(7).x, 0, skeleton_points.get(7).x * 1000 * skeletonRatio * 0.4, 0, width);
-      float r_y = map(skeleton_points.get(7).y, 0, -skeleton_points.get(7).y * 1000 * skeletonRatio * 0.4, 0, height);
-      float left_hand_x = skeleton_points.get(4).x * l_x;
-      float left_hand_y = skeleton_points.get(4).y * l_y;
-      float right_hand_x = skeleton_points.get(7).x * r_x;
-      float right_hand_y = skeleton_points.get(7).y * r_y;
+      float left_x = map(skeleton_points.get(4).x, 0, capture_w, 0, width) / skeletonRatio / 1000;
+      float left_y = map(skeleton_points.get(4).y, 0, capture_h, 0, height) / -skeletonRatio / 1000;
+      
+      float right_x = map(skeleton_points.get(7).x, 0, capture_w, 0, width) / skeletonRatio / 1000;
+      float right_y = map(skeleton_points.get(7).y, 0, capture_h, 0, height) / -skeletonRatio / 1000;
       */
       
+ 
+      float left_x = skeleton_points.get(4).x;
+      float left_y = skeleton_points.get(4).y;
+      float right_x = skeleton_points.get(7).x;
+      float right_y = skeleton_points.get(7).y;
+      
+      left_x = skeleton_points.get(4).x + width / 2;
+      left_y = skeleton_points.get(4).y + height / 2;
+      
+      right_x = skeleton_points.get(7).x + width / 2;
+      right_y = skeleton_points.get(7).y + height / 2;
+      
       /*
-      float left_hand_x = skeleton_points.get(4).x * 2.4;
-      float left_hand_y = skeleton_points.get(4).y * -0.6;
-      float right_hand_x = skeleton_points.get(7).x * 2.4;
-      float right_hand_y = skeleton_points.get(7).y * -0.6;
+      float left_x = skeleton_points.get(4).x * 2.4;
+      float left_y = skeleton_points.get(4).y * -0.6;
+      float right_x = skeleton_points.get(7).x * 2.4;
+      float right_y = skeleton_points.get(7).y * -0.6;
       */
             
-      println("Right hand: ", YES_button_X, YES_button_X + YES_button_W, right_x, YES_button_Y, YES_button_Y + YES_button_H, right_y);
-    
+      
       // Yes Button - Right Hand
       if (right_x > YES_button_X && right_x < YES_button_X + YES_button_W && right_y > YES_button_Y && right_y < YES_button_Y + YES_button_H) {
-        decide("YES");
-        println("Gesture Right Hand: YES", right_x, right_y);
-      }
-      
-      // Yes Button - Left Hand
-      if (left_x > YES_button_X && left_x < YES_button_X + YES_button_W && left_y > YES_button_Y && left_y < YES_button_Y + YES_button_H) {
-        decide("YES");
-        println("Gesture Left Hand: YES", left_x, left_y);
+        //decide("YES");
+        //println("Gesture Right Hand: YES", right_x, right_y);
+        
+        //println("Right hand YES INSIDE: ", YES_button_X, YES_button_X + YES_button_W, YES_button_Y, YES_button_Y + YES_button_H, right_x, right_y);
+        
+      } else {
+        
+        //println("Right hand YES OUTSIDE: ", YES_button_X, YES_button_X + YES_button_W, YES_button_Y, YES_button_Y + YES_button_H, right_x, right_y);
       }
       
       // No Button - Right Hand
       if (right_x > NO_button_X && right_x < NO_button_X + NO_button_W && right_y > NO_button_Y && right_y < NO_button_Y + NO_button_H) {
-        decide("NO");
-        println("Gesture Right Hand: NO", right_x, right_y);
+        //decide("NO");
+        //println("Gesture Right Hand: NO", right_x, right_y);
+        
+        //NO_button_inside = false;
+        
+        //println("Right hand NO INSIDE: ", NO_button_X, NO_button_X + NO_button_W, NO_button_Y, NO_button_Y + NO_button_H, right_x, right_y);
+
+      } else {
+        
+        //println("Right hand NO OUTSIDE: ", NO_button_X, NO_button_X + NO_button_W, NO_button_Y, NO_button_Y + NO_button_H, right_x, right_y);
+      }
+      
+      // Yes Button - Left Hand
+      if (left_x > YES_button_X && left_x < YES_button_X + YES_button_W && left_y > YES_button_Y && left_y < YES_button_Y + YES_button_H) {
+        //decide("YES");
+        println("Gesture Left Hand: YES", left_x, left_y);
       }
       
       // No Button - Left Hand
       if (left_x > NO_button_X && left_x < NO_button_X + NO_button_W && left_y > NO_button_Y && left_y < NO_button_Y + NO_button_H) {
-        decide("NO");
+        //decide("NO");
         println("Gesture Left Hand: NO", left_x, left_y);
       }
   }
