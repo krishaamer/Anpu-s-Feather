@@ -84,6 +84,8 @@ void intro () {
       
       parser.read_data();
       if (parser.isStreaming()) {
+        
+        scales.startFrom("top");
         scales.update();
         scales.fadeIn();
       }
@@ -96,6 +98,8 @@ void intro () {
       
       parser.read_data();
       if (parser.isStreaming()) {
+        
+        scales.startFrom("middle");
         scales.update();
         scales.fadeOut();
       }
@@ -168,6 +172,7 @@ void scales () {
   
   if (story.time() > 0.1 && story.time() < 7) {
      
+    blendMode(BLEND);
     parser.read_data();
     if (parser.isStreaming()) {
 
@@ -207,7 +212,6 @@ void light () {
     
      background(0);
      message.setAlpha(0);
-     wisdom.startCapture();
   }
   
   // Begin scene
@@ -267,18 +271,18 @@ void light () {
   }
   
   // Capture image at the end of scene
-  if (story.time() > 5 && story.time() < 5.1) {
+  if (story.time() > 5 && story.time() < 13) {
     
-    //wisdom.startCapture();
+    user.startCapture();
   }
   
   // Go to next mode
-  if (story.time() > 9) {
+  if (story.time() > 13) {
    
-      wisdom.endCapture();
+      user.endCapture();
       message.setAlpha(0);
       story.resetTime();
-      story.setMode("wisdom");
+      story.setMode("scales");
   }
 }
 
@@ -311,8 +315,9 @@ void heavy () {
     message.fadeOut(8);
   }
   
-  if (story.time() > 3 && story.time() < 8) {
+  if (story.time() > 3 && story.time() < 13) {
    
+    blendMode(BLEND);
     parser.read_data();
     if (parser.isStreaming()) {
       user.update();
@@ -339,18 +344,18 @@ void heavy () {
   }
   
   // Capture image at the end of scene
-  if (story.time() > 7.9 && story.time() < 8) {
+  if (story.time() > 6 && story.time() < 13) {
     
     wisdom.startCapture();
   }
   
   // Go to next mode
-  if (story.time() > 8) {
+  if (story.time() > 13) {
    
       wisdom.endCapture();
       message.setAlpha(0);
       story.resetTime();
-      story.setMode("wisdom");
+      story.setMode("scales");
   }
 }
 
@@ -370,13 +375,12 @@ void wisdom () {
   if (story.time() > 0.1 && story.time() < 3) {
     
     background(0);
-    wisdom.showCard();
     message.say("Sebayt");
     message.subtitle("Wisdom will guide you");
     message.fadeIn(8);
   }
 
-  if (story.time() > 3 && story.time() < 5) {
+  if (story.time() > 3 && story.time() < 4) {
      
     background(0);
     message.say("Sebayt");
@@ -384,19 +388,17 @@ void wisdom () {
     message.fadeOut(8);
   }
   
-  if (story.time() > 5 && story.time() < 5.1) {
+  if (story.time() > 4 && story.time() < 4.1) {
      
     background(0);
     message.setAlpha(0);
   }
 
-  if (story.time() > 5.2 && story.time() < 13) {
+  if (story.time() > 4.2 && story.time() < 13) {
      
     background(0);
     wisdom.showCard();
     wisdom.fadeIn(8);
-    //message.paragraph(wisdomQuote);
-   // message.fadeIn(8);
   }
 
   if (story.time() > 13 && story.time() < 15) {
@@ -404,8 +406,6 @@ void wisdom () {
     background(0);
     wisdom.showCard();
     wisdom.fadeOut(8);
-   // message.paragraph(wisdomQuote);
-   // message.fadeOut(8);
   }
 
   // End
