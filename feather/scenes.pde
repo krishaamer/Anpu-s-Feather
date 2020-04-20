@@ -260,7 +260,7 @@ void light () {
      message.setAlpha(0);
   }
   
-  if (story.time() > 0.1 && story.time() < 9) {
+  if (story.time() > 0.1 && story.time() < 19.9) {
     
     blendMode(ADD);
     parser.read_data();
@@ -271,13 +271,13 @@ void light () {
   }
   
   // Capture image at the end of scene
-  if (story.time() > 5 && story.time() < 13) {
+  if (story.time() > 5 && story.time() < 20) {
     
     user.startCapture();
   }
   
   // Go to next mode
-  if (story.time() > 13) {
+  if (story.time() > 20) {
    
       user.endCapture();
       message.setAlpha(0);
