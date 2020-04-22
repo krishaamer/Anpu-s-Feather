@@ -161,8 +161,8 @@ class User {
       z2[i] = z2[i-1];
     }
 
-    float magnetism = 40.0; // Made the pull from the mouse key and automatic lines connect faster by adding 10 
-    float radius = 3;
+    float magnetism = 30.0; // Made the pull from the mouse key and automatic lines connect faster by adding 10 
+    float radius = 1;
     float principle = 0.95;
 
     for (int i=0; i < num2; i++) {
@@ -212,7 +212,7 @@ class User {
       float b = map(sokudo, 0, 5, 128, 255);
 
       noStroke(); 
-      fill(r, g, b,70);
+      fill(r, g, b,60);
       ellipse(xpos2[i], ypos2[i], 1, radius); //Added a numeral in place of radius to make a highlighted circle start as soon as it starts if the person chooses to not move their mouse
       fill(r, g, b, 10);
     }

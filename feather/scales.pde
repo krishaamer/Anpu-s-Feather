@@ -10,7 +10,9 @@ class Scales {
   ArrayList<PVector> skeleton_points;
   PImage img;
   int tintAlpha;
-
+  PImage motion1;
+  PImage motion2;
+  PImage scale;
   float t=0;
   float v=3;
   float xn1=0;
@@ -74,6 +76,31 @@ class Scales {
     } else {
       image(img, width / 2, feathery + height / 2);
     }
+    
+    if(frameCount%20<10){
+    fill(0);
+    noStroke();
+    rectMode(CENTER);
+    rect(width / 2+500, height / 2+300,300,300);
+    motion1 = loadImage("diagram1.png");
+    imageMode(CENTER);
+    image(motion1, width / 2+500, height / 2+300); 
+    scale = loadImage("scale.png");
+    imageMode(CORNER);
+    image(scale, -50, -100);
+    }else{
+    fill(0);
+    noStroke();
+    rectMode(CENTER);
+    rect(width / 2+500, height / 2+300,300,300);
+    motion2 = loadImage("diagram2.png");
+    imageMode(CENTER);
+    image(motion2, width / 2+500, height / 2+300);
+    scale = loadImage("scale.png");
+    imageMode(CORNER);
+    image(scale, -50, -100);
+    }
+    
   }
 
   void update() {
