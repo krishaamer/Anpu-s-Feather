@@ -99,7 +99,7 @@ void intro () {
       parser.read_data();
       if (parser.isStreaming()) {
         
-        scales.startFrom("middle");
+        scales.startFrom("top");
         scales.update();
         scales.fadeOut();
       }
@@ -176,6 +176,7 @@ void scales () {
     parser.read_data();
     if (parser.isStreaming()) {
 
+      scales.startFrom("middle");
       scales.update();
       scales.fadeIn();
       message.countdown(7, story.time());

@@ -130,9 +130,6 @@ class QA {
       float right_y = skeleton_points.get(7).y + height / 2;
       float right_z = skeleton_points.get(7).z;
       
-      println(right_z, left_z);
-         
-      
       // Yes Button - Right Hand
       if (
           right_x > YES_button_X && 
