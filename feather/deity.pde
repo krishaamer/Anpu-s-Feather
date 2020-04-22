@@ -14,7 +14,7 @@ class Deity {
   float gap, theta, theta2, alpha, speed;
   int cols, rows, strokeAlpha, fillAlpha, featureStrokeAlpha, featureFillAlpha;;
   String feature;
-
+ 
   color[] colors = {
     #000000, 
     #333333, 
@@ -73,6 +73,7 @@ class Deity {
   
         float sz = map(sin(theta + offSetX + offSetY), -1, 1, 5, gap * 1.5);
         ellipse(x, y, sz, sz);
+
       }
       
     }
@@ -82,6 +83,7 @@ class Deity {
   }
   
   void mouthAndEyes (boolean redEyes) {
+
     
     stroke (255, 255, 255, strokeAlpha);
     fill (255, 255, 255, fillAlpha);
@@ -99,6 +101,7 @@ class Deity {
     // Mouth
     fill (255, 255, 255, fillAlpha);
     ellipse(400, 700, 200, 100);
+    
   }
   
   void nameTag () {

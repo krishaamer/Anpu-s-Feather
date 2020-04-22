@@ -8,8 +8,8 @@
  https://www.openprocessing.org/sketch/866735
  
  By Lei Lin
-
-*/
+ 
+ */
 
 class User {
 
@@ -41,14 +41,14 @@ class User {
   float[]ax = new float[num2];
   float[]ay = new float[num2];
   /* END Light */
-  
+
   User (ArrayList<PVector> sp) {
 
     skeleton_points = sp;
   }
-  
+
   void addLib (PGraphics pg) {
-    
+
     graphics = pg;
   }
 
@@ -68,11 +68,18 @@ class User {
       translate(0, 0, -300);
       draw_user_light();
       popMatrix();
-      
     } else if (mode == "heavy") { 
 
       // Heavy
       background(0);
+      PImage pyrd;
+      PImage pyrd2;
+      pyrd=loadImage("pyramid.png");
+      imageMode(CENTER);
+      image(pyrd, width/2+300, height/2+180);
+      pyrd2=loadImage("pyramid2.png");
+      imageMode(CENTER);
+      image(pyrd2, width/2-300, height/2+180);
       strokeWeight(2);
       fill(0, 0, 0, fillAlpha);
       pushMatrix();
@@ -81,7 +88,6 @@ class User {
       scale(0.4);
       draw_user_heavy();
       popMatrix();
-      
     } else if (mode == "questions") { 
 
       // Hands
@@ -96,18 +102,18 @@ class User {
       popMatrix();
     }
   }
-  
+
   void fadeIn () {
-    
+
     if (fillAlpha < 255) { 
-      fillAlpha++; 
+      fillAlpha++;
     }
-    
+
     if (strokeAlpha < 255) { 
-      strokeAlpha++; 
+      strokeAlpha++;
     }
   }
-  
+
   void fadeOut () {
 
     if (fillAlpha > 0) { 
@@ -118,27 +124,27 @@ class User {
       strokeAlpha--;
     }
   }
-  
+
   void startCapture () {
-    
+
     shouldCapture = true;
     println("User beginDraw");
   }
-  
+
   void endCapture () {
-    
+
     shouldCapture = false;
     println("User endDraw");
   }
 
   void draw_user_light () {
-    
+
     if (shouldCapture) {
       graphics.beginDraw();
     }
 
     if (!runOnce) {
-      
+
       //background(0);
       for (int i =0; i< num2; i++) {
         xpos2[i] = random(-500, 500);
@@ -212,7 +218,7 @@ class User {
       float b = map(sokudo, 0, 5, 128, 255);
 
       noStroke(); 
-      fill(r, g, b,60);
+      fill(r, g, b, 60);
       ellipse(xpos2[i], ypos2[i], 1, radius); //Added a numeral in place of radius to make a highlighted circle start as soon as it starts if the person chooses to not move their mouse
       fill(r, g, b, 10);
     }
@@ -225,14 +231,14 @@ class User {
       sphere(4);
       popMatrix();
     }
-    
+
     if (shouldCapture) {
       graphics.endDraw();
     }
   }
 
   void draw_user_heavy () {
-    
+
     if (shouldCapture) {
       graphics.beginDraw();
     }
@@ -258,12 +264,12 @@ class User {
     float y13 = (y7 + y10) / 2;
     float y14 = skeleton_points.get(15).y + (skeleton_points.get(15).y - (skeleton_points.get(16).y + 20));
 
+
     if (skeleton_points.get(10).x <= skeleton_points.get(9).x) {
 
       xleft = skeleton_points.get(10).x - 400;
       xleft2 = skeleton_points.get(10).x - 300;
       xleft3 = skeleton_points.get(10).x - 200;
-      
     } else {
 
       xleft = skeleton_points.get(10).x + 400;
@@ -276,7 +282,6 @@ class User {
       xright = skeleton_points.get(13).x + 400;
       xright2 = skeleton_points.get(13).x + 300;
       xright3 = skeleton_points.get(13).x + 200;
-      
     } else {
 
       xright = skeleton_points.get(13).x - 400;
@@ -339,21 +344,21 @@ class User {
     ellipse(skeleton_points.get(16).x-40, skeleton_points.get(15).y, 120, 120);
     ellipse(skeleton_points.get(15).x+40, y14, 120, 120);
     ellipse(skeleton_points.get(15).x-40, y14, 120, 120);
-    
-     if (shouldCapture) {
+
+    if (shouldCapture) {
       graphics.endDraw();
     }
   }
-  
+
   void draw_user_hands () {
 
     noFill();
     stroke(255);
     strokeWeight(10);
-    
+
     // Left Hand
     ellipse(skeleton_points.get(4).x, skeleton_points.get(4).y, 20, 20);
-    
+
     // Right Hand
     ellipse(skeleton_points.get(7).x, skeleton_points.get(7).y, 20, 20);
   }

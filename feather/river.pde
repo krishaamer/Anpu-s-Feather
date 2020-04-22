@@ -10,9 +10,13 @@
 */
 
 class River {
-  
+   PImage anubis1;
+   PImage anubis2;
+   PImage pyrd;
+   PImage pyrd2;
   float gap, theta, theta2, speed;
   int cols, rows, strokeAlpha, fillAlpha;
+
   color[] colors = {
     #83A0FF, 
     #5173DF, 
@@ -21,7 +25,7 @@ class River {
   };
   
   River () {
-    
+
     cols = 25;
     rows = 45;
     speed = .0223;
@@ -30,9 +34,14 @@ class River {
   }
 
   void update() {
-    
+  pyrd=loadImage("pyramid.png");
+  imageMode(CENTER);
+  image(pyrd,width/2+300,height/2-180);
+  pyrd2=loadImage("pyramid2.png");
+  imageMode(CENTER);
+  image(pyrd2,width/2-300,height/2-180);
     gap = width / cols;
-  
+
     pushMatrix();
     rotateX(PI / 2);
     rotateY(PI / 1);
@@ -55,12 +64,25 @@ class River {
   
         float sz = map(sin(theta + offSetX + offSetY), -1, 1, 5, gap * 1.5);
         ellipse(x, y, sz, sz);
+ 
       }
-      
+
     }
     
     theta -= speed;
     popMatrix();
+    if(frameCount%30<15){
+
+    anubis1 = loadImage("anubis1.png");
+    imageMode(CENTER);
+    image(anubis1,width/2, height/2-100);
+    }else{
+
+    anubis2 = loadImage("anubis2.png");
+    imageMode(CENTER);
+    image(anubis2,width/2, height/2-100);
+    }
+
   }
   
   void fadeIn () {

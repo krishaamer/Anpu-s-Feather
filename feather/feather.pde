@@ -35,7 +35,7 @@ import KinectPV2.*;
 
 // Flags
 boolean is_live = false;
-boolean play_music = false;
+boolean play_music = true;
 boolean save_output = false;
 boolean enable_mouse_interaction = false;
 

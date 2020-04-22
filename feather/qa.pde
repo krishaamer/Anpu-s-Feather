@@ -55,7 +55,7 @@ class QA {
   }
   
   void createNoButton () {
-    
+
     // Position
     NO_button_X = 20;
     NO_button_Y = 20;
@@ -129,9 +129,6 @@ class QA {
       float right_x = skeleton_points.get(7).x + width / 2;
       float right_y = skeleton_points.get(7).y + height / 2;
       float right_z = skeleton_points.get(7).z;
-      
-      println(right_z, left_z);
-         
       
       // Yes Button - Right Hand
       if (
