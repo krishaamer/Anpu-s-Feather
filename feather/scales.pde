@@ -22,10 +22,16 @@ class Scales {
   float feathery = -300;
   float easingy = 0.01; 
   String startFrom;
+  boolean showDiagram = true;
 
   Scales (ArrayList<PVector> sp) {
 
     skeleton_points = sp;
+  }
+  
+  void showDiagram (Boolean sd) {
+    
+    showDiagram = sd;
   }
   
   void startFrom (String t) {
@@ -79,33 +85,40 @@ class Scales {
       image(img, width / 2, feathery + height / 2);
     }
     
-    if (frameCount % 20 < 10){
-      
-      fill(0);
-      noStroke();
-      rectMode(CENTER);
-      rect(width / 2 + 500, height / 2 + 300, 300, 300);
-      motion1 = loadImage("diagram1.png");
-      imageMode(CENTER);
-      image(motion1, width / 2 + 500, height / 2 + 300); 
-      scale = loadImage("scale.png");
-      imageMode(CORNER);
-      image(scale, -50, -100);
-      
-     } else {
-       
-      fill(0);
-      noStroke();
-      rectMode(CENTER);
-      rect(width / 2 + 500, height / 2 + 300, 300, 300);
-      motion2 = loadImage("diagram2.png");
-      imageMode(CENTER);
-      image(motion2, width / 2 + 500, height / 2 + 300);
-      scale = loadImage("scale.png");
-      imageMode(CORNER);
-      image(scale, -50, -100);
+    if (showDiagram) {
+      drawDiagram();
     }
     
+  }
+  
+  void drawDiagram () {
+    
+    if (frameCount % 20 < 10){
+        
+        fill(0);
+        noStroke();
+        rectMode(CENTER);
+        rect(width / 2 + 500, height / 2 + 300, 300, 300);
+        motion1 = loadImage("diagram1.png");
+        imageMode(CENTER);
+        image(motion1, width / 2 + 500, height / 2 + 300); 
+        scale = loadImage("scale.png");
+        imageMode(CORNER);
+        image(scale, -50, -100);
+        
+       } else {
+         
+        fill(0);
+        noStroke();
+        rectMode(CENTER);
+        rect(width / 2 + 500, height / 2 + 300, 300, 300);
+        motion2 = loadImage("diagram2.png");
+        imageMode(CENTER);
+        image(motion2, width / 2 + 500, height / 2 + 300);
+        scale = loadImage("scale.png");
+        imageMode(CORNER);
+        image(scale, -50, -100);
+      }
   }
 
   void update() {

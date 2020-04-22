@@ -85,6 +85,7 @@ void intro () {
       parser.read_data();
       if (parser.isStreaming()) {
         
+        scales.showDiagram(false);
         scales.startFrom("top");
         scales.update();
         scales.fadeIn();
@@ -99,6 +100,7 @@ void intro () {
       parser.read_data();
       if (parser.isStreaming()) {
         
+        scales.showDiagram(false);
         scales.startFrom("top");
         scales.update();
         scales.fadeOut();
@@ -176,6 +178,7 @@ void scales () {
     parser.read_data();
     if (parser.isStreaming()) {
 
+      scales.showDiagram(true);
       scales.startFrom("middle");
       scales.update();
       scales.fadeIn();
