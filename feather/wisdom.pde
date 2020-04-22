@@ -57,25 +57,37 @@ class Wisdom {
     hasCaptured = true;
   }
 
-  void showCard () {
+  void showCard () {     
      float distm=(width / 2-skeleton_points.get(15).x );
      float distn=skeleton_points.get(15).x+distm;
-     card_bg = loadImage("wisdom_card_bg.jpg");
-     imageMode(CENTER);
-     image(card_bg, width / 2, height / 2);
-     
      //tint(0, 0, 0, alpha);
      pushMatrix();
      scale(0.5);
-     image(graphics, distn+250, height / 2 + 400); 
+     rectMode(CORNER);
+     imageMode(CENTER);
+     image(graphics, distn+250, height / 2 + 450); 
      popMatrix();
+     noStroke();
+     rectMode(CORNER);
+     fill(0);
+     rect(0,0,230,height);
+     rect(600,0,230,height);
+     rect(0,0,width,320);
+     
+
+     card_bg = loadImage("wisdom_card_bg.png");
+     imageMode(CENTER);
+     image(card_bg, width / 2, height / 2);
+     
+
      
      //mono = loadFont("TimesNewRomanPSMT-20.vlw");
      //textFont(mono);
      fill(255);
      textSize(20);
+     rectMode(CENTER);
      text(quote, width / 2 + 220, height / 2 + 140, 300, 500); 
-     
+     noLoop();
      /*
      if (hasCaptured) {
        
