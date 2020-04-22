@@ -35,11 +35,11 @@ class River {
 
   void update() {
   pyrd=loadImage("pyramid.png");
-  imageMode(CENTER);
-  image(pyrd,width/2+300,height/2-180);
+  imageMode(CORNER);
+  image(pyrd,width-800,0);
   pyrd2=loadImage("pyramid2.png");
-  imageMode(CENTER);
-  image(pyrd2,width/2-300,height/2-180);
+  imageMode(CORNER);
+  image(pyrd2,0,0);
     gap = width / cols;
 
     pushMatrix();

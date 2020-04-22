@@ -41,23 +41,6 @@ class Scales {
 
   void calculateFeatherWeight () {
 
-<<<<<<< HEAD
-    float xdist1=abs(skeleton_points.get(4).x-xn1);
-    xn1=skeleton_points.get(4).x;
-    float xdist2=abs(skeleton_points.get(7).x-xn2);
-    xn2=skeleton_points.get(7).x;
-    float ydist1=abs(skeleton_points.get(4).y-yn1);
-    yn1=skeleton_points.get(4).y;
-    float ydist2=abs(skeleton_points.get(7).y-yn2);
-    yn2=skeleton_points.get(7).y;
-    float avdist=(xdist1+xdist2+ydist1+ydist2)/4;
-    float val1=map(-avdist, -30, 0, -300, 500);
-    float val2=val1;
-    fill(0,0,0,10);
-    noStroke();
-    rectMode(CORNER);
-    rect(0,0,width,height);
-=======
     float xdist1 = abs(skeleton_points.get(4).x - xn1);
     xn1 = skeleton_points.get(4).x;
     float xdist2 = abs(skeleton_points.get(7).x - xn2);
@@ -69,8 +52,10 @@ class Scales {
     float avdist = (xdist1 + xdist2 + ydist1 + ydist2) / 4;
     float val1 = map(-avdist, -30, 0, -300, 500);
     float val2 = val1;
-
->>>>>>> 309dcfa23a62cff5f358ff370c6bdaf61bd0e4bb
+    noStroke();
+    fill(0,20);
+    rectMode(CENTER);
+     rect(width/2,feathery+400,600,800);
     if (val2 == 100) {
       
       val2 = random(100, 300);

@@ -58,22 +58,20 @@ class Wisdom {
   }
 
   void showCard () {     
-    
      float distm = (width / 2 - skeleton_points.get(15).x);
-     float distn = skeleton_points.get(15).x+distm;
      //tint(0, 0, 0, alpha);
      pushMatrix();
      scale(0.5);
      rectMode(CORNER);
      imageMode(CENTER);
-     image(graphics, distn+250, height / 2 + 450); 
+     image(graphics, width / 2+500, height / 2 + 450); 
      popMatrix();
      noStroke();
      rectMode(CORNER);
      fill(0);
-     rect(0,0,230,height);
-     rect(600,0,230,height);
-     rect(0,0,width,320);
+     rect(0,0,550,height);
+     rect(920,0,500,height);
+     rect(0,0,width,400);
      
      card_bg = loadImage("wisdom_card_bg.png");
      imageMode(CENTER);
