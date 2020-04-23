@@ -449,7 +449,6 @@ void outro () {
 
     background(0);
     message.setAlpha(0);
-    music.fadeOut();
   }
 
   // Begin scene
@@ -467,6 +466,7 @@ void outro () {
     message.say("Ankhek!");
     message.subtitle("May you live");
     message.fadeOut(6);
+    music.fadeOut();
   }
 
   // The End
