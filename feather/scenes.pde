@@ -419,14 +419,14 @@ void wisdom () {
     message.setAlpha(0);
   }
 
-  if (story.time() > 4.2 && story.time() < 30) {
+  if (story.time() > 4.2 && story.time() < 48) {
 
     background(0);
     wisdom.showCard();
     wisdom.fadeIn(8);
   }
 
-  if (story.time() > 30 && story.time() < 32) {
+  if (story.time() > 48 && story.time() < 50) {
 
     background(0);
     wisdom.showCard();
