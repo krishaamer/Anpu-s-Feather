@@ -85,7 +85,8 @@ class Wisdom {
      textSize(20);
      rectMode(CENTER);
      text(quote, width / 2 + 220, height / 2 + 140, 300, 500); 
-     noLoop();
+     
+     //noLoop();
      /*
      if (hasCaptured) {
        
