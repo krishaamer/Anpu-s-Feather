@@ -434,7 +434,7 @@ void wisdom () {
   }
 
   // End
-  if (story.time() > 15) {
+  if (story.time() > 50) {
 
     message.setAlpha(0);
     story.resetTime();
