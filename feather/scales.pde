@@ -17,7 +17,8 @@ class Scales {
   float yn1 = 0;
   float yn2 = 0;
   float feathery = -300;
-  float easingy = 0.01; 
+  float easingy = 0.01;
+  float xdist1, xdist2, ydist1, ydist2, avdist, val1, val2;
   String startFrom;
   boolean showDiagram = true;
 
@@ -39,21 +40,22 @@ class Scales {
 
   void calculateFeatherWeight () {
 
-    float xdist1 = abs(skeleton_points.get(4).x - xn1);
+    xdist1 = abs(skeleton_points.get(4).x - xn1);
     xn1 = skeleton_points.get(4).x;
-    float xdist2 = abs(skeleton_points.get(7).x - xn2);
+    xdist2 = abs(skeleton_points.get(7).x - xn2);
     xn2 = skeleton_points.get(7).x;
-    float ydist1 = abs(skeleton_points.get(4).y - yn1);
+    ydist1 = abs(skeleton_points.get(4).y - yn1);
     yn1 = skeleton_points.get(4).y;
-    float ydist2 = abs(skeleton_points.get(7).y - yn2);
+    ydist2 = abs(skeleton_points.get(7).y - yn2);
     yn2 = skeleton_points.get(7).y;
-    float avdist = (xdist1 + xdist2 + ydist1 + ydist2) / 4;
-    float val1 = map(-avdist, -30, 0, -300, 500);
-    float val2 = val1;
+    avdist = (xdist1 + xdist2 + ydist1 + ydist2) / 4;
+    val1 = map(-avdist, -30, 0, -300, 500);
+    val2 = val1;
+    
     noStroke();
-    fill(0,20);
+    fill(0, 20);
     rectMode(CENTER);
-    rect(width / 2,feathery + 400, 600, 800);
+    rect(width / 2, feathery + 400, 600, 800);
     
     if (val2 == 100) {
       
