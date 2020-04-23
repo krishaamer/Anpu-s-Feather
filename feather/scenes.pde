@@ -197,7 +197,7 @@ void scales () {
   }
 
   // Messages on top of the Model  
-  if (story.time() > 7 && story.time() < 8) {
+  if (story.time() > 7 && story.time() < .5) {
 
     background(0);
 
@@ -205,14 +205,14 @@ void scales () {
     message.fadeIn(8);
   }
 
-  if (story.time() > 8 && story.time() < 9) {
+  if (story.time() > 8.5 && story.time() < 9.5) {
 
     message.say("You are still alive");
     message.fadeOut(8);
   }
 
   // Go to next mode
-  if (story.time() > 9) {
+  if (story.time() > 9.5) {
 
     message.setAlpha(0);
     story.resetTime();
