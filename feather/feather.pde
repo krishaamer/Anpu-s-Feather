@@ -63,8 +63,8 @@ Pyramid pyramid = new Pyramid(media);
 void setup() {
   
   // Canvas Size
-  //size(1280, 900, P3D);
-  fullScreen(P3D);
+  size(1280, 900, P3D);
+  //fullScreen(P3D);
   
   background(0);
   frameRate(27);
@@ -90,7 +90,8 @@ void setup() {
   // Play music?
   if (play_music) {
     soundFile = new SoundFile(this, "anpu.wav");
-    music.play(soundFile);
+    music.load(soundFile);
+    music.play();
   }
   
   // Record user
@@ -123,7 +124,7 @@ void draw() {
   user.setMode(story.mode());
 
   // What's the story mode?
-  println(story.mode(), story.time());
+  //println(story.mode(), story.time());
   
   if (story.mode() == "scales") {
     scales ();
