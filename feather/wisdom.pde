@@ -58,6 +58,7 @@ class Wisdom {
   }
 
   void showCard () {     
+    
      float distm = (width / 2 - skeleton_points.get(15).x);
      //tint(0, 0, 0, alpha);
      pushMatrix();

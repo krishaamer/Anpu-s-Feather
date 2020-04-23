@@ -84,7 +84,6 @@ class Deity {
   
   void mouthAndEyes (boolean redEyes) {
 
-    
     stroke (255, 255, 255, strokeAlpha);
     fill (255, 255, 255, fillAlpha);
     

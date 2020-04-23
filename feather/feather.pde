@@ -43,6 +43,7 @@ boolean enable_mouse_interaction = false;
 KinectPV2 kinect;
 SoundFile soundFile;
 PGraphics graphics;
+HashMap<String,PImage> media = new HashMap<String,PImage>();
 
 Helper helper = new Helper();
 Parser parser = new Parser(helper);
@@ -56,16 +57,25 @@ Scales scales = new Scales(parser.getPoints());
 Output output = new Output(parser.getPoints());
 QA qa = new QA(parser.getPoints());
 Wisdom wisdom = new Wisdom(parser.getPoints());
+Pyramid pyramid = new Pyramid(media);
 
 void setup() {
   
-  fullScreen(P3D);
-  //size(1280, 900, P3D);
+  // Preload Images
+  media.put("pyramid0", loadImage("data/pyramid0.png"));
+  media.put("pyramid1", loadImage("data/pyramid1.png"));
+  media.put("pyramid2", loadImage("data/pyramid2.png"));
+  media.put("pyramid3", loadImage("data/pyramid3.png"));
+  media.put("anubis1", loadImage("data/anubis1.png"));
+  media.put("anubis2", loadImage("data/anubis2.png"));
+  
+  // Canvas Size
+  size(1280, 900, P3D);
   //fullScreen(P3D);
   
   background(0);
-  frameRate(25);
-  smooth(8);
+  frameRate(24);
+  smooth(2);
   
   if (play_music) {
     soundFile = new SoundFile(this, "anpu.wav");

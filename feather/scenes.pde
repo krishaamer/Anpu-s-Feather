@@ -8,6 +8,7 @@ void intro () {
     message.fadeIn(10);
 
     nile.update();
+    pyramid.show();
   }
 
   if (story.time() > 2.5 && story.time() < 3.5) {
@@ -17,12 +18,14 @@ void intro () {
     message.fadeOut(10);
 
     nile.update();
+    pyramid.show();
   }
 
   if (story.time() > 3.5 && story.time() < 3.6) {
 
     message.setAlpha(0);
     nile.update();
+    pyramid.show();
   }
 
   if (story.time() > 3.6 && story.time() < 7) {
@@ -32,6 +35,8 @@ void intro () {
 
     nile.update();
     nile.fadeOut();
+    
+    pyramid.show();
 
     anubis.update();
     anubis.fadeIn();
@@ -54,6 +59,8 @@ void intro () {
 
     nile.update();
     nile.fadeOut();
+    
+    pyramid.show();
 
     anubis.option("whiteEyes");
     anubis.update();
@@ -64,6 +71,8 @@ void intro () {
 
     nile.update();
     nile.fadeOut();
+    
+    pyramid.show();
 
     anubis.update();
     anubis.fadeOut();
@@ -72,7 +81,6 @@ void intro () {
   }
 
   if (story.time() > 9 && story.time() < 13) {
-
 
     message.say("How heavy is your heart?");
     message.fadeIn(8);
@@ -84,11 +92,10 @@ void intro () {
       scales.startFrom("top");
       scales.update();
       scales.fadeIn();
+
+      pyramid.showAlt();
+      
     }
-       PImage pyrd3;
-    pyrd3=loadImage("pyramid3.png");
-    imageMode(CENTER);
-    image(pyrd3, width/2, height-400);
   }
 
   if (story.time() > 13 && story.time() < 16) {
@@ -101,11 +108,10 @@ void intro () {
       scales.startFrom("top");
       scales.update();
       scales.fadeOut();
+      
+      pyramid.showAlt();
     }
-       PImage pyrd3;
-    pyrd3=loadImage("pyramid3.png");
-    imageMode(CENTER);
-    image(pyrd3, width/2, height-400);
+       
     message.say("How heavy is your heart?");
   }
 
@@ -131,10 +137,7 @@ void questions () {
 
     message.say("Have you cried this week?");
     message.fadeIn(8);
-       PImage pyrd3;
-    pyrd3=loadImage("pyramid3.png");
-    imageMode(CENTER);
-    image(pyrd3, width/2, height-400);
+    pyramid.show();
   }
 
   if (story.time() > 1) {
@@ -146,10 +149,7 @@ void questions () {
 
       user.update();
       user.fadeIn();
-       PImage pyrd3;
-    pyrd3=loadImage("pyramid3.png");
-    imageMode(CENTER);
-    image(pyrd3, width/2, height-400);
+      pyramid.showAlt();
     }
 
     message.say("Have you cried this week?");
@@ -239,10 +239,7 @@ void light () {
   if (story.time() > 0.5 && story.time() < 2) {
 
     background(0);
-       PImage pyrd3;
-    pyrd3=loadImage("pyramid3.png");
-    imageMode(CENTER);
-    image(pyrd3, width/2, height-400);
+    pyramid.show();
     message.say("Your heart seems light");
     message.fadeIn(8);
   }
@@ -250,10 +247,7 @@ void light () {
   if (story.time() > 2 && story.time() < 3) {
 
     background(0);
-       PImage pyrd3;
-    pyrd3=loadImage("pyramid3.png");
-    imageMode(CENTER);
-    image(pyrd3, width/2, height-400);
+    pyramid.show();
     message.say("Your heart seems light");
     message.fadeOut(8);
   }
@@ -327,10 +321,7 @@ void heavy () {
   if (story.time() > 0.5 && story.time() < 1.5) {
 
     background(0);
-       PImage pyrd3;
-    pyrd3=loadImage("pyramid3.png");
-    imageMode(CENTER);
-    image(pyrd3, width/2, height-400);
+    pyramid.show();
     message.say("Your heart must be heavy");
     message.fadeIn(10);
   }
@@ -338,10 +329,7 @@ void heavy () {
   if (story.time() > 1.5 && story.time() < 3) {
 
     background(0);
-       PImage pyrd3;
-    pyrd3=loadImage("pyramid3.png");
-    imageMode(CENTER);
-    image(pyrd3, width/2, height-400);
+    pyramid.show();
     message.say("Your heart must be heavy");
     message.fadeOut(8);
   }

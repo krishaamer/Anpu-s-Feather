@@ -10,10 +10,7 @@
 */
 
 class River {
-   PImage anubis1;
-   PImage anubis2;
-   PImage pyrd;
-   PImage pyrd2;
+  
   float gap, theta, theta2, speed;
   int cols, rows, strokeAlpha, fillAlpha;
 
@@ -34,12 +31,7 @@ class River {
   }
 
   void update() {
-  pyrd=loadImage("pyramid.png");
-  imageMode(CORNER);
-  image(pyrd,width-800,0);
-  pyrd2=loadImage("pyramid2.png");
-  imageMode(CORNER);
-  image(pyrd2,0,0);
+  
     gap = width / cols;
 
     pushMatrix();
@@ -71,17 +63,6 @@ class River {
     
     theta -= speed;
     popMatrix();
-    if(frameCount%30<15){
-
-    anubis1 = loadImage("anubis1.png");
-    imageMode(CENTER);
-    image(anubis1,width/2, height/2-100);
-    }else{
-
-    anubis2 = loadImage("anubis2.png");
-    imageMode(CENTER);
-    image(anubis2,width/2, height/2-100);
-    }
 
   }
   
