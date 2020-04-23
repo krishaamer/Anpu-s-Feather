@@ -44,6 +44,7 @@ KinectPV2 kinect;
 SoundFile soundFile;
 PGraphics graphics;
 HashMap<String,PImage> media = new HashMap<String,PImage>();
+PFont nileFont;
 
 Helper helper = new Helper();
 Parser parser = new Parser(helper);
@@ -82,7 +83,10 @@ void setup() {
   media.put("diagram2", loadImage("diagram2.png"));
   media.put("card", loadImage("wisdom_card_bg.png"));
   
- 
+  // Preload font
+  nileFont = loadFont("AlNile-Bold-60.vlw");
+  textFont(nileFont);
+  
   // Play music?
   if (play_music) {
     soundFile = new SoundFile(this, "anpu.wav");
