@@ -12,7 +12,7 @@ class Wisdom {
   
   /* State */
   float alpha = 0;
-  int tintAlpha;
+  int tintAlpha, distm;
   Boolean hasRun = false;
   Boolean hasCaptured = false;
   
@@ -56,22 +56,24 @@ class Wisdom {
     hasCaptured = true;
   }
 
-  void showCard () {     
+  void showCard () {    
     
-     //float distm = (width / 2 - skeleton_points.get(15).x);
+     distm = width / 2 + 500; //(width / 2 - skeleton_points.get(15).x);
+    
      tint(255, 255, 255, alpha);
      pushMatrix();
      scale(0.5);
      rectMode(CORNER);
      imageMode(CENTER);
-     image(graphics, width / 2+500, height / 2 + 450); 
+     image(graphics, distm, height / 2 + 450);
      popMatrix();
+     
      noStroke();
      rectMode(CORNER);
      fill(0);
-     rect(0,0,550,height);
-     rect(920,0,500,height);
-     rect(0,0,width,400);
+     rect(0, 0, 550, height);
+     rect(920, 0, 500, height);
+     rect(0, 0, width, 400);
      
      imageMode(CENTER);
      image(media.get("card"), width / 2, height / 2);
