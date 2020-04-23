@@ -20,7 +20,6 @@ class Wisdom {
   /* Data */
   ArrayList<PVector> skeleton_points;
   PGraphics graphics;
-  PImage card_bg;
   String quote;
   
   String[] quotes = { 
@@ -34,9 +33,10 @@ class Wisdom {
     "Those who knew how to foretell the future, What came from their mouths took place, and may be found in (their) phrasing. They are given the offspring of others as heirs as if their (own) children. They hid their powers from the whole land, to be read in (their) teachings. They are gone, their names might be forgotten, but writing lets them be remembered."
   };
   
-  Wisdom (ArrayList<PVector> sp) {
+  Wisdom (ArrayList<PVector> sp, HashMap<String,PImage> m) {
     
     skeleton_points = sp;
+    media = m;
   }
   
   void addLib (PGraphics pg) {
@@ -59,7 +59,7 @@ class Wisdom {
 
   void showCard () {     
     
-     float distm = (width / 2 - skeleton_points.get(15).x);
+     //float distm = (width / 2 - skeleton_points.get(15).x);
      //tint(0, 0, 0, alpha);
      pushMatrix();
      scale(0.5);
@@ -74,9 +74,8 @@ class Wisdom {
      rect(920,0,500,height);
      rect(0,0,width,400);
      
-     card_bg = loadImage("wisdom_card_bg.png");
      imageMode(CENTER);
-     image(card_bg, width / 2, height / 2);
+     image(media.get("card"), width / 2, height / 2);
      
      //mono = loadFont("TimesNewRomanPSMT-20.vlw");
      //textFont(mono);

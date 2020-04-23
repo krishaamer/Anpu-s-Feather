@@ -37,7 +37,7 @@ import KinectPV2.*;
 boolean is_live = false;
 boolean play_music = true;
 boolean save_output = false;
-boolean enable_mouse_interaction = false;
+boolean enable_mouse_interaction = true;
 
 // Init
 KinectPV2 kinect;
@@ -53,21 +53,13 @@ Music music = new Music();
 River nile = new River();
 Deity anubis = new Deity();
 User user = new User(parser.getPoints());
-Scales scales = new Scales(parser.getPoints());
+Scales scales = new Scales(parser.getPoints(), media);
 Output output = new Output(parser.getPoints());
 QA qa = new QA(parser.getPoints());
-Wisdom wisdom = new Wisdom(parser.getPoints());
+Wisdom wisdom = new Wisdom(parser.getPoints(), media);
 Pyramid pyramid = new Pyramid(media);
 
 void setup() {
-  
-  // Preload Images
-  media.put("pyramid0", loadImage("data/pyramid0.png"));
-  media.put("pyramid1", loadImage("data/pyramid1.png"));
-  media.put("pyramid2", loadImage("data/pyramid2.png"));
-  media.put("pyramid3", loadImage("data/pyramid3.png"));
-  media.put("anubis1", loadImage("data/anubis1.png"));
-  media.put("anubis2", loadImage("data/anubis2.png"));
   
   // Canvas Size
   size(1280, 900, P3D);
@@ -77,15 +69,32 @@ void setup() {
   frameRate(24);
   smooth(2);
   
+  // Preload Images
+  media.put("pyramid0", loadImage("pyramid0.png"));
+  media.put("pyramid1", loadImage("pyramid1.png"));
+  media.put("pyramid2", loadImage("pyramid2.png"));
+  media.put("pyramid3", loadImage("pyramid3.png"));
+  media.put("anubis1", loadImage("anubis1.png"));
+  media.put("anubis2", loadImage("anubis2.png"));
+  media.put("feather", loadImage("feather.png"));
+  media.put("scale", loadImage("scale.png"));
+  media.put("diagram1", loadImage("diagram1.png"));
+  media.put("diagram2", loadImage("diagram2.png"));
+  media.put("card", loadImage("wisdom_card_bg.png"));
+  
+ 
+  // Play music?
   if (play_music) {
     soundFile = new SoundFile(this, "anpu.wav");
     music.play(soundFile);
   }
   
+  // Record user
   graphics = createGraphics(width, height, P3D);
   wisdom.addLib(graphics);
   user.addLib(graphics);
   
+  // Is live?
   if (is_live) {
     
     // Live Source
@@ -110,7 +119,7 @@ void draw() {
   user.setMode(story.mode());
 
   // What's the story mode?
-  //println(story.mode(), story.time());
+  println(story.mode(), story.time());
   
   if (story.mode() == "scales") {
     scales ();

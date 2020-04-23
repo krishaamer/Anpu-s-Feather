@@ -8,11 +8,8 @@ class Scales {
 
   // Data
   ArrayList<PVector> skeleton_points;
-  PImage img;
+  HashMap<String,PImage> media;
   int tintAlpha;
-  PImage motion1;
-  PImage motion2;
-  PImage scale;
   float t = 0;
   float v = 3;
   float xn1 = 0;
@@ -24,9 +21,10 @@ class Scales {
   String startFrom;
   boolean showDiagram = true;
 
-  Scales (ArrayList<PVector> sp) {
+  Scales (ArrayList<PVector> sp, HashMap<String,PImage> m) {
 
     skeleton_points = sp;
+    media = m;
   }
   
   void showDiagram (Boolean sd) {
@@ -55,7 +53,8 @@ class Scales {
     noStroke();
     fill(0,20);
     rectMode(CENTER);
-     rect(width/2,feathery+400,600,800);
+    rect(width / 2,feathery + 400, 600, 800);
+    
     if (val2 == 100) {
       
       val2 = random(100, 300);
@@ -72,20 +71,19 @@ class Scales {
        
     } else {      
       
-      t = t+0.2; 
+      t = t + 0.2; 
       feathery = feathery + sin(t) * 5;
     }
     
-    img = loadImage("feather_small.png");
     imageMode(CENTER);
     
     if (startFrom == "top") {
       
-      image(img, width / 2, feathery);
+      image(media.get("feather"), width / 2, feathery);
       
     } else {
       
-      image(img, width / 2, feathery + height / 2);
+      image(media.get("feather"), width / 2, feathery + height / 2);
     }
     
     if (showDiagram) {
@@ -102,25 +100,26 @@ class Scales {
         noStroke();
         rectMode(CENTER);
         rect(width / 2 + 500, height / 2 + 300, 300, 300);
-        motion1 = loadImage("diagram1.png");
+        
         imageMode(CENTER);
-        image(motion1, width / 2 + 500, height / 2 + 300); 
-        scale = loadImage("scale.png");
+        image(media.get("diagram1"), width / 2 + 500, height / 2 + 300); 
+        
         imageMode(CORNER);
-        image(scale, -50, -100);
+        image(media.get("scale"), -50, -100);
         
        } else {
          
         fill(0);
         noStroke();
+        
         rectMode(CENTER);
         rect(width / 2 + 500, height / 2 + 300, 300, 300);
-        motion2 = loadImage("diagram2.png");
+        
         imageMode(CENTER);
-        image(motion2, width / 2 + 500, height / 2 + 300);
-        scale = loadImage("scale.png");
+        image(media.get("diagram2"), width / 2 + 500, height / 2 + 300);
+        
         imageMode(CORNER);
-        image(scale, -50, -100);
+        image(media.get("scale"), -50, -100);
       }
   }
 
