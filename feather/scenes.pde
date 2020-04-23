@@ -8,7 +8,6 @@ void intro () {
     message.fadeIn(10);
 
     nile.update();
-    pyramid.show();
   }
 
   if (story.time() > 2.5 && story.time() < 3.5) {
@@ -18,14 +17,12 @@ void intro () {
     message.fadeOut(10);
 
     nile.update();
-    pyramid.show();
   }
 
   if (story.time() > 3.5 && story.time() < 3.6) {
 
     message.setAlpha(0);
     nile.update();
-    pyramid.show();
   }
 
   if (story.time() > 3.6 && story.time() < 7) {
@@ -35,21 +32,24 @@ void intro () {
 
     nile.update();
     nile.fadeOut();
+
+    //anubis.update();
+    //anubis.fadeIn();
     
     pyramid.show();
-
-    anubis.update();
-    anubis.fadeIn();
+    pyramid.fadeIn();
   }
 
   if (story.time() > 4 && story.time() < 5.5) {
-    anubis.option("redEyes");
-    anubis.featureFadeIn();
+    
+    //anubis.option("redEyes");
+    //anubis.featureFadeIn();
   }
 
   if (story.time() > 5.5 && story.time() < 7) {
-    anubis.option("redEyes");
-    anubis.featureFadeOut();
+    
+    //anubis.option("redEyes");
+    //anubis.featureFadeOut();
   }
 
   if (story.time() > 7 && story.time() < 8.9) {
@@ -60,27 +60,34 @@ void intro () {
     nile.update();
     nile.fadeOut();
     
-    pyramid.show();
-
-    anubis.option("whiteEyes");
-    anubis.update();
-    anubis.fadeIn();
-  }
-
-  if (story.time() > 8.9 && story.time() < 9) {
-
-    nile.update();
-    nile.fadeOut();
+    //anubis.option("whiteEyes");
+    //anubis.update();
+    //anubis.fadeIn();
     
     pyramid.show();
+    pyramid.fadeIn();
+  }
+  
+  if (story.time() > 8.9 && story.time() < 11.9) {
+    
+    //anubis.update();
+    //anubis.fadeOut();
+    
+    nile.update();
+    nile.fadeOut();
 
-    anubis.update();
-    anubis.fadeOut();
+    pyramid.show();
+    pyramid.fadeOut();
+  }
 
+  if (story.time() > 11.9 && story.time() < 12) {
+
+    pyramid.show();
+    pyramid.fadeOut();
     message.setAlpha(0);
   }
 
-  if (story.time() > 9 && story.time() < 13) {
+  if (story.time() > 12 && story.time() < 16) {
 
     message.say("How heavy is your heart?");
     message.fadeIn(8);
@@ -92,13 +99,10 @@ void intro () {
       scales.startFrom("top");
       scales.update();
       scales.fadeIn();
-
-      pyramid.showAlt();
-      
     }
   }
 
-  if (story.time() > 13 && story.time() < 16) {
+  if (story.time() > 16 && story.time() < 19) {
 
     message.fadeOut(8);
     parser.read_data();
@@ -108,14 +112,12 @@ void intro () {
       scales.startFrom("top");
       scales.update();
       scales.fadeOut();
-      
-      pyramid.showAlt();
     }
        
     message.say("How heavy is your heart?");
   }
 
-  if (story.time() > 16) {
+  if (story.time() > 19) {
 
     message.setAlpha(0);
     story.setMode("questions");
@@ -137,7 +139,6 @@ void questions () {
 
     message.say("Have you cried this week?");
     message.fadeIn(8);
-    pyramid.show();
   }
 
   if (story.time() > 1) {
@@ -149,7 +150,6 @@ void questions () {
 
       user.update();
       user.fadeIn();
-      pyramid.showAlt();
     }
 
     message.say("Have you cried this week?");
@@ -182,7 +182,7 @@ void scales () {
     message.setAlpha(0);
   }
 
-  if (story.time() > 0.1 && story.time() < 7) {
+  if (story.time() > 0.1 && story.time() < 8) {
 
     blendMode(BLEND);
     parser.read_data();
@@ -192,7 +192,7 @@ void scales () {
       scales.startFrom("middle");
       scales.update();
       scales.fadeIn();
-      message.countdown(7, story.time());
+      message.countdown(8, story.time());
     }
   }
 
@@ -201,18 +201,18 @@ void scales () {
 
     background(0);
 
-    message.say("You have passed the test");
+    message.say("You are still alive");
     message.fadeIn(8);
   }
 
   if (story.time() > 8 && story.time() < 9) {
 
-    message.say("You have passed the test");
+    message.say("You are still alive");
     message.fadeOut(8);
   }
 
   // Go to next mode
-  if (story.time() > 8) {
+  if (story.time() > 9) {
 
     message.setAlpha(0);
     story.resetTime();
@@ -227,6 +227,7 @@ void light () {
 
     background(0);
     message.setAlpha(0);
+    pyramid.setAlpha(0);
   }
 
   // Begin scene
@@ -239,7 +240,8 @@ void light () {
   if (story.time() > 0.5 && story.time() < 2) {
 
     background(0);
-    pyramid.show();
+    pyramid.showAlt();
+    pyramid.fadeIn();
     message.say("Your heart seems light");
     message.fadeIn(8);
   }
@@ -247,7 +249,8 @@ void light () {
   if (story.time() > 2 && story.time() < 3) {
 
     background(0);
-    pyramid.show();
+    pyramid.showAlt();
+    pyramid.fadeIn();
     message.say("Your heart seems light");
     message.fadeOut(8);
   }
@@ -310,6 +313,7 @@ void heavy () {
 
     background(0);
     message.setAlpha(0);
+    pyramid.setAlpha(0);
   }
 
   // Begin scene
@@ -321,7 +325,8 @@ void heavy () {
   if (story.time() > 0.5 && story.time() < 1.5) {
 
     background(0);
-    pyramid.show();
+    pyramid.showAlt();
+    pyramid.fadeIn();
     message.say("Your heart must be heavy");
     message.fadeIn(10);
   }
@@ -329,7 +334,8 @@ void heavy () {
   if (story.time() > 1.5 && story.time() < 3) {
 
     background(0);
-    pyramid.show();
+    pyramid.showAlt();
+    pyramid.fadeIn();
     message.say("Your heart must be heavy");
     message.fadeOut(8);
   }
@@ -381,7 +387,7 @@ void heavy () {
 void wisdom () {
 
   // Get Data
-  String wisdomQuote = wisdom.getQuote();
+  wisdom.getQuote();
 
   // Reset
   if (story.time() > 0 && story.time() < 0.1) {
