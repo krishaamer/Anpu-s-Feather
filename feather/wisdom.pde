@@ -12,10 +12,9 @@ class Wisdom {
   
   /* State */
   float alpha = 0;
-  //int tintAlpha;
+  int tintAlpha;
   Boolean hasRun = false;
   Boolean hasCaptured = false;
-  //PFont mono;
   
   /* Data */
   ArrayList<PVector> skeleton_points;
@@ -60,7 +59,7 @@ class Wisdom {
   void showCard () {     
     
      //float distm = (width / 2 - skeleton_points.get(15).x);
-     //tint(0, 0, 0, alpha);
+     tint(255, 255, 255, alpha);
      pushMatrix();
      scale(0.5);
      rectMode(CORNER);
@@ -76,25 +75,11 @@ class Wisdom {
      
      imageMode(CENTER);
      image(media.get("card"), width / 2, height / 2);
-     
-     //mono = loadFont("TimesNewRomanPSMT-20.vlw");
-     //textFont(mono);
+ 
      fill(255);
      textSize(20);
      rectMode(CENTER);
      text(quote, width / 2 + 220, height / 2 + 140, 300, 500); 
-     
-     //noLoop();
-     /*
-     if (hasCaptured) {
-       
-       println("has captured");
-       
-     } else {
-       
-       println("missing wisdom capture data");
-     }
-     */
   }
   
   String getQuote () {
@@ -111,16 +96,14 @@ class Wisdom {
   void setAlpha (int a) {
     
     alpha = a;
-    //tintAlpha = a;
+    tintAlpha = a;
   }
   
   void fadeIn (float speed) {
     
-    /*
     if (tintAlpha < 255) { 
-      tintAlpha++;
+      tintAlpha += speed;
     }
-    */
     
     if (alpha < 255) {  
         
@@ -138,11 +121,9 @@ class Wisdom {
   
   void fadeOut (float speed) {
     
-    /*
     if (tintAlpha > 0) { 
-      tintAlpha--;
+      tintAlpha -= speed;
     }
-    */
     
     if (alpha > 0) {
       
