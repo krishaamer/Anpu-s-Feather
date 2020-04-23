@@ -158,7 +158,7 @@ void keyReleased () {
   output.enableKeys();
 }
 
-void mouseMoved() {
+void mouseClicked() {
    
   if (enable_mouse_interaction && story.mode() == "questions") {
     qa.enableButtons();
