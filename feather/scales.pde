@@ -52,7 +52,10 @@ class Scales {
     float avdist = (xdist1 + xdist2 + ydist1 + ydist2) / 4;
     float val1 = map(-avdist, -30, 0, -300, 500);
     float val2 = val1;
-
+    noStroke();
+    fill(0,20);
+    rectMode(CENTER);
+     rect(width/2,feathery+400,600,800);
     if (val2 == 100) {
       
       val2 = random(100, 300);

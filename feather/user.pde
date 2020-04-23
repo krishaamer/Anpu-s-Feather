@@ -8,8 +8,8 @@
  https://www.openprocessing.org/sketch/866735
  
  By Lei Lin
-
-*/
+ 
+ */
 
 class User {
 
@@ -41,14 +41,14 @@ class User {
   float[]ax = new float[num2];
   float[]ay = new float[num2];
   /* END Light */
-  
+
   User (ArrayList<PVector> sp) {
 
     skeleton_points = sp;
   }
-  
+
   void addLib (PGraphics pg) {
-    
+
     graphics = pg;
   }
 
@@ -68,7 +68,6 @@ class User {
       translate(0, 0, -300);
       draw_user_light();
       popMatrix();
-      
     } else if (mode == "heavy") { 
 
       // Heavy
@@ -81,7 +80,6 @@ class User {
       scale(0.4);
       draw_user_heavy();
       popMatrix();
-      
     } else if (mode == "questions") { 
 
       // Hands
@@ -96,18 +94,18 @@ class User {
       popMatrix();
     }
   }
-  
+
   void fadeIn () {
-    
+
     if (fillAlpha < 255) { 
-      fillAlpha++; 
+      fillAlpha++;
     }
-    
+
     if (strokeAlpha < 255) { 
-      strokeAlpha++; 
+      strokeAlpha++;
     }
   }
-  
+
   void fadeOut () {
 
     if (fillAlpha > 0) { 
@@ -118,27 +116,27 @@ class User {
       strokeAlpha--;
     }
   }
-  
+
   void startCapture () {
-    
+
     shouldCapture = true;
     println("User beginDraw");
   }
-  
+
   void endCapture () {
-    
+
     shouldCapture = false;
     println("User endDraw");
   }
 
   void draw_user_light () {
-    
+
     if (shouldCapture) {
       graphics.beginDraw();
     }
 
     if (!runOnce) {
-      
+
       //background(0);
       for (int i =0; i< num2; i++) {
         xpos2[i] = random(-500, 500);
@@ -212,7 +210,7 @@ class User {
       float b = map(sokudo, 0, 5, 128, 255);
 
       noStroke(); 
-      fill(r, g, b,60);
+      fill(r, g, b, 60);
       ellipse(xpos2[i], ypos2[i], 1, radius); //Added a numeral in place of radius to make a highlighted circle start as soon as it starts if the person chooses to not move their mouse
       fill(r, g, b, 10);
     }
@@ -225,135 +223,117 @@ class User {
       sphere(4);
       popMatrix();
     }
-    
+
     if (shouldCapture) {
       graphics.endDraw();
     }
   }
 
   void draw_user_heavy () {
-    
+
     if (shouldCapture) {
       graphics.beginDraw();
     }
-
-    float x1 = (skeleton_points.get(4).x+skeleton_points.get(3).x)/2;
-    float x2 = (skeleton_points.get(3).x+skeleton_points.get(2).x)/2;
-    float x3 = (skeleton_points.get(2).x+skeleton_points.get(0).x)/2;
-    float x4 = (skeleton_points.get(6).x+skeleton_points.get(7).x)/2;
-    float x5 = (skeleton_points.get(5).x+skeleton_points.get(6).x)/2;
-    float x6 = (skeleton_points.get(0).x+skeleton_points.get(5).x)/2;
+    float distm = 0;
+    float x1 = (skeleton_points.get(4).x+skeleton_points.get(3).x)/2+distm;
+    float x2 = (skeleton_points.get(3).x+skeleton_points.get(2).x)/2+distm;
+    float x3 = (skeleton_points.get(2).x+skeleton_points.get(0).x)/2+distm;
+    float x4 = (skeleton_points.get(6).x+skeleton_points.get(7).x)/2+distm;
+    float x5 = (skeleton_points.get(5).x+skeleton_points.get(6).x)/2+distm;
+    float x6 = (skeleton_points.get(0).x+skeleton_points.get(5).x)/2+distm;
     float xleft;
     float xleft2;
     float xleft3;
     float xright;
     float xright2;
     float xright3;
-    float y7 = skeleton_points.get(0).y - 30;
-    float y8 = y7 + 20;
-    float y9 = (y7 + y8) / 2;
-    float y10 = (skeleton_points.get(4).y + y8) / 2;
-    float y11 = (skeleton_points.get(7).y + y8) / 2;
-    float y12 = (skeleton_points.get(4).y + y10) / 2;
+    float y7 = skeleton_points.get(0).y - 30+distm;
+    float y8 = y7 + 20+distm;
+    float y9 = ((y7 + y8) / 2)+distm;
+    float y10 = (skeleton_points.get(4).y + y8) / 2+distm;
+    float y11 = (skeleton_points.get(7).y + y8) / 2+distm;
+    float y12 = (skeleton_points.get(4).y + y10) / 2+distm;
     float y13 = (y7 + y10) / 2;
-    float y14 = skeleton_points.get(15).y + (skeleton_points.get(15).y - (skeleton_points.get(16).y + 20));
+    float y14 = skeleton_points.get(15).y + (skeleton_points.get(15).y - (skeleton_points.get(16).y + 20))+distm;
 
-    if (skeleton_points.get(10).x <= skeleton_points.get(9).x) {
+      xleft = skeleton_points.get(10).x - 400+distm;
+      xleft2 = skeleton_points.get(10).x - 300+distm;
+      xleft3 = skeleton_points.get(10).x - 200+distm;
 
-      xleft = skeleton_points.get(10).x - 400;
-      xleft2 = skeleton_points.get(10).x - 300;
-      xleft3 = skeleton_points.get(10).x - 200;
-      
-    } else {
+      xright = skeleton_points.get(13).x + 400+distm;
+      xright2 = skeleton_points.get(13).x + 300+distm;
+      xright3 = skeleton_points.get(13).x + 200+distm;
 
-      xleft = skeleton_points.get(10).x + 400;
-      xleft2 = skeleton_points.get(10).x + 300;
-      xleft3 = skeleton_points.get(10).x + 200;
-    }
-
-    if (skeleton_points.get(13).x >= skeleton_points.get(12).x) {
-
-      xright = skeleton_points.get(13).x + 400;
-      xright2 = skeleton_points.get(13).x + 300;
-      xright3 = skeleton_points.get(13).x + 200;
-      
-    } else {
-
-      xright = skeleton_points.get(13).x - 400;
-      xright2 = skeleton_points.get(13).x - 300;
-      xright3 = skeleton_points.get(13).x - 200;
-    }
 
     noFill();
     stroke(255);
     strokeWeight(10);
-    ellipse(skeleton_points.get(4).x, skeleton_points.get(4).y, 120, 120);
-    ellipse(skeleton_points.get(7).x, skeleton_points.get(7).y, 120, 120);
+    ellipse(skeleton_points.get(4).x+distm, skeleton_points.get(4).y+distm, 120, 120);
+    ellipse(skeleton_points.get(7).x+distm, skeleton_points.get(7).y+distm, 120, 120);
     stroke(255, 210);
     ellipse(x1, y12, 120, 120);
     ellipse(x4, y12, 120, 120);
     stroke(255, 180);
-    ellipse(skeleton_points.get(3).x, y10, 120, 120);
-    ellipse(skeleton_points.get(6).x, y11, 120, 120);
+    ellipse(skeleton_points.get(3).x+distm, y10, 120, 120);
+    ellipse(skeleton_points.get(6).x+distm, y11, 120, 120);
     stroke(255, 150);
     ellipse(x2, y13, 120, 120);
     ellipse(x5, y13, 120, 120);
     stroke(255, 120);
-    ellipse(skeleton_points.get(2).x, y7, 120, 120);
-    ellipse(skeleton_points.get(5).x, y7, 120, 120);
+    ellipse(skeleton_points.get(2).x+distm, y7, 120, 120);
+    ellipse(skeleton_points.get(5).x+distm, y7, 120, 120);
     stroke(255, 90);
-    ellipse(skeleton_points.get(0).x, skeleton_points.get(0).y, 120, 120);
+    ellipse(skeleton_points.get(0).x+distm, skeleton_points.get(0).y, 120, 120);
     stroke(255, 210);
-    bezier(skeleton_points.get(8).x, skeleton_points.get(8).y, skeleton_points.get(8).z, 
+    bezier(skeleton_points.get(8).x+distm, skeleton_points.get(8).y, skeleton_points.get(8).z, 
       xleft, skeleton_points.get(10).y-350, skeleton_points.get(9).z, 
-      skeleton_points.get(11).x, skeleton_points.get(11).y, skeleton_points.get(11).z, 
-      skeleton_points.get(11).x, skeleton_points.get(11).y, skeleton_points.get(11).z);
-    bezier(skeleton_points.get(8).x, skeleton_points.get(8).y, skeleton_points.get(8).z, 
+      skeleton_points.get(11).x+distm, skeleton_points.get(11).y, skeleton_points.get(11).z, 
+      skeleton_points.get(11).x+distm, skeleton_points.get(11).y, skeleton_points.get(11).z);
+    bezier(skeleton_points.get(8).x+distm, skeleton_points.get(8).y, skeleton_points.get(8).z, 
       xright, skeleton_points.get(13).y-350, skeleton_points.get(13).z, 
-      skeleton_points.get(14).x, skeleton_points.get(14).y, skeleton_points.get(14).z, 
-      skeleton_points.get(14).x, skeleton_points.get(14).y, skeleton_points.get(14).z);
+      skeleton_points.get(14).x+distm, skeleton_points.get(14).y, skeleton_points.get(14).z, 
+      skeleton_points.get(14).x+distm, skeleton_points.get(14).y, skeleton_points.get(14).z);
     stroke(255, 170);
-    bezier(skeleton_points.get(8).x, skeleton_points.get(8).y, skeleton_points.get(8).z, 
+    bezier(skeleton_points.get(8).x+distm, skeleton_points.get(8).y, skeleton_points.get(8).z, 
       xleft2, skeleton_points.get(10).y-280, skeleton_points.get(9).z, 
-      skeleton_points.get(11).x, skeleton_points.get(11).y, skeleton_points.get(11).z, 
-      skeleton_points.get(11).x, skeleton_points.get(11).y, skeleton_points.get(11).z);
-    bezier(skeleton_points.get(8).x, skeleton_points.get(8).y, skeleton_points.get(8).z, 
+      skeleton_points.get(11).x+distm, skeleton_points.get(11).y, skeleton_points.get(11).z, 
+      skeleton_points.get(11).x+distm, skeleton_points.get(11).y, skeleton_points.get(11).z);
+    bezier(skeleton_points.get(8).x+distm, skeleton_points.get(8).y, skeleton_points.get(8).z, 
       xright2, skeleton_points.get(13).y-280, skeleton_points.get(13).z, 
-      skeleton_points.get(14).x, skeleton_points.get(14).y, skeleton_points.get(14).z, 
-      skeleton_points.get(14).x, skeleton_points.get(14).y, skeleton_points.get(14).z);
+      skeleton_points.get(14).x+distm, skeleton_points.get(14).y, skeleton_points.get(14).z, 
+      skeleton_points.get(14).x+distm, skeleton_points.get(14).y, skeleton_points.get(14).z);
     stroke(255, 190);
-    bezier(skeleton_points.get(8).x, skeleton_points.get(8).y, skeleton_points.get(8).z, 
+    bezier(skeleton_points.get(8).x+distm, skeleton_points.get(8).y, skeleton_points.get(8).z, 
       xleft3, skeleton_points.get(10).y-200, skeleton_points.get(9).z, 
-      skeleton_points.get(11).x, skeleton_points.get(11).y, skeleton_points.get(11).z, 
-      skeleton_points.get(11).x, skeleton_points.get(11).y, skeleton_points.get(11).z);
-    bezier(skeleton_points.get(8).x, skeleton_points.get(8).y, skeleton_points.get(8).z, 
+      skeleton_points.get(11).x+distm, skeleton_points.get(11).y, skeleton_points.get(11).z, 
+      skeleton_points.get(11).x+distm, skeleton_points.get(11).y, skeleton_points.get(11).z);
+    bezier(skeleton_points.get(8).x+distm, skeleton_points.get(8).y, skeleton_points.get(8).z, 
       xright3, skeleton_points.get(13).y-200, skeleton_points.get(13).z, 
-      skeleton_points.get(14).x, skeleton_points.get(14).y, skeleton_points.get(14).z, 
-      skeleton_points.get(14).x, skeleton_points.get(14).y, skeleton_points.get(14).z);
+      skeleton_points.get(14).x+distm, skeleton_points.get(14).y, skeleton_points.get(14).z, 
+      skeleton_points.get(14).x+distm, skeleton_points.get(14).y, skeleton_points.get(14).z);
     stroke(255, 70);
     ellipse(x3, y9, 120, 120);
     ellipse(x6, y9, 120, 120);
-    ellipse(skeleton_points.get(16).x+40, skeleton_points.get(16).y+20, 120, 120);
-    ellipse(skeleton_points.get(16).x-40, skeleton_points.get(16).y+20, 120, 120);
-    ellipse(skeleton_points.get(16).x+40, skeleton_points.get(15).y, 120, 120);
-    ellipse(skeleton_points.get(16).x-40, skeleton_points.get(15).y, 120, 120);
-    ellipse(skeleton_points.get(15).x+40, y14, 120, 120);
-    ellipse(skeleton_points.get(15).x-40, y14, 120, 120);
-    
-     if (shouldCapture) {
+    ellipse(skeleton_points.get(16).x+40+distm, skeleton_points.get(16).y+20, 120, 120);
+    ellipse(skeleton_points.get(16).x-40+distm, skeleton_points.get(16).y+20, 120, 120);
+    ellipse(skeleton_points.get(16).x+40+distm, skeleton_points.get(15).y, 120, 120);
+    ellipse(skeleton_points.get(16).x-40+distm, skeleton_points.get(15).y, 120, 120);
+    ellipse(skeleton_points.get(15).x+40+distm, y14, 120, 120);
+    ellipse(skeleton_points.get(15).x-40+distm, y14, 120, 120);
+    if (shouldCapture) {
       graphics.endDraw();
     }
   }
-  
+
   void draw_user_hands () {
 
     noFill();
     stroke(255);
     strokeWeight(10);
-    
+
     // Left Hand
     ellipse(skeleton_points.get(4).x, skeleton_points.get(4).y, 20, 20);
-    
+
     // Right Hand
     ellipse(skeleton_points.get(7).x, skeleton_points.get(7).y, 20, 20);
   }

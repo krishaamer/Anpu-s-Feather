@@ -55,7 +55,7 @@ class QA {
   }
   
   void createNoButton () {
-    
+
     // Position
     NO_button_X = 20;
     NO_button_Y = 20;
