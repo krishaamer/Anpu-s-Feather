@@ -12,7 +12,7 @@
 class Deity {
 
   float gap, theta, theta2, alpha, speed;
-  int cols, rows, strokeAlpha, fillAlpha, featureStrokeAlpha, featureFillAlpha;;
+  int cols, rows, strokeAlpha, fillAlpha, featureStrokeAlpha, featureFillAlpha;
   String feature;
  
   color[] colors = {
@@ -73,7 +73,7 @@ class Deity {
   
         float sz = map(sin(theta + offSetX + offSetY), -1, 1, 5, gap * 1.5);
         ellipse(x, y, sz, sz);
-
+        
       }
       
     }
