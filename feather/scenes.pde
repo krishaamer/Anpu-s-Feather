@@ -449,6 +449,7 @@ void outro () {
 
     background(0);
     message.setAlpha(0);
+    music.fadeOut();
   }
 
   // Begin scene
@@ -474,5 +475,6 @@ void outro () {
     println("The end");
     background(0);
     message.setAlpha(0);
+    music.end();
   }
 }

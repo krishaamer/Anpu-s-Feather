@@ -9,14 +9,44 @@
 
 class Music {
   
+  SoundFile sound;
+  float volume = 1.0;
+  
   Music () {
     
   }
   
-  void play (SoundFile s) {
+  void load (SoundFile sf) {
     
-    
-    s.play();
+    sound = sf;
   }
   
+  void play () {
+ 
+    if (!sound.isPlaying()) {
+      
+      // Reset volume
+      volume = 1.0;
+      
+      // Play
+      sound.amp(volume);
+      sound.play();
+    }
+  }
+  
+  void fadeOut () {
+
+    if (sound.isPlaying() && volume > 0) { 
+      
+      volume -= 0.05;
+      sound.amp(volume);
+    }
+  }
+  
+  void end () {
+   
+    if (sound.isPlaying()) {
+      sound.stop();
+    }
+  }
 }
