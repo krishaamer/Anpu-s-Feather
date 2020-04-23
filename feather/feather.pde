@@ -62,12 +62,12 @@ Pyramid pyramid = new Pyramid(media);
 void setup() {
   
   // Canvas Size
-  size(1280, 900, P3D);
-  //fullScreen(P3D);
+  //size(1280, 900, P3D);
+  fullScreen(P3D);
   
   background(0);
-  frameRate(24);
-  smooth(2);
+  frameRate(27);
+  smooth(8);
   
   // Preload Images
   media.put("pyramid0", loadImage("pyramid0.png"));
