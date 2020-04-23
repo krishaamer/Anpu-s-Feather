@@ -142,7 +142,7 @@ void questions () {
   }
 
   if (story.time() > 1) {
-
+    
     parser.read_data();
     if (parser.isStreaming()) {
 
@@ -171,6 +171,9 @@ void questions () {
       story.resetTime();
       story.setMode("heavy");
     }
+    
+    pyramid.show();
+    pyramid.fadeIn();
   }
 }
 
