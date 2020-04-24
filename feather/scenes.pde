@@ -153,8 +153,8 @@ void questions () {
     }
 
     message.say("Have you cried this week?");
-    message.fadeOut(8);
-
+    message.fadeOut(6);
+    
     qa.ask();
     qa.fadeIn();
 
@@ -175,6 +175,27 @@ void questions () {
     pyramid.show();
     pyramid.fadeIn();
   }
+  
+  /*
+  if (story.time() > 6 && story.time() < 6.1) {
+
+    message.setAlpha(0);
+  }
+  
+  if (story.time() > 5.1 && story.time() < 7) {
+
+    message.say(" ");
+    message.subtitle("Touch the answer with your hand");
+    message.fadeIn(8);
+  }
+  
+  if (story.time() > 7 && story.time() < 9) {
+
+    message.say(" ");
+    message.subtitle("Touch the answer with your hand");
+    message.fadeOut(8);
+  }
+  */
 }
 
 void scales () {
