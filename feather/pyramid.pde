@@ -27,9 +27,18 @@ class Pyramid {
     
     tint(255, 255, 255, tintAlpha);
 
+    bg();
+    anubis();
+  }
+  
+  void bg () {
+    
     imageMode(CORNER);
     image(media.get("pyramid0"), width - 800, 0);
     image(media.get("pyramid2"), 0, 0);
+  }
+  
+  void anubis () {
     
     imageMode(CENTER);
     if (frameCount % 30 < 15){
