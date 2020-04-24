@@ -36,7 +36,7 @@ import KinectPV2.*;
 // Flags
 boolean is_live = false;
 boolean play_music = true;
-boolean save_output = false;
+boolean save_output = true;
 boolean enable_mouse_interaction = true;
 
 // Init
@@ -55,7 +55,7 @@ River nile = new River();
 Deity anubis = new Deity();
 User user = new User(parser.getPoints());
 Scales scales = new Scales(parser.getPoints(), media);
-Output output = new Output(parser.getPoints());
+Output output = new Output(parser.getPoints(), save_output);
 QA qa = new QA(parser.getPoints());
 Wisdom wisdom = new Wisdom(parser.getPoints(), media);
 Pyramid pyramid = new Pyramid(media);

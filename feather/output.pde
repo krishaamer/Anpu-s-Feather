@@ -22,11 +22,12 @@ class Output {
   int ye = year();   // 2003, 2004, 2005, etc.
   boolean is_initiated = false;
   boolean already_saved = false;
+  boolean should_save = false;
   
-  Output (ArrayList<PVector> sp) {
+  Output (ArrayList<PVector> sp, Boolean ss) {
     
     skeleton_points = sp;
-    init();
+    should_save = ss;
   }
   
   void init () {
@@ -52,11 +53,13 @@ class Output {
   
   void saveImage () {
     
-    if (!already_saved) {
-      
-      wisdom_card_name = "card_" + ye + "_" + mon + "_" + da + "_" + hr + "_" + min + "_" + sec;
-      saveFrame("wisdom/" + wisdom_card_name + ".png");
-      already_saved = true;
+    if (should_save) {
+      if (!already_saved) {
+        
+        wisdom_card_name = "card_" + ye + "_" + mon + "_" + da + "_" + hr + "_" + min + "_" + sec;
+        saveFrame("wisdom/" + wisdom_card_name + ".png");
+        already_saved = true;
+      }
     }
   }
   
