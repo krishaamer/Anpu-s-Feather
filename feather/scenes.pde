@@ -226,13 +226,13 @@ void scales () {
 
     background(0);
 
-    message.say("You are still alive");
+    message.say("It's too early to die");
     message.fadeIn(8);
   }
 
   if (story.time() > 9.5 && story.time() < 10.5) {
 
-    message.say("You are still alive");
+    message.say("It's too early to die");
     message.fadeOut(8);
   }
 
