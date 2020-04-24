@@ -461,7 +461,7 @@ void wisdom () {
   }
   
   // Save output
-  if (story.time() > 5 && story.time() < 5.1) {
+  if (story.time() > 6 && story.time() < 6.1) {
 
     output.saveImage();
   }
