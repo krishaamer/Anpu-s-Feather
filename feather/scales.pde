@@ -96,7 +96,7 @@ class Scales {
   
   void drawDiagram () {
     
-    if (frameCount % 20 < 10){
+    if (frameCount % 20 < 10) {
         
         fill(0);
         noStroke();
@@ -109,7 +109,7 @@ class Scales {
         imageMode(CORNER);
         image(media.get("scale"), -50, -100);
         
-       } else {
+     } else {
          
         fill(0);
         noStroke();
@@ -122,7 +122,7 @@ class Scales {
         
         imageMode(CORNER);
         image(media.get("scale"), -50, -100);
-      }
+    }
   }
 
   void update() {
