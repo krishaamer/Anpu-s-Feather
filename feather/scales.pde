@@ -16,8 +16,8 @@ class Scales {
   float xn2 = 0;
   float yn1 = 0;
   float yn2 = 0;
-  float feathery = -300;
-  float easingy = 0.01;
+  float feather_y = -300;
+  float easing_y = 0.01;
   float xdist1, xdist2, ydist1, ydist2, avdist, val1, val2;
   String startFrom;
   boolean showDiagram = true;
@@ -60,7 +60,7 @@ class Scales {
     noStroke();
     fill(0, 20);
     rectMode(CENTER);
-    rect(width / 2, feathery + 400, 600, 800);
+    rect(width / 2, feather_y + 400, 600, 800);
     
     if (val2 == 100) {
       
@@ -72,25 +72,25 @@ class Scales {
       val2 = random(-480, -100);
     }
     
-    if (abs(val2 - feathery) > 100) {
+    if (abs(val2 - feather_y) > 100) {
       
-      feathery += (val2 - feathery) * easingy;
+      feather_y += (val2 - feather_y) * easing_y;
        
     } else {      
       
       t = t + 0.2; 
-      feathery = feathery + sin(t) * 5;
+      feather_y = feather_y + sin(t) * 5;
     }
     
     imageMode(CENTER);
     
     if (startFrom == "top") {
       
-      image(media.get("feather"), width / 2, feathery);
+      image(media.get("feather"), width / 2, feather_y);
       
     } else {
       
-      image(media.get("feather"), width / 2, feathery + height / 2);
+      image(media.get("feather"), width / 2, feather_y + height / 2);
     }
     
     if (showDiagram) {
@@ -131,7 +131,7 @@ class Scales {
   }
 
   void update() {
-     
+    
      pushMatrix();
      translate(0, 0, -200);
      tint(255, 255, 255, tintAlpha);
