@@ -84,14 +84,17 @@ class Wisdom {
      text(quote, width / 2 + 220, height / 2 + 140, 300, 500); 
   }
   
-  String getQuote () {
-    
+  String getQuote (float feather_y) {
+
     if (!hasRun) {
-    
+      
       hasRun = true;
-      int i = int(random(quotes.length));
-      quote = quotes[i];
+      int choice = int(map(feather_y, -480, 300, 0, quotes.length));
+      println(choice);
+      
+      quote = quotes[choice];
     }
+    
     return quote;
   }
   

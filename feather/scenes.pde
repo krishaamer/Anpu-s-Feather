@@ -413,14 +413,13 @@ void heavy () {
 
 void wisdom () {
 
-  // Get Data
-  wisdom.getQuote();
-
-  // Reset
+  // Reset & Get Data
   if (story.time() > 0 && story.time() < 0.1) {
 
     background(0);
     message.setAlpha(0);
+    
+    wisdom.getQuote(scales.getFeatherY());
   }
 
   // Begin scene

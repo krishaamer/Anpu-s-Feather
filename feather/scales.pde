@@ -37,6 +37,11 @@ class Scales {
     
     startFrom = t;
   }
+  
+  float getFeatherY () {
+    
+    return feather_y;
+  }
 
   void calculateFeatherWeight () {
 
