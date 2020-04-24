@@ -13,12 +13,15 @@ class Output {
   PrintWriter output;
   ArrayList<PVector> skeleton_points;
   String studentName = "Feather";
+  String wisdom_card_name;
+  int sec = second();  // Values from 0 - 59
   int min = minute();  // Values from 0 - 59
   int hr = hour();    // Values from 0 - 23
   int da = day();    // Values from 1 - 31
   int mon = month();  // Values from 1 - 12
   int ye = year();   // 2003, 2004, 2005, etc.
   boolean is_initiated = false;
+  boolean already_saved = false;
   
   Output (ArrayList<PVector> sp) {
     
@@ -49,8 +52,12 @@ class Output {
   
   void saveImage () {
     
-    //for Students. When you are ready to record your video. ***
-    saveFrame("output/frame-######.png");
+    if (!already_saved) {
+      
+      wisdom_card_name = "card_" + ye + "_" + mon + "_" + da + "_" + hr + "_" + min + "_" + sec;
+      saveFrame("wisdom/" + wisdom_card_name + ".png");
+      already_saved = true;
+    }
   }
   
   void exitFile () {

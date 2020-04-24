@@ -186,7 +186,7 @@ void scales () {
   }
 
   if (story.time() > 0.1 && story.time() < 8) {
-
+    
     blendMode(BLEND);
     parser.read_data();
     if (parser.isStreaming()) {
@@ -196,6 +196,7 @@ void scales () {
       scales.update();
       scales.fadeIn();
       message.countdown(8, story.time());
+      
     }
   }
 
@@ -350,6 +351,8 @@ void heavy () {
     if (parser.isStreaming()) {
       user.update();
       user.fadeIn();
+      pyramid.showAlt();
+      pyramid.fadeIn();
     }
   }
 
@@ -421,7 +424,7 @@ void wisdom () {
     background(0);
     message.setAlpha(0);
   }
-
+  
   if (story.time() > 4.2 && story.time() < 48) {
 
     background(0);
@@ -434,6 +437,12 @@ void wisdom () {
     background(0);
     wisdom.showCard();
     wisdom.fadeOut(8);
+  }
+  
+  // Save output
+  if (story.time() > 5 && story.time() < 5.1) {
+
+    output.saveImage();
   }
 
   // End
