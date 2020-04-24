@@ -58,7 +58,7 @@ class Wisdom {
 
   void showCard () {    
     
-     distm = width / 2 + 500; //(width / 2 - skeleton_points.get(15).x);
+     distm = width / 2 + 210; //(width / 2 - skeleton_points.get(15).x);
     
      tint(255, 255, 255, alpha);
      pushMatrix();
@@ -71,8 +71,8 @@ class Wisdom {
      noStroke();
      rectMode(CORNER);
      fill(0);
-     rect(0, 0, 550, height);
-     rect(920, 0, 500, height);
+     rect(0, 0, 280, height);
+     rect(920, 0, 700, height);
      rect(0, 0, width, 400);
      
      imageMode(CENTER);
