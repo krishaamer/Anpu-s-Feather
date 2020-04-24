@@ -226,13 +226,13 @@ void scales () {
 
     background(0);
 
-    message.say("It's too early to die");
+    message.say("It's not time to die");
     message.fadeIn(8);
   }
 
   if (story.time() > 9.5 && story.time() < 10.5) {
 
-    message.say("It's too early to die");
+    message.say("It's not time to die");
     message.fadeOut(8);
   }
 
@@ -424,29 +424,29 @@ void wisdom () {
   }
 
   // Begin scene
-  if (story.time() > 0.1 && story.time() < 3) {
+  if (story.time() > 0.1 && story.time() < 4) {
 
     background(0);
     message.say("Sebayt");
-    message.subtitle("Wisdom will guide you");
+    message.subtitle("Wisdom will guide your life");
     message.fadeIn(8);
   }
 
-  if (story.time() > 3 && story.time() < 4) {
+  if (story.time() > 4 && story.time() < 5) {
 
     background(0);
     message.say("Sebayt");
-    message.subtitle("Wisdom will guide you");
+    message.subtitle("Wisdom will guide your life");
     message.fadeOut(8);
   }
 
-  if (story.time() > 4 && story.time() < 4.1) {
+  if (story.time() > 5 && story.time() < 5.1) {
 
     background(0);
     message.setAlpha(0);
   }
   
-  if (story.time() > 4.2 && story.time() < 48) {
+  if (story.time() > 5.2 && story.time() < 48) {
 
     background(0);
     wisdom.showCard();
