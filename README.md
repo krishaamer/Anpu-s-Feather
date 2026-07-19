@@ -1,7 +1,6 @@
 # Anpu’s Feather 阿努比斯的羽毛
 
-**▶ Play it in your browser** — an interactive experience inviting you to
-think about your life before death.
+An interactive experience inviting you to think about your life before death.
 
 ## Story
 
@@ -11,35 +10,56 @@ Based on Egyptian mythology we ask you to reflect upon your life and offer a tok
 
 Welcome, you have reached the entrance. How have you lived your life? This feather shows the weight of your heart.
 
+## Repository layout
+
+This repo holds three incarnations of the same experience:
+
+| Path | What it is |
+|------|------------|
+| [`apps/web/`](apps/web/) | **The game.** A TypeScript + Vite + Canvas app that runs in any browser. This is the source of truth for gameplay and art. |
+| [`apps/ios/`](apps/ios/) | **The native iOS app.** A [Capacitor](https://capacitorjs.com) wrapper that ships the web build in a full-screen WKWebView, buildable in Xcode. |
+| [`archive/`](archive/) | **The original 2020 installation.** The Processing + Kinect sketch, preserved unchanged. |
+
+The web app and the iOS app play identically — the iOS app bundles the web
+build, so a change in `apps/web` flows to both.
+
 ## How to play
 
-1. Answer Anubis’ question (**YES** or **NO**) — click a button or reach into it with your pointer
+1. Answer Anubis’ question (**YES** or **NO**) — click/tap a button or reach into it with your pointer
 2. Show the heaviness of your heart by moving your pointer — your spirit’s hands follow it
 3. Show the busyness of your life by keeping the feather aloft: movement lifts it, stillness lets it sink
-4. Receive your wisdom card — a Sebayt saying chosen by where the feather came to rest — and save it as an image
+4. Receive your wisdom card — a Sebayt saying chosen by where the feather came to rest — and save it
 
 Testing shortcuts (kept from the original): keys `1`–`7` jump between scenes,
 `R` resets scene time, `←`/`→` cycle the recorded Kinect movements, `M` mutes.
 
-## Run locally
+## Quick start
 
 ```sh
+# The web game
+cd apps/web
 npm install
-npm run dev     # development server
-npm run build   # production build in dist/
+npm run dev          # dev server
+npm run build        # production build in apps/web/dist
+
+# The iOS app (requires macOS + Xcode)
+cd apps/ios
+npm install
+npm run sync         # build the web app and copy it into the iOS project
+npm run open         # open the project in Xcode, then Run
 ```
 
-The app is plain TypeScript + Canvas, built with [Vite](https://vitejs.dev).
-Pushes to `master` deploy to GitHub Pages automatically
+Pushes to `master` deploy the web app to GitHub Pages automatically
 (`.github/workflows/deploy.yml`).
 
 ## The original installation
 
-This is a web port of the 2020 Processing + Kinect installation created by
-Lei Lin and Kris Haamer at NCKU ICID Digital Design class, Tainan, Taiwan.
-The original sketch, artwork and recorded skeleton data are preserved in
-[`archive/`](archive/) — the web version reuses the same narrative, art,
-music and movement recordings, with the pointer standing in for the Kinect.
+The web version is a faithful port of the 2020 Processing + Kinect
+installation created by Lei Lin and Kris Haamer at NCKU ICID Digital Design
+class, Tainan, Taiwan. The original sketch, artwork and recorded skeleton
+data live in [`archive/`](archive/) — the ports reuse the same narrative,
+art, music and movement recordings, with the pointer standing in for the
+Kinect.
 
 ## Anpu, Anubis, Protector of the graves
 Anubis was commonly depicted in black color, symbolizing the black fertile soil of the Nile River Valley, a sign of life and regeneration [[1](https://books.google.com.tw/books?id=mHD4CgAAQBAJ&pg=PT192)]

@@ -111,8 +111,8 @@ export class Wisdom {
     ctx.restore();
   }
 
-  /** Compose the card on black and download it as a PNG. */
-  download() {
+  /** Compose the finished card on black and hand it to the visitor. */
+  async download() {
     const out = document.createElement("canvas");
     out.width = W;
     out.height = H;
@@ -120,7 +120,7 @@ export class Wisdom {
     octx.fillStyle = "#000";
     octx.fillRect(0, 0, W, H);
     this.drawCard(octx, 1);
-    const a = document.createElement("a");
+
     const now = new Date();
     const stamp = [
       now.getFullYear(),
@@ -130,9 +130,34 @@ export class Wisdom {
       now.getMinutes(),
       now.getSeconds(),
     ].join("_");
-    a.download = `card_${stamp}.png`;
-    a.href = out.toDataURL("image/png");
+    const filename = `card_${stamp}.png`;
+
+    const blob = await new Promise<Blob | null>((resolve) =>
+      out.toBlob(resolve, "image/png"),
+    );
+    if (!blob) return;
+
+    // On iOS (and other mobile browsers) an <a download> click is ignored, so
+    // offer the native share sheet — the way to keep an image on a phone.
+    const file = new File([blob], filename, { type: "image/png" });
+    const nav = navigator as Navigator & {
+      canShare?: (data: { files: File[] }) => boolean;
+    };
+    if (nav.canShare?.({ files: [file] })) {
+      try {
+        await navigator.share({ files: [file], title: "Your Wisdom Card" });
+        return;
+      } catch {
+        // Visitor dismissed the sheet, or share failed — fall through to save.
+      }
+    }
+
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.download = filename;
+    a.href = url;
     a.click();
+    URL.revokeObjectURL(url);
   }
 
   setAlpha(a: number) {

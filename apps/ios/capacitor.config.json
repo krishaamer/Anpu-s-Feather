@@ -1,0 +1,12 @@
+{
+  "appId": "co.haam.anpusfeather",
+  "appName": "Anpu's Feather",
+  "webDir": "../web/dist",
+  "ios": {
+    "backgroundColor": "#000000",
+    "contentInset": "never"
+  },
+  "server": {
+    "iosScheme": "capacitor"
+  }
+}
