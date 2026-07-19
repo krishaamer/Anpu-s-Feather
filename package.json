@@ -1,0 +1,16 @@
+{
+  "name": "anpus-feather",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Anpu's Feather — an interactive web experience inviting you to think about your life before death",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "vite": "^7.0.0"
+  }
+}

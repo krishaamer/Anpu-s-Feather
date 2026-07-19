@@ -1,3 +1,8 @@
+# Web app
+node_modules
+dist
+
+# Processing (archive)
 .DS_Store
 applet
 application.linux-arm64
