@@ -1,0 +1,338 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3A0000000000000000000001 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0000000000000000000001 /* App.swift */; };
+		3A0000000000000000000002 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0000000000000000000002 /* Renderer.swift */; };
+		3A0000000000000000000003 /* Textures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0000000000000000000003 /* Textures.swift */; };
+		3A0000000000000000000004 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0000000000000000000004 /* Core.swift */; };
+		3A0000000000000000000005 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0000000000000000000005 /* Input.swift */; };
+		3A0000000000000000000006 /* Skeleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0000000000000000000006 /* Skeleton.swift */; };
+		3A0000000000000000000007 /* Narrative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0000000000000000000007 /* Narrative.swift */; };
+		3A0000000000000000000008 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0000000000000000000008 /* Message.swift */; };
+		3A0000000000000000000009 /* River.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0000000000000000000009 /* River.swift */; };
+		3A000000000000000000000A /* Pyramid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A000000000000000000000A /* Pyramid.swift */; };
+		3A000000000000000000000B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A000000000000000000000B /* User.swift */; };
+		3A000000000000000000000C /* Scales.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A000000000000000000000C /* Scales.swift */; };
+		3A000000000000000000000D /* QA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A000000000000000000000D /* QA.swift */; };
+		3A000000000000000000000E /* Wisdom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A000000000000000000000E /* Wisdom.swift */; };
+		3A000000000000000000000F /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A000000000000000000000F /* Music.swift */; };
+		3A0000000000000000000010 /* Experience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A0000000000000000000010 /* Experience.swift */; };
+		3A0000000000000000000011 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 2A0000000000000000000011 /* Shaders.metal */; };
+		3A0000000000000000000012 /* Media in Resources */ = {isa = PBXBuildFile; fileRef = 2A0000000000000000000012 /* Media */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D0000000000000000000001 /* AnpusFeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnpusFeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A0000000000000000000001 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		2A0000000000000000000002 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		2A0000000000000000000003 /* Textures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Textures.swift; sourceTree = "<group>"; };
+		2A0000000000000000000004 /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
+		2A0000000000000000000005 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		2A0000000000000000000006 /* Skeleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skeleton.swift; sourceTree = "<group>"; };
+		2A0000000000000000000007 /* Narrative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Narrative.swift; sourceTree = "<group>"; };
+		2A0000000000000000000008 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		2A0000000000000000000009 /* River.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = River.swift; sourceTree = "<group>"; };
+		2A000000000000000000000A /* Pyramid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pyramid.swift; sourceTree = "<group>"; };
+		2A000000000000000000000B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2A000000000000000000000C /* Scales.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scales.swift; sourceTree = "<group>"; };
+		2A000000000000000000000D /* QA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QA.swift; sourceTree = "<group>"; };
+		2A000000000000000000000E /* Wisdom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wisdom.swift; sourceTree = "<group>"; };
+		2A000000000000000000000F /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
+		2A0000000000000000000010 /* Experience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Experience.swift; sourceTree = "<group>"; };
+		2A0000000000000000000011 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		2A0000000000000000000012 /* Media */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Media; sourceTree = "<group>"; };
+		2A0000000000000000000013 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1E0000000000000000000003 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A0000000000000000000001 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				1A0000000000000000000002 /* AnpusFeather */,
+				1A0000000000000000000006 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1A0000000000000000000002 /* AnpusFeather */ = {
+			isa = PBXGroup;
+			children = (
+				2A0000000000000000000001 /* App.swift */,
+				2A0000000000000000000013 /* Info.plist */,
+				1A0000000000000000000003 /* Metal */,
+				1A0000000000000000000004 /* Game */,
+				1A0000000000000000000005 /* Resources */,
+			);
+			path = AnpusFeather;
+			sourceTree = "<group>";
+		};
+		1A0000000000000000000003 /* Metal */ = {
+			isa = PBXGroup;
+			children = (
+				2A0000000000000000000002 /* Renderer.swift */,
+				2A0000000000000000000003 /* Textures.swift */,
+				2A0000000000000000000011 /* Shaders.metal */,
+			);
+			path = Metal;
+			sourceTree = "<group>";
+		};
+		1A0000000000000000000004 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				2A0000000000000000000004 /* Core.swift */,
+				2A0000000000000000000005 /* Input.swift */,
+				2A0000000000000000000006 /* Skeleton.swift */,
+				2A0000000000000000000007 /* Narrative.swift */,
+				2A0000000000000000000008 /* Message.swift */,
+				2A0000000000000000000009 /* River.swift */,
+				2A000000000000000000000A /* Pyramid.swift */,
+				2A000000000000000000000B /* User.swift */,
+				2A000000000000000000000C /* Scales.swift */,
+				2A000000000000000000000D /* QA.swift */,
+				2A000000000000000000000E /* Wisdom.swift */,
+				2A000000000000000000000F /* Music.swift */,
+				2A0000000000000000000010 /* Experience.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		1A0000000000000000000005 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2A0000000000000000000012 /* Media */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1A0000000000000000000006 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D0000000000000000000001 /* AnpusFeather.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1C0000000000000000000001 /* AnpusFeather */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F0000000000000000000002 /* Build configuration list for PBXNativeTarget "AnpusFeather" */;
+			buildPhases = (
+				1E0000000000000000000001 /* Sources */,
+				1E0000000000000000000003 /* Frameworks */,
+				1E0000000000000000000002 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AnpusFeather;
+			productName = AnpusFeather;
+			productReference = 1D0000000000000000000001 /* AnpusFeather.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1B0000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					1C0000000000000000000001 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = 1F0000000000000000000001 /* Build configuration list for PBXProject "AnpusFeather" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1A0000000000000000000001 /* Main */;
+			productRefGroup = 1A0000000000000000000006 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1C0000000000000000000001 /* AnpusFeather */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1E0000000000000000000002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A0000000000000000000012 /* Media in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1E0000000000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A0000000000000000000001 /* App.swift in Sources */,
+				3A0000000000000000000002 /* Renderer.swift in Sources */,
+				3A0000000000000000000003 /* Textures.swift in Sources */,
+				3A0000000000000000000004 /* Core.swift in Sources */,
+				3A0000000000000000000005 /* Input.swift in Sources */,
+				3A0000000000000000000006 /* Skeleton.swift in Sources */,
+				3A0000000000000000000007 /* Narrative.swift in Sources */,
+				3A0000000000000000000008 /* Message.swift in Sources */,
+				3A0000000000000000000009 /* River.swift in Sources */,
+				3A000000000000000000000A /* Pyramid.swift in Sources */,
+				3A000000000000000000000B /* User.swift in Sources */,
+				3A000000000000000000000C /* Scales.swift in Sources */,
+				3A000000000000000000000D /* QA.swift in Sources */,
+				3A000000000000000000000E /* Wisdom.swift in Sources */,
+				3A000000000000000000000F /* Music.swift in Sources */,
+				3A0000000000000000000010 /* Experience.swift in Sources */,
+				3A0000000000000000000011 /* Shaders.metal in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		200000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		200000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		200000000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = AnpusFeather/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.haam.anpusfeather;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		200000000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = AnpusFeather/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.haam.anpusfeather;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1F0000000000000000000001 /* Build configuration list for PBXProject "AnpusFeather" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				200000000000000000000001 /* Debug */,
+				200000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F0000000000000000000002 /* Build configuration list for PBXNativeTarget "AnpusFeather" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				200000000000000000000003 /* Debug */,
+				200000000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1B0000000000000000000001 /* Project object */;
+}

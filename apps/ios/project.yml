@@ -1,0 +1,31 @@
+# Optional: regenerate AnpusFeather.xcodeproj with XcodeGen if the committed
+# project ever needs rebuilding — `brew install xcodegen && xcodegen`.
+# The committed .xcodeproj is the primary artifact; this is a fallback.
+name: AnpusFeather
+options:
+  bundleIdPrefix: co.haam
+  deploymentTarget:
+    iOS: "15.0"
+  createIntermediateGroups: true
+targets:
+  AnpusFeather:
+    type: application
+    platform: iOS
+    sources:
+      - path: AnpusFeather
+        excludes:
+          - "Info.plist"
+          - "Resources"
+      - path: AnpusFeather/Resources/Media
+        type: folder
+        buildPhase: resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: co.haam.anpusfeather
+        INFOPLIST_FILE: AnpusFeather/Info.plist
+        GENERATE_INFOPLIST_FILE: "NO"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        MARKETING_VERSION: "2.0"
+        CURRENT_PROJECT_VERSION: "1"
+        SWIFT_VERSION: "5.0"
+        ENABLE_PREVIEWS: "YES"

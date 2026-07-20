@@ -17,11 +17,12 @@ This repo holds three incarnations of the same experience:
 | Path | What it is |
 |------|------------|
 | [`apps/web/`](apps/web/) | **The game.** A TypeScript + Vite + Canvas app that runs in any browser. This is the source of truth for gameplay and art. |
-| [`apps/ios/`](apps/ios/) | **The native iOS app.** A [Capacitor](https://capacitorjs.com) wrapper that ships the web build in a full-screen WKWebView, buildable in Xcode. |
+| [`apps/ios/`](apps/ios/) | **The native iOS app.** A from-scratch Swift + **Metal** implementation (no web view) — GPU-native rendering and speed, buildable in Xcode. |
 | [`archive/`](archive/) | **The original 2020 installation.** The Processing + Kinect sketch, preserved unchanged. |
 
-The web app and the iOS app play identically — the iOS app bundles the web
-build, so a change in `apps/web` flows to both.
+All three share the same narrative, art, music and recorded-movement data.
+The web and iOS apps are independent implementations of it — the web app in
+TypeScript + Canvas, the iOS app in Swift + Metal.
 
 ## How to play
 
@@ -42,11 +43,8 @@ npm install
 npm run dev          # dev server
 npm run build        # production build in apps/web/dist
 
-# The iOS app (requires macOS + Xcode)
-cd apps/ios
-npm install
-npm run sync         # build the web app and copy it into the iOS project
-npm run open         # open the project in Xcode, then Run
+# The native iOS app (requires macOS + Xcode)
+open apps/ios/AnpusFeather.xcodeproj   # then pick a simulator/device and Run
 ```
 
 Pushes to `master` deploy the web app to GitHub Pages automatically
