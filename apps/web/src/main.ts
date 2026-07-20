@@ -6,24 +6,37 @@
   Ported to the browser: the pointer is your body now.
 */
 
-import { W, H } from "./core";
+import { W, H, MIN_ASPECT, setViewport } from "./core";
 import { loadAssets } from "./assets";
 import { Pointer } from "./pointer";
 import { Experience } from "./experience";
 
 const canvas = document.getElementById("stage") as HTMLCanvasElement;
 const overlay = document.getElementById("overlay") as HTMLDivElement;
+const rotate = document.getElementById("rotate") as HTMLDivElement;
 const enterButton = document.getElementById("enter") as HTMLButtonElement;
 const saveButton = document.getElementById("save-card") as HTMLButtonElement;
 const ctx = canvas.getContext("2d")!;
 
-// Letterbox the fixed 1600x900 virtual canvas into the window
+// The world (W x H) fills the viewport. When the viewport is more portrait
+// than MIN_ASPECT the world is centered and the rotate prompt is shown.
 let view = { scale: 1, ox: 0, oy: 0, dpr: 1 };
+let portrait = false;
 
 function resize() {
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  canvas.width = Math.round(window.innerWidth * dpr);
-  canvas.height = Math.round(window.innerHeight * dpr);
+  canvas.width = Math.round(vw * dpr);
+  canvas.height = Math.round(vh * dpr);
+
+  // Size the world to the viewport aspect, then fit it (contain). Because the
+  // world's aspect tracks the viewport, "contain" fills the screen exactly for
+  // in-range aspects, and letterboxes only at the clamped extremes.
+  setViewport(vw, vh);
+  portrait = vw / vh < MIN_ASPECT;
+  rotate.classList.toggle("show", portrait);
+
   const scale = Math.min(canvas.width / W, canvas.height / H);
   view = {
     scale,
@@ -39,6 +52,7 @@ function resize() {
 }
 
 window.addEventListener("resize", resize);
+window.addEventListener("orientationchange", resize);
 resize();
 
 const toVirtual = (cx: number, cy: number) => ({

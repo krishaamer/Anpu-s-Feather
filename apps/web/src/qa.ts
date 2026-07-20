@@ -15,16 +15,19 @@ export class QA {
   private currentAnswer: Answer = "";
   private fillAlpha = 0;
 
-  // NO: top-left, YES: top-right
-  private noX = MARGIN;
-  private noY = MARGIN;
-  private yesX = W - BTN - MARGIN;
-  private yesY = MARGIN;
-
   constructor(
     private ctx: CanvasRenderingContext2D,
     private points: Vec3[],
   ) {}
+
+  // Button rects are derived from the live world width each frame so they
+  // stay pinned to the top corners on any screen. NO: top-left, YES: top-right.
+  private get noRect() {
+    return { x: MARGIN, y: MARGIN };
+  }
+  private get yesRect() {
+    return { x: W - BTN - MARGIN, y: MARGIN };
+  }
 
   answer(): Answer {
     return this.currentAnswer;
@@ -35,8 +38,8 @@ export class QA {
   }
 
   ask() {
-    this.button(this.noX, this.noY, "NO", `rgba(255,0,0,`);
-    this.button(this.yesX, this.yesY, "YES", `rgba(0,0,255,`);
+    this.button(this.noRect.x, this.noRect.y, "NO", `rgba(255,0,0,`);
+    this.button(this.yesRect.x, this.yesRect.y, "YES", `rgba(0,0,255,`);
   }
 
   private button(x: number, y: number, label: string, rgbaPrefix: string) {
@@ -64,8 +67,8 @@ export class QA {
   /** Click / tap input. */
   enableButtons(clicks: { x: number; y: number }[]) {
     for (const c of clicks) {
-      if (this.hit(c.x, c.y, this.yesX, this.yesY)) this.decide("YES");
-      if (this.hit(c.x, c.y, this.noX, this.noY)) this.decide("NO");
+      if (this.hit(c.x, c.y, this.yesRect.x, this.yesRect.y)) this.decide("YES");
+      if (this.hit(c.x, c.y, this.noRect.x, this.noRect.y)) this.decide("NO");
     }
   }
 
@@ -74,8 +77,8 @@ export class QA {
     for (const hand of [this.points[4], this.points[7]]) {
       const x = hand.x + W / 2;
       const y = hand.y + H / 2;
-      if (this.hit(x, y, this.yesX, this.yesY)) this.decide("YES");
-      if (this.hit(x, y, this.noX, this.noY)) this.decide("NO");
+      if (this.hit(x, y, this.yesRect.x, this.yesRect.y)) this.decide("YES");
+      if (this.hit(x, y, this.noRect.x, this.noRect.y)) this.decide("NO");
     }
   }
 

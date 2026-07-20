@@ -30,14 +30,21 @@ export class Pyramid {
     ctx.restore();
   }
 
-  /** Pyramids on both sides + blinking Anubis in the center. */
+  /** Pyramids framing both sides + blinking Anubis in the center. */
   show() {
     this.withTint(() => {
       const ctx = this.ctx;
-      const p0 = this.images["pyramid0"];
-      const p2 = this.images["pyramid2"];
-      ctx.drawImage(p0, W - p0.width, 0);
-      ctx.drawImage(p2, 0, 0);
+      const p0 = this.images["pyramid0"]; // right half of the panorama
+      const p2 = this.images["pyramid2"]; // left half
+
+      // Each backdrop covers its half of the world (plus a 1px seam overlap)
+      // so the pair frames the sides at any width and never collides in the
+      // middle behind Anubis.
+      const half = Math.ceil(W / 2) + 1;
+      const lh = p2.height * (half / p2.width);
+      const rh = p0.height * (half / p0.width);
+      ctx.drawImage(p2, 0, 0, half, lh);
+      ctx.drawImage(p0, W - half, 0, half, rh);
 
       // Anubis blinks at the original cadence (15 frames at 27fps).
       const anubis =

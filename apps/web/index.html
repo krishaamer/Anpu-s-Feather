@@ -95,6 +95,44 @@
       #save-card.visible {
         display: block;
       }
+      #rotate {
+        position: fixed;
+        inset: 0;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.4rem;
+        background: #000;
+        color: #e8dcc0;
+        text-align: center;
+        padding: 2rem;
+        z-index: 20;
+      }
+      /* Shown only on portrait phones — this is a landscape experience. */
+      #rotate.show {
+        display: flex;
+      }
+      #rotate .glyph {
+        font-size: 3.4rem;
+        animation: tilt 2.4s ease-in-out infinite;
+      }
+      #rotate p {
+        max-width: 22rem;
+        line-height: 1.6;
+        letter-spacing: 0.08em;
+        margin: 0;
+      }
+      @keyframes tilt {
+        0%,
+        40% {
+          transform: rotate(0deg);
+        }
+        70%,
+        100% {
+          transform: rotate(90deg);
+        }
+      }
     </style>
   </head>
   <body>
@@ -108,6 +146,10 @@
         pointer to move your spirit. Sound on.
       </p>
       <button id="enter" disabled>Loading&hellip;</button>
+    </div>
+    <div id="rotate">
+      <div class="glyph">&#128241;</div>
+      <p>Turn your device sideways &mdash; Anpu&rsquo;s Feather unfolds in landscape.</p>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>

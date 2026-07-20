@@ -1,11 +1,32 @@
 /*
   Shared constants, small helpers and types used across the experience.
-  The original Processing sketch ran fullscreen at ~27fps; the web port
-  renders into a fixed virtual canvas that is letterboxed to the window.
+  The original Processing sketch ran fullscreen; the web port renders into a
+  responsive world that fills the viewport. Height is a fixed design unit
+  (900) so every element keeps a consistent size, while width tracks the
+  viewport's aspect ratio — so the scene fills the screen edge to edge
+  instead of being letterboxed into a strip. `W`/`H` are live bindings that
+  importers read each frame; `setViewport` updates them on resize.
 */
 
-export const W = 1600;
-export const H = 900;
+// Fixed design height. All layout is expressed relative to this and to W.
+export const DESIGN_H = 900;
+
+// Clamp how wide/narrow the world may get so the composition never breaks.
+// Aspects outside this range letterbox minimally (wide) or trigger the
+// rotate-to-landscape prompt (portrait, handled in main.ts).
+export const MIN_ASPECT = 1.2;
+export const MAX_ASPECT = 2.6;
+
+// Live world dimensions, updated by setViewport() on every resize.
+export let W = 1600;
+export let H = DESIGN_H;
+
+/** Update the world size to match the viewport's aspect ratio. */
+export function setViewport(viewportW: number, viewportH: number) {
+  const aspect = clamp(viewportW / viewportH, MIN_ASPECT, MAX_ASPECT);
+  H = DESIGN_H;
+  W = Math.round(DESIGN_H * aspect);
+}
 
 // The original sketch ran at 27fps and tuned all fades/easing per-frame.
 // Multiplying per-frame values by dt * FPS keeps the original feel.
