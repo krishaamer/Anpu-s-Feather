@@ -1,3 +1,16 @@
+# Web app
+node_modules
+dist
+
+# iOS / Xcode
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.xcworkspace/xcuserdata/
+.swiftpm
+
+# Processing (archive)
 .DS_Store
 applet
 application.linux-arm64

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Anpu's Feather — an interactive experience inviting you to think about your life before death." />
+    <title>Anpu's Feather 阿努比斯的羽毛</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪶</text></svg>"
+    />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: #000;
+        overflow: hidden;
+        font-family: Georgia, "Times New Roman", serif;
+      }
+      #stage {
+        position: fixed;
+        inset: 0;
+        display: block;
+        touch-action: none;
+        cursor: crosshair;
+      }
+      #overlay {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.2rem;
+        background: #000;
+        color: #e8dcc0;
+        text-align: center;
+        padding: 2rem;
+        z-index: 10;
+        transition: opacity 1.2s ease;
+      }
+      #overlay.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      #overlay h1 {
+        font-size: clamp(1.8rem, 5vw, 3.2rem);
+        font-weight: normal;
+        letter-spacing: 0.12em;
+        margin: 0;
+      }
+      #overlay p {
+        max-width: 34rem;
+        line-height: 1.6;
+        color: #b3a888;
+        margin: 0;
+      }
+      #enter {
+        margin-top: 1rem;
+        font: inherit;
+        font-size: 1.1rem;
+        letter-spacing: 0.2em;
+        padding: 0.9rem 2.6rem;
+        background: transparent;
+        color: #e8dcc0;
+        border: 1px solid #6b5f45;
+        cursor: pointer;
+        transition: background 0.3s, color 0.3s;
+      }
+      #enter:hover {
+        background: #e8dcc0;
+        color: #000;
+      }
+      #enter:disabled {
+        opacity: 0.4;
+        cursor: wait;
+      }
+      #save-card {
+        position: fixed;
+        right: 1.2rem;
+        bottom: 1.2rem;
+        z-index: 5;
+        font: inherit;
+        font-size: 0.9rem;
+        letter-spacing: 0.15em;
+        padding: 0.6rem 1.4rem;
+        background: rgba(0, 0, 0, 0.6);
+        color: #e8dcc0;
+        border: 1px solid #6b5f45;
+        cursor: pointer;
+        display: none;
+      }
+      #save-card.visible {
+        display: block;
+      }
+      #rotate {
+        position: fixed;
+        inset: 0;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.4rem;
+        background: #000;
+        color: #e8dcc0;
+        text-align: center;
+        padding: 2rem;
+        z-index: 20;
+      }
+      /* Shown only on portrait phones — this is a landscape experience. */
+      #rotate.show {
+        display: flex;
+      }
+      #rotate .glyph {
+        font-size: 3.4rem;
+        animation: tilt 2.4s ease-in-out infinite;
+      }
+      #rotate p {
+        max-width: 22rem;
+        line-height: 1.6;
+        letter-spacing: 0.08em;
+        margin: 0;
+      }
+      @keyframes tilt {
+        0%,
+        40% {
+          transform: rotate(0deg);
+        }
+        70%,
+        100% {
+          transform: rotate(90deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="stage"></canvas>
+    <button id="save-card">Save your wisdom card</button>
+    <div id="overlay">
+      <h1>Anpu&rsquo;s Feather</h1>
+      <p>
+        You went on a trip on the Nile river before your death. You are welcomed
+        by Anubis, who weighs your heart against the Feather of Truth. Move your
+        pointer to move your spirit. Sound on.
+      </p>
+      <button id="enter" disabled>Loading&hellip;</button>
+    </div>
+    <div id="rotate">
+      <div class="glyph">&#128241;</div>
+      <p>Turn your device sideways &mdash; Anpu&rsquo;s Feather unfolds in landscape.</p>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
