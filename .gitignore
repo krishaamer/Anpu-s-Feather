@@ -9,6 +9,7 @@ DerivedData/
 xcuserdata/
 *.xcworkspace/xcuserdata/
 .swiftpm
+apps/ios/build/
 
 # Unity
 apps/unity/[Ll]ibrary/

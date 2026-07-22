@@ -19,7 +19,7 @@ enum Pipe: Equatable {
     case point
 }
 
-private struct DrawCmd {
+fileprivate struct DrawCmd {
     var pipe: Pipe
     var blendAdd: Bool
     var texture: MTLTexture?
@@ -38,7 +38,7 @@ private struct DrawCmd {
 */
 final class Canvas {
     fileprivate(set) var verts: [Vertex] = []
-    fileprivate(set) var cmds: [DrawCmd] = []
+    fileprivate var cmds: [DrawCmd] = []
 
     /// When true, subsequent draws blend additively (the light-heart glow).
     var blendAdd = false

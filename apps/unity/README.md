@@ -4,16 +4,26 @@ A Unity 6 port of **Anpu's Feather**, faithful to the iOS Swift + Metal implemen
 
 ## Requirements
 
-- **Unity 6000.6.0 Beta (b4)** — changeset `2212ba80b59e`
-- Install from Unity Hub → Installs → Install Editor → **Beta releases** → **6000.6.0b4** (Apple Silicon)
+- **Unity 6000.6 Beta** — project is set to **6000.6.0b1** (changeset `bec83302551e`), which matches a common Hub install
+- Install from Unity Hub → Installs → Install Editor → **Beta releases** → **6000.6.0b1** (or newer 6000.6.x)
 - On first open Unity may regenerate `Packages/packages-lock.json` and refresh ProjectSettings; that is expected
 
 ## Quick start
 
-1. Install **Unity 6000.6.0b4** in Hub if you do not already have it
-2. Add project → select `apps/unity`
-3. Open scene **`Assets/AnpusFeather/Scenes/Main.unity`**
-4. Press **Play**, then **Enter** on the title screen
+1. Install **Unity 6000.6.0b1** (or later 6000.6) in Hub if you do not already have it
+2. In Hub → **Projects** → **Add** → select `apps/unity`
+3. Open the project with the 6000.6 editor
+4. Open scene **`Assets/AnpusFeather/Scenes/Main.unity`**
+5. Press **Play**, then **Enter** on the title screen
+
+### Unity AI Assistant
+
+Do **not** use the website “install to a local project” dialog until the project is listed in Hub and opened once. Instead:
+
+1. Open `apps/unity` in the Unity Editor (6000.6+)
+2. Toolbar **AI** → accept terms → **Agree and install Unity AI**,  
+   **or** Window → Package Manager → **+** → Install package by name → `com.unity.ai.assistant`
+3. Link the project to a Unity Cloud organization when prompted
 
 Media is loaded from `Assets/StreamingAssets/Media/{img,data,audio}/`.
 
