@@ -12,17 +12,18 @@ Welcome, you have reached the entrance. How have you lived your life? This feath
 
 ## Repository layout
 
-This repo holds three incarnations of the same experience:
+This repo holds four incarnations of the same experience:
 
 | Path | What it is |
 |------|------------|
 | [`apps/web/`](apps/web/) | **The game.** A TypeScript + Vite + Canvas app that runs in any browser. This is the source of truth for gameplay and art. |
 | [`apps/ios/`](apps/ios/) | **The native iOS app.** A from-scratch Swift + **Metal** implementation (no web view) — GPU-native rendering and speed, buildable in Xcode. |
+| [`apps/unity/`](apps/unity/) | **The Unity port.** A C# port mirroring the iOS Metal architecture — immediate-mode canvas, persistent render targets, same timings and quirks. Requires Unity 6000.6.0b4. |
 | [`archive/`](archive/) | **The original 2020 installation.** The Processing + Kinect sketch, preserved unchanged. |
 
-All three share the same narrative, art, music and recorded-movement data.
-The web and iOS apps are independent implementations of it — the web app in
-TypeScript + Canvas, the iOS app in Swift + Metal.
+All four share the same narrative, art, music and recorded-movement data.
+The web, iOS, and Unity apps are independent implementations of it — the web app in
+TypeScript + Canvas, the iOS app in Swift + Metal, the Unity app in C# + built-in RP.
 
 ## How to play
 
@@ -45,6 +46,9 @@ npm run build        # production build in apps/web/dist
 
 # The native iOS app (requires macOS + Xcode)
 open apps/ios/AnpusFeather.xcodeproj   # then pick a simulator/device and Run
+
+# The Unity port (requires Unity 6000.6.0b4)
+# Open apps/unity in Unity Hub, then Play Main.unity
 ```
 
 Pushes to `master` deploy the web app to GitHub Pages automatically

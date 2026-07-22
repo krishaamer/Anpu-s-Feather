@@ -10,6 +10,32 @@ xcuserdata/
 *.xcworkspace/xcuserdata/
 .swiftpm
 
+# Unity
+apps/unity/[Ll]ibrary/
+apps/unity/[Tt]emp/
+apps/unity/[Oo]bj/
+apps/unity/[Bb]uild/
+apps/unity/[Bb]uilds/
+apps/unity/[Ll]ogs/
+apps/unity/[Uu]ser[Ss]ettings/
+apps/unity/MemoryCaptures/
+apps/unity/Recordings/
+apps/unity/*.csproj
+apps/unity/*.sln
+apps/unity/*.suo
+apps/unity/*.user
+apps/unity/*.userprefs
+apps/unity/*.pidb
+apps/unity/*.booproj
+apps/unity/*.svd
+apps/unity/*.pdb
+apps/unity/*.mdb
+apps/unity/*.opendb
+apps/unity/*.VC.db
+apps/unity/*.unitypackage
+apps/unity/sysinfo.txt
+apps/unity/*.log
+
 # Processing (archive)
 .DS_Store
 applet
