@@ -54,3 +54,4 @@ submissions
 # Local App Store Connect API key material (never commit)
 apps/ios/fastlane/AuthKey.json
 apps/ios/fastlane/UploadKey.json
+/apps/ios/fastlane/report.xml
